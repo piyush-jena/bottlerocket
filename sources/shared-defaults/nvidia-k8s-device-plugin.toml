@@ -22,3 +22,4 @@ pass-device-specs = true
 device-id-strategy="index"
 device-list-strategy="volume-mounts"
 device-sharing-strategy="none"
+device-partitioning-strategy="none"
