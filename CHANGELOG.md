@@ -1,12 +1,13 @@
 # v1.27.0 (2024-11-12)
 
 ## Release Highlights
-* Add FIPS variants ([#4274], [#1667], [#4267])
+* Add FIPS variants ([#4274], [#1667])
 * Drop k8s 1.28 and k8s 1.29 metal variants ([#4287])
 
 ## OS Changes
 * Add aws-creds settings defaults to all AWS variants ([#4285])
 * Add support for migrations to modify aws-config setting generators ([#4271])
+* Add support for migrations to modify FIPS ecr endpoints ([#4267])
 
 ## Build Changes
 * Update bottlerocket-core-kit to 3.2.0 ([#4286])
