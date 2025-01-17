@@ -92,4 +92,5 @@ allow-git = [
     # We will allow it as an exception until the following is resolved:
     # https://github.com/bottlerocket-os/bottlerocket-settings-sdk/issues/18
     "https://github.com/bottlerocket-os/bottlerocket-settings-sdk",
+    "https://github.com/piyush-jena/bottlerocket-settings-sdk",
 ]
