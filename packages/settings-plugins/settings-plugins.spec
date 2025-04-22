@@ -73,6 +73,8 @@ Provides: %{_cross_os}settings-plugin(aws-k8s-1.31)
 Provides: %{_cross_os}settings-plugin(aws-k8s-1.31-fips)
 Provides: %{_cross_os}settings-plugin(aws-k8s-1.32)
 Provides: %{_cross_os}settings-plugin(aws-k8s-1.32-fips)
+Provides: %{_cross_os}settings-plugin(aws-k8s-1.33)
+Provides: %{_cross_os}settings-plugin(aws-k8s-1.33-fips)
 Conflicts: %{_cross_os}settings-plugin(any)
 Conflicts: %{_cross_os}variant-flavor(nvidia)
 
@@ -91,6 +93,7 @@ Provides: %{_cross_os}settings-plugin(aws-k8s-1.29-nvidia)
 Provides: %{_cross_os}settings-plugin(aws-k8s-1.30-nvidia)
 Provides: %{_cross_os}settings-plugin(aws-k8s-1.31-nvidia)
 Provides: %{_cross_os}settings-plugin(aws-k8s-1.32-nvidia)
+Provides: %{_cross_os}settings-plugin(aws-k8s-1.33-nvidia)
 Conflicts: %{_cross_os}settings-plugin(any)
 
 %description aws-k8s-nvidia

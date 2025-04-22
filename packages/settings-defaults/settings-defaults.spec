@@ -165,6 +165,32 @@ Conflicts: %{_cross_os}settings-defaults(any)
 %description aws-k8s-1.32-nvidia
 %{summary}.
 
+%package aws-k8s-1.33
+Summary: Settings defaults for the aws-k8s 1.33 variants
+Requires: (%{shrink:
+           %{_cross_os}variant(aws-k8s-1.33)      or
+           %{_cross_os}variant(aws-k8s-1.33-fips)
+           %{nil}})
+Provides: %{_cross_os}settings-defaults(any)
+Provides: %{_cross_os}settings-defaults(aws-k8s-1.33)
+Provides: %{_cross_os}settings-defaults(aws-k8s-1.33-fips)
+Conflicts: %{_cross_os}settings-defaults(any)
+
+%description aws-k8s-1.33
+%{summary}.
+
+%package aws-k8s-1.33-nvidia
+Summary: Settings defaults for the aws-k8s 1.33 nvidia variants
+Requires: (%{shrink:
+           %{_cross_os}variant(aws-k8s-1.33-nvidia)
+           %{nil}})
+Provides: %{_cross_os}settings-defaults(any)
+Provides: %{_cross_os}settings-defaults(aws-k8s-1.33-nvidia)
+Conflicts: %{_cross_os}settings-defaults(any)
+
+%description aws-k8s-1.33-nvidia
+%{summary}.
+
 %package metal-dev
 Summary: Settings defaults for the metal-dev variant
 Requires: %{_cross_os}variant(metal-dev)
@@ -235,6 +261,8 @@ for defaults in \
   aws-k8s-1.31-nvidia \
   aws-k8s-1.32 \
   aws-k8s-1.32-nvidia \
+  aws-k8s-1.33 \
+  aws-k8s-1.33-nvidia \
   metal-dev \
   vmware-dev \
   vmware-k8s-1.32 \
@@ -269,6 +297,8 @@ for defaults in \
   aws-k8s-1.31-nvidia \
   aws-k8s-1.32 \
   aws-k8s-1.32-nvidia \
+  aws-k8s-1.33 \
+  aws-k8s-1.33-nvidia \
   metal-dev \
   vmware-dev \
   vmware-k8s-1.32 \
@@ -329,6 +359,14 @@ done
 %files aws-k8s-1.32-nvidia
 %{_cross_defaultsdir}/aws-k8s-1.32-nvidia.toml
 %{_cross_tmpfilesdir}/storewolf-defaults-aws-k8s-1.32-nvidia.conf
+
+%files aws-k8s-1.33
+%{_cross_defaultsdir}/aws-k8s-1.33.toml
+%{_cross_tmpfilesdir}/storewolf-defaults-aws-k8s-1.33.conf
+
+%files aws-k8s-1.33-nvidia
+%{_cross_defaultsdir}/aws-k8s-1.33-nvidia.toml
+%{_cross_tmpfilesdir}/storewolf-defaults-aws-k8s-1.33-nvidia.conf
 
 %files metal-dev
 %{_cross_defaultsdir}/metal-dev.toml
