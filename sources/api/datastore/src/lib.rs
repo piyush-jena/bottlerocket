@@ -40,6 +40,7 @@ pub use error::{Error, Result};
 pub use filesystem::FilesystemDataStore;
 pub use key::{Key, KeyType, KEY_SEPARATOR, KEY_SEPARATOR_STR};
 
+use indexmap::{IndexMap, IndexSet};
 use log::{info, trace};
 use serde::{Deserialize, Serialize};
 use snafu::OptionExt;
@@ -65,7 +66,7 @@ pub trait DataStore {
         &self,
         prefix: S,
         committed: &Committed,
-    ) -> Result<HashSet<Key>>;
+    ) -> Result<IndexSet<Key>>;
     /// Finds all metadata keys that are currently populated in the datastore whose data keys
     /// start with the given prefix.  If you specify metadata_key_name, only metadata keys with
     /// that name will be returned.
@@ -167,7 +168,7 @@ pub trait DataStore {
     ///
     /// Implementers can replace the default implementation if there's a faster way than setting
     /// each key individually.
-    fn set_keys<S>(&mut self, pairs: &HashMap<Key, S>, committed: &Committed) -> Result<()>
+    fn set_keys<S>(&mut self, pairs: &IndexMap<Key, S>, committed: &Committed) -> Result<()>
     where
         S: AsRef<str>,
     {
@@ -188,7 +189,7 @@ pub trait DataStore {
     ///
     /// Implementers can replace the default implementation if there's a faster way than
     /// unsetting each key individually.
-    fn unset_keys(&mut self, keys: &HashSet<Key>, committed: &Committed) -> Result<()> {
+    fn unset_keys(&mut self, keys: &IndexSet<Key>, committed: &Committed) -> Result<()> {
         for key in keys {
             trace!("Unsetting data key {}", key.name());
             self.unset_key(key, committed)?;
@@ -203,14 +204,14 @@ pub trait DataStore {
         &self,
         find_prefix: S,
         committed: &Committed,
-    ) -> Result<HashMap<Key, String>> {
+    ) -> Result<IndexMap<Key, String>> {
         let keys = self.list_populated_keys(&find_prefix, committed)?;
         trace!("Found populated keys: {keys:?}");
         if keys.is_empty() {
-            return Ok(HashMap::new());
+            return Ok(IndexMap::new());
         }
 
-        let mut result = HashMap::new();
+        let mut result = IndexMap::new();
         for key in keys {
             // Already confirmed key via listing keys, so an error is more serious.
             trace!("Pulling value from datastore for key: {key}");
@@ -319,7 +320,8 @@ pub type Value = serde_json::Value;
 mod test {
     use super::memory::MemoryDataStore;
     use super::{Committed, DataStore, Key, KeyType};
-    use maplit::{hashmap, hashset};
+    use indexmap::{indexmap, indexset, IndexMap};
+    use maplit::hashmap;
 
     #[test]
     fn set_unset_keys() {
@@ -331,7 +333,7 @@ mod test {
         let v1 = "memvalue1".to_string();
         let v2 = "memvalue2".to_string();
         let v3 = "memvalue3".to_string();
-        let data = hashmap!(
+        let data: IndexMap<_, _> = indexmap!(
             k1.clone() => &v1,
             k2.clone() => &v2,
             k3.clone() => &v3,
@@ -345,7 +347,7 @@ mod test {
         assert_eq!(m.get_key(&k2, &pending).unwrap(), Some(v2));
         assert_eq!(m.get_key(&k3, &pending).unwrap(), Some(v3.clone()));
 
-        let unset = hashset!(k1.clone(), k2.clone());
+        let unset = indexset!(k1.clone(), k2.clone());
         m.unset_keys(&unset, &pending).unwrap();
 
         assert_eq!(m.get_key(&k1, &pending).unwrap(), None);
@@ -381,7 +383,7 @@ mod test {
     #[test]
     fn get_prefix() {
         let mut m = MemoryDataStore::new();
-        let data = hashmap!(
+        let data: IndexMap<_, _> = indexmap!(
             Key::new(KeyType::Data, "x.1").unwrap() => "x1".to_string(),
             Key::new(KeyType::Data, "x.2").unwrap() => "x2".to_string(),
             Key::new(KeyType::Data, "y.3").unwrap() => "y3".to_string(),
@@ -390,11 +392,11 @@ mod test {
         let pending = Committed::Pending { tx: tx.into() };
         m.set_keys(&data, &pending).unwrap();
 
-        assert_eq!(
-            m.get_prefix("x.", &pending).unwrap(),
-            hashmap!(Key::new(KeyType::Data, "x.1").unwrap() => "x1".to_string(),
-                     Key::new(KeyType::Data, "x.2").unwrap() => "x2".to_string())
-        );
+        let result = m.get_prefix("x.", &pending).unwrap();
+        // Check contents regardless of order
+        assert_eq!(result.len(), 2);
+        assert_eq!(result[&Key::new(KeyType::Data, "x.1").unwrap()], "x1");
+        assert_eq!(result[&Key::new(KeyType::Data, "x.2").unwrap()], "x2");
     }
 
     #[test]

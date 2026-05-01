@@ -91,6 +91,7 @@ futures = { version = "0.3", default-features = false }
 futures-channel = { version = "0.3", default-features = false }
 handlebars = "4"
 http = "0.2"
+indexmap = "2"
 httparse = "1"
 hyper = { version = "0.14", default-features = false }
 hyper-unix-connector = "0.2"

@@ -10,6 +10,7 @@ use datastore::{
     deserialize_scalar, serialization::to_pairs_with_prefix, serialize_scalar, Committed,
     DataStore, Key, KeyType,
 };
+use indexmap::IndexMap;
 
 // To get input data from the existing data store, we use datastore methods, because we assume
 // breaking changes in the basic data store API would be a major-version migration of the data
@@ -82,7 +83,7 @@ pub(crate) fn set_output_data<D: DataStore>(
     committed: &Committed,
 ) -> Result<()> {
     // Prepare serialized data
-    let mut data = HashMap::new();
+    let mut data = IndexMap::new();
     for (data_key_name, raw_value) in &input.data {
         // See notes above about storing key Strings and Values.
         let data_key = Key::new(KeyType::Data, data_key_name).context(error::InvalidKeySnafu {

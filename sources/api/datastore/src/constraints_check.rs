@@ -5,7 +5,7 @@
 //! settings and metadata for the commit.
 //! Constraint checks can alter the write.
 
-use std::collections::HashMap;
+use indexmap::IndexMap;
 
 use crate::{error, Key};
 
@@ -17,7 +17,7 @@ type RejectReason = String;
 /// - `metadata`: A collection of metadata entries.
 #[derive(PartialEq)]
 pub struct ApprovedWrite {
-    pub settings: HashMap<Key, String>,
+    pub settings: IndexMap<Key, String>,
     pub metadata: Vec<(Key, Key, String)>,
 }
 

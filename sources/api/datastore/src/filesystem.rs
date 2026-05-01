@@ -7,6 +7,7 @@
 use log::{debug, error, trace};
 use percent_encoding::{percent_decode_str, utf8_percent_encode, AsciiSet, NON_ALPHANUMERIC};
 use snafu::{ensure, OptionExt, ResultExt};
+use indexmap::IndexSet;
 use std::collections::{HashMap, HashSet};
 use std::fs;
 use std::io;
@@ -324,7 +325,7 @@ fn find_populated_key_paths<S: AsRef<str>>(
     key_type: KeyType,
     prefix: S,
     committed: &Committed,
-) -> Result<HashSet<KeyPath>> {
+) -> Result<Vec<KeyPath>> {
     // Find the base path for our search, and confirm it exists.
     let base = datastore.base_path(committed);
     if !base.exists() {
@@ -343,7 +344,7 @@ fn find_populated_key_paths<S: AsRef<str>>(
                     "Returning empty list because pending path doesn't exist: {}",
                     base.display()
                 );
-                return Ok(HashSet::new());
+                return Ok(Vec::new());
             }
         }
     }
@@ -353,7 +354,7 @@ fn find_populated_key_paths<S: AsRef<str>>(
         .follow_links(false) // shouldn't be links...
         .same_file_system(true); // shouldn't be filesystems to cross...
 
-    let mut key_paths = HashSet::new();
+    let mut key_paths = Vec::new();
     trace!(
         "Starting walk of filesystem to list {:?} key paths under {}",
         key_type,
@@ -377,9 +378,14 @@ fn find_populated_key_paths<S: AsRef<str>>(
             }
 
             trace!("Found {:?} key at {}", key_type, entry.path().display());
-            key_paths.insert(kp);
+            key_paths.push(kp);
         }
     }
+
+    // Sort for deterministic ordering regardless of filesystem walk order (inode order).
+    key_paths.sort_by(|a, b| a.data_key.name().cmp(b.data_key.name()));
+    // Deduplicate (shouldn't have duplicates, but be safe)
+    key_paths.dedup();
 
     Ok(key_paths)
 }
@@ -398,7 +404,7 @@ impl DataStore for FilesystemDataStore {
         &self,
         prefix: S,
         committed: &Committed,
-    ) -> Result<HashSet<Key>> {
+    ) -> Result<IndexSet<Key>> {
         let key_paths = find_populated_key_paths(self, KeyType::Data, prefix, committed)?;
         let keys = key_paths.into_iter().map(|kp| kp.data_key).collect();
         Ok(keys)

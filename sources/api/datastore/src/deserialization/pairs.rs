@@ -36,8 +36,9 @@ use serde::de::{value::MapDeserializer, IntoDeserializer, Visitor};
 use serde::{forward_to_deserialize_any, Deserialize};
 use snafu::ResultExt;
 use std::borrow::Borrow;
-use std::collections::{HashMap, HashSet, VecDeque};
+use std::collections::{HashSet, VecDeque};
 use std::hash::Hash;
+use indexmap::IndexSet;
 
 use super::{error, Error, Result};
 use crate::{deserializer_for_scalar, Key, KeyType, ScalarDeserializer};
@@ -51,12 +52,11 @@ use crate::{deserializer_for_scalar, Key, KeyType, ScalarDeserializer};
 /// The BuildHasher bound on the input HashMap lets you use a HashMap with any hashing
 /// implementation.  This is just an implementation detail and not something you have to specify
 /// about your input HashMap - any HashMap using string-like key/value types is fine.
-pub fn from_map<'de, K, S, T, BH>(map: &'de HashMap<K, S, BH>) -> Result<T>
+pub fn from_map<'de, K, S, T>(map: &'de indexmap::IndexMap<K, S>) -> Result<T>
 where
     K: Borrow<Key> + Eq + Hash,
     S: AsRef<str>,
     T: Deserialize<'de>,
-    BH: std::hash::BuildHasher,
 {
     let de = CompoundDeserializer::new(map, map.keys().map(|s| s.borrow().clone()).collect(), None);
     trace!("Deserializing keys: {:?}", de.keys);
@@ -75,15 +75,14 @@ where
 ///
 /// This isn't necessary for structs because serde knows the struct's name, so we
 /// can strip it automatically.
-pub fn from_map_with_prefix<'de, K, S, T, BH>(
+pub fn from_map_with_prefix<'de, K, S, T>(
     prefix: Option<String>,
-    map: &'de HashMap<K, S, BH>,
+    map: &'de indexmap::IndexMap<K, S>,
 ) -> Result<T>
 where
     K: Borrow<Key> + Eq + Hash,
     S: AsRef<str>,
     T: Deserialize<'de>,
-    BH: std::hash::BuildHasher,
 {
     let key_prefix = match prefix {
         None => None,
@@ -108,16 +107,15 @@ where
 /// key name and a deserializer for it on each iteration, i.e. for each field.  Based on whether
 /// the key name has a dot, we know if we need to recurse again or just deserialize a final value,
 /// which we represent as the two arms of the enum.
-enum ValueDeserializer<'de, K, S, BH> {
+enum ValueDeserializer<'de, K, S> {
     Scalar(ScalarDeserializer<'de>),
-    Compound(CompoundDeserializer<'de, K, S, BH>),
+    Compound(CompoundDeserializer<'de, K, S>),
 }
 
-impl<'de, K, S, BH> serde::de::Deserializer<'de> for ValueDeserializer<'de, K, S, BH>
+impl<'de, K, S> serde::de::Deserializer<'de> for ValueDeserializer<'de, K, S>
 where
     K: Borrow<Key> + Eq + Hash,
     S: AsRef<str>,
-    BH: std::hash::BuildHasher,
 {
     type Error = Error;
 
@@ -166,11 +164,10 @@ where
     }
 }
 
-impl<'de, K, S, BH> IntoDeserializer<'de, Error> for ValueDeserializer<'de, K, S, BH>
+impl<'de, K, S> IntoDeserializer<'de, Error> for ValueDeserializer<'de, K, S>
 where
     K: Borrow<Key> + Eq + Hash,
     S: AsRef<str>,
-    BH: std::hash::BuildHasher,
 {
     type Deserializer = Self;
 
@@ -181,26 +178,23 @@ where
 
 /// CompoundDeserializer is our main structure that drives serde's MapDeserializer and stores the
 /// state we need to understand the recursive structure of the output.
-struct CompoundDeserializer<'de, K, S, BH> {
+struct CompoundDeserializer<'de, K, S> {
     /// A reference to the input data we're deserializing.
-    map: &'de HashMap<K, S, BH>,
+    map: &'de indexmap::IndexMap<K, S>,
     /// The keys that we need to consider in this iteration.  Starts out the same as the keys
     /// of the input map, but on recursive calls it's only the keys that are relevant to the
     /// sub-struct we're handling, with the duplicated prefix (the 'path') removed.
-    keys: HashSet<Key>,
+    keys: IndexSet<Key>,
     /// The path tells us where we are in our recursive structures.
     path: Option<Key>,
 }
 
-impl<'de, K, S, BH> CompoundDeserializer<'de, K, S, BH>
-where
-    BH: std::hash::BuildHasher,
-{
+impl<'de, K, S> CompoundDeserializer<'de, K, S> {
     fn new(
-        map: &'de HashMap<K, S, BH>,
-        keys: HashSet<Key>,
+        map: &'de indexmap::IndexMap<K, S>,
+        keys: IndexSet<Key>,
         path: Option<Key>,
-    ) -> CompoundDeserializer<'de, K, S, BH> {
+    ) -> CompoundDeserializer<'de, K, S> {
         CompoundDeserializer { map, keys, path }
     }
 }
@@ -209,11 +203,10 @@ fn bad_root<T>() -> Result<T> {
     error::BadRootSnafu.fail()
 }
 
-impl<'de, K, S, BH> serde::de::Deserializer<'de> for CompoundDeserializer<'de, K, S, BH>
+impl<'de, K, S> serde::de::Deserializer<'de> for CompoundDeserializer<'de, K, S>
 where
     K: Borrow<Key> + Eq + Hash,
     S: AsRef<str>,
-    BH: std::hash::BuildHasher,
 {
     type Error = Error;
 
@@ -251,7 +244,7 @@ where
             // handing it to the MapDeserializer.  (Our real customer is the one specifying the
             // dotted keys, and we always use the struct name there for clarity.)
             trace!("Keys before path strip: {:?}", self.keys);
-            let mut new_keys = HashSet::new();
+            let mut new_keys = IndexSet::new();
             for key in self.keys {
                 new_keys.insert(key.strip_prefix_segments(path.segments()).context(
                     error::StripPrefixSnafu {
@@ -413,6 +406,7 @@ mod test {
     use super::{from_map, from_map_with_prefix};
     use crate::{deserialization::Error, Key, KeyType};
 
+    use indexmap::indexmap;
     use maplit::hashmap;
     use serde::Deserialize;
     use std::collections::HashMap;
@@ -448,7 +442,7 @@ mod test {
 
     #[test]
     fn basic_struct_works() {
-        let c: C = from_map(&hashmap! {
+        let c: C = from_map(&indexmap! {
             key!("c.boolean") => "true".to_string(),
         })
         .unwrap();
@@ -457,7 +451,7 @@ mod test {
 
     #[test]
     fn deep_struct_works() {
-        let a: A = from_map(&hashmap! {
+        let a: A = from_map(&indexmap! {
             key!("a.id") => "1".to_string(),
             key!("a.name") => "\"it's my name\"".to_string(),
             key!("a.list") => "[1,2, 3, 4]".to_string(),
@@ -489,7 +483,7 @@ mod test {
 
     #[test]
     fn map_doesnt_work_at_root() {
-        let a: Result<HashMap<String, String>, Error> = from_map(&hashmap! {
+        let a: Result<HashMap<String, String>, Error> = from_map(&indexmap! {
             key!("a") => "\"it's a\"".to_string(),
             key!("b") => "\"it's b\"".to_string(),
         });
@@ -498,7 +492,7 @@ mod test {
 
     #[test]
     fn map_works_at_root_with_prefix() {
-        let map = &hashmap! {
+        let map = &indexmap! {
             key!("x.boolean") => "true".to_string()
         };
         let x: HashMap<String, bool> = from_map_with_prefix(Some("x".to_string()), map).unwrap();
@@ -517,7 +511,7 @@ mod test {
 
     #[test]
     fn disallowed_data_type() {
-        let bad: Result<Bad, Error> = from_map(&hashmap! {
+        let bad: Result<Bad, Error> = from_map(&indexmap! {
             key!("id") => "42".to_string(),
         });
         bad.unwrap_err();

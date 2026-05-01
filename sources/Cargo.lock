@@ -734,6 +734,7 @@ name = "datastore"
 version = "0.1.0"
 dependencies = [
  "generate-readme",
+ "indexmap",
  "log",
  "maplit",
  "percent-encoding",
@@ -1292,6 +1293,7 @@ dependencies = [
  "bottlerocket-release",
  "datastore",
  "handlebars",
+ "indexmap",
  "maplit",
  "models",
  "regex",

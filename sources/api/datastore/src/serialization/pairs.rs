@@ -11,7 +11,7 @@
 use log::trace;
 use serde::{ser, Serialize};
 use snafu::{IntoError, NoneError as NoSource, OptionExt, ResultExt};
-use std::collections::HashMap;
+use indexmap::IndexMap;
 
 use super::{error, Error, MapKeySerializer, Result};
 use crate::{serialize_scalar, Key, KeyType, ScalarError};
@@ -21,8 +21,8 @@ use crate::{serialize_scalar, Key, KeyType, ScalarError};
 ///    Settings -> DockerSettings -> bridge_ip = u64
 /// would turn into a key of "settings.docker-settings.bridge-ip" and a serialized String
 /// representing the u64 data.
-pub fn to_pairs<T: Serialize>(value: &T) -> Result<HashMap<Key, String>> {
-    let mut output = HashMap::new();
+pub fn to_pairs<T: Serialize>(value: &T) -> Result<IndexMap<Key, String>> {
+    let mut output = IndexMap::new();
     let serializer = Serializer::new(&mut output, None);
     value.serialize(serializer)?;
     Ok(output)
@@ -30,7 +30,7 @@ pub fn to_pairs<T: Serialize>(value: &T) -> Result<HashMap<Key, String>> {
 
 /// Like to_pairs, but lets you add an arbitrary prefix to the resulting keys.  A separator will
 /// automatically be added after the prefix.
-pub fn to_pairs_with_prefix<S, T>(prefix: S, value: &T) -> Result<HashMap<Key, String>>
+pub fn to_pairs_with_prefix<S, T>(prefix: S, value: &T) -> Result<IndexMap<Key, String>>
 where
     S: AsRef<str>,
     T: Serialize,
@@ -43,7 +43,7 @@ where
         .into_error(NoSource)
     })?;
 
-    let mut output = HashMap::new();
+    let mut output = IndexMap::new();
     let serializer = Serializer::new(&mut output, Some(prefix_key));
     value.serialize(serializer)?;
     Ok(output)
@@ -64,7 +64,7 @@ where
 /// It's more common to use a HashMap in the model, and then to use named keys instead of indexes,
 /// which works fine.)
 struct Serializer<'a> {
-    output: &'a mut HashMap<Key, String>,
+    output: &'a mut IndexMap<Key, String>,
     prefix: Option<Key>,
     // This is temporary storage for serializing maps, because serde gives us keys and values
     // separately.  See the SerializeMap implementation below.
@@ -72,7 +72,7 @@ struct Serializer<'a> {
 }
 
 impl<'a> Serializer<'a> {
-    fn new(output: &'a mut HashMap<Key, String>, prefix: Option<Key>) -> Self {
+    fn new(output: &'a mut IndexMap<Key, String>, prefix: Option<Key>) -> Self {
         Self {
             output,
             prefix,
@@ -429,13 +429,13 @@ impl ser::SerializeStruct for Serializer<'_> {
 /// serialization steps, and then at the end, deserialize the strings back into a list of the
 /// original type, and serialize the entire list.  Sorry.
 struct FlatSerializer<'a> {
-    output: &'a mut HashMap<Key, String>,
+    output: &'a mut IndexMap<Key, String>,
     prefix: Key,
     list: Vec<String>,
 }
 
 impl<'a> FlatSerializer<'a> {
-    fn new(output: &'a mut HashMap<Key, String>, prefix: Key) -> Self {
+    fn new(output: &'a mut IndexMap<Key, String>, prefix: Key) -> Self {
         FlatSerializer {
             output,
             prefix,
@@ -485,6 +485,7 @@ impl ser::SerializeSeq for FlatSerializer<'_> {
 mod test {
     use super::{to_pairs, to_pairs_with_prefix};
     use crate::{Key, KeyType};
+    use indexmap::{indexmap, IndexMap};
     use maplit::hashmap;
     use serde::Serialize;
 
@@ -516,7 +517,7 @@ mod test {
         let keys = to_pairs(&b).unwrap();
         assert_eq!(
             keys,
-            hashmap!(
+            indexmap!(
                 key!("B.list") => "[3,4,5]".to_string(),
                 key!("B.boolean") => "true".to_string(),
             )
@@ -527,7 +528,7 @@ mod test {
     fn empty_value() {
         let val: toml::Value = toml::from_str("").unwrap();
         let keys = to_pairs(&val).unwrap();
-        assert_eq!(keys, hashmap!())
+        assert_eq!(keys, indexmap!() as IndexMap<Key, String>)
     }
 
     #[test]
@@ -540,10 +541,10 @@ mod test {
         let keys = to_pairs(&a).unwrap();
         assert_eq!(
             keys,
-            hashmap!(
+            indexmap!(
+                key!("A.id") => "42".to_string(),
                 key!("A.b.list") => "[5,6,7]".to_string(),
                 key!("A.b.boolean") => "true".to_string(),
-                key!("A.id") => "42".to_string(),
             )
         );
     }
@@ -559,7 +560,7 @@ mod test {
         let keys = to_pairs_with_prefix("map", &m).unwrap();
         assert_eq!(
             keys,
-            hashmap!(
+            indexmap!(
                 key!("map.A.id") => "42".to_string(),
                 key!("map.A.ie") => "43".to_string(),
             )
@@ -577,7 +578,7 @@ mod test {
         let keys = to_pairs(&m).unwrap();
         assert_eq!(
             keys,
-            hashmap!(
+            indexmap!(
                 key!("A.id") => "42".to_string(),
                 key!("A.ie") => "43".to_string(),
             )
@@ -601,7 +602,7 @@ mod test {
         let keys = to_pairs(&m).unwrap();
         assert_eq!(
             keys,
-            hashmap!(
+            indexmap!(
                 key!("A.id") => "\"apples\"".to_string(),
                 key!("A.ie") => "\"oranges\"".to_string(),
             )
@@ -626,7 +627,7 @@ mod test {
         let keys = to_pairs(&m).unwrap();
         assert_eq!(
             keys,
-            hashmap!(
+            indexmap!(
                 key!("A.id") => "\"alpha\"".to_string(),
                 key!("A.ie") => "\"beta\"".to_string(),
             )

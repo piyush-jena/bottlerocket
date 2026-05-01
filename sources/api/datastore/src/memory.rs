@@ -5,6 +5,8 @@
 
 use std::collections::{HashMap, HashSet};
 
+use indexmap::{IndexMap, IndexSet};
+
 use crate::constraints_check::{ApprovedWrite, ConstraintCheckResult};
 
 use super::{Committed, DataStore, Key, Result};
@@ -12,9 +14,9 @@ use super::{Committed, DataStore, Key, Result};
 #[derive(Debug, Default)]
 pub struct MemoryDataStore {
     // Transaction name -> (key -> data)
-    pending: HashMap<String, HashMap<Key, String>>,
+    pending: HashMap<String, IndexMap<Key, String>>,
     // Committed (live) data.
-    live: HashMap<Key, String>,
+    live: IndexMap<Key, String>,
     // Map of data keys to their metadata, which in turn is a mapping of metadata keys to
     // arbitrary (string/serialized) values.
     metadata: HashMap<Key, HashMap<Key, String>>,
@@ -28,14 +30,14 @@ impl MemoryDataStore {
         Default::default()
     }
 
-    fn dataset(&self, committed: &Committed) -> Option<&HashMap<Key, String>> {
+    fn dataset(&self, committed: &Committed) -> Option<&IndexMap<Key, String>> {
         match committed {
             Committed::Live => Some(&self.live),
             Committed::Pending { tx } => self.pending.get(tx),
         }
     }
 
-    fn dataset_mut(&mut self, committed: &Committed) -> &mut HashMap<Key, String> {
+    fn dataset_mut(&mut self, committed: &Committed) -> &mut IndexMap<Key, String> {
         match committed {
             Committed::Live => &mut self.live,
             Committed::Pending { tx } => self.pending.entry(tx.clone()).or_default(),
@@ -48,8 +50,8 @@ impl DataStore for MemoryDataStore {
         &self,
         prefix: S,
         committed: &Committed,
-    ) -> Result<HashSet<Key>> {
-        let empty = HashMap::new();
+    ) -> Result<IndexSet<Key>> {
+        let empty = IndexMap::new();
         let dataset = self.dataset(committed).unwrap_or(&empty);
         Ok(dataset
             .keys()
@@ -102,7 +104,7 @@ impl DataStore for MemoryDataStore {
     }
 
     fn get_key(&self, key: &Key, committed: &Committed) -> Result<Option<String>> {
-        let empty = HashMap::new();
+        let empty = IndexMap::new();
         let dataset = self.dataset(committed).unwrap_or(&empty);
         Ok(dataset.get(key).cloned())
     }
@@ -114,12 +116,12 @@ impl DataStore for MemoryDataStore {
     }
 
     fn unset_key(&mut self, key: &Key, committed: &Committed) -> Result<()> {
-        self.dataset_mut(committed).remove(key);
+        self.dataset_mut(committed).shift_remove(key);
         Ok(())
     }
 
     fn key_populated(&self, key: &Key, committed: &Committed) -> Result<bool> {
-        let empty = HashMap::new();
+        let empty = IndexMap::new();
         let dataset = self.dataset(committed).unwrap_or(&empty);
         Ok(dataset.contains_key(key))
     }
@@ -191,7 +193,6 @@ impl DataStore for MemoryDataStore {
         let approved_write = ApprovedWrite::try_from(constraint_check_result)?;
 
         let mut pending_keys: HashSet<Key> = Default::default();
-        // Remove anything pending for this transaction
 
         if !approved_write.settings.is_empty() {
             // Save Keys for return value
@@ -214,7 +215,7 @@ impl DataStore for MemoryDataStore {
         // Remove anything pending for this transaction
         if let Some(pending) = self.pending.remove(transaction.as_ref()) {
             // Return the old pending keys
-            Ok(pending.keys().cloned().collect())
+            Ok(pending.into_keys().collect())
         } else {
             Ok(HashSet::new())
         }
@@ -244,13 +245,11 @@ fn set_metadata_raw<S: AsRef<str>>(
 
 #[cfg(test)]
 mod test {
-    use std::collections::HashMap;
-
     use super::super::{Committed, DataStore, Key, KeyType};
     use super::MemoryDataStore;
     use crate::constraints_check::{ApprovedWrite, ConstraintCheckResult};
     use crate::{deserialize_scalar, serialize_scalar, ScalarError};
-    use maplit::hashset;
+    use indexmap::{indexset, IndexMap};
 
     fn constraint_check(
         datastore: &mut MemoryDataStore,
@@ -261,13 +260,13 @@ mod test {
             .get_metadata_prefix("settings.", committed, &None as &Option<&str>)
             .unwrap();
 
-        let settings_to_commit: HashMap<Key, String> = match committed {
+        let settings_to_commit: IndexMap<Key, String> = match committed {
             Committed::Pending { tx: transaction } => datastore
                 .pending
                 .get(transaction)
-                .unwrap_or(&HashMap::new())
+                .unwrap_or(&IndexMap::new())
                 .clone(),
-            Committed::Live => HashMap::new(),
+            Committed::Live => IndexMap::new(),
         };
 
         let mut metadata_to_commit: Vec<(Key, Key, String)> = Vec::new();
@@ -356,7 +355,7 @@ mod test {
         assert!(m.key_populated(&k2, &Committed::Live).unwrap());
         assert_eq!(
             m.list_populated_keys("", &Committed::Live).unwrap(),
-            hashset!(k1, k2),
+            indexset!(k1, k2),
         );
 
         let bad_key = Key::new(KeyType::Data, "memtest3").unwrap();
