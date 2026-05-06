@@ -1989,6 +1989,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "settings-defaults-aws-k8s-1_36"
+version = "0.1.0"
+dependencies = [
+ "bottlerocket-defaults-helper",
+]
+
+[[package]]
+name = "settings-defaults-aws-k8s-1_36-nvidia"
+version = "0.1.0"
+dependencies = [
+ "bottlerocket-defaults-helper",
+]
+
+[[package]]
 name = "settings-defaults-metal-dev"
 version = "0.1.0"
 dependencies = [
@@ -2032,6 +2046,13 @@ dependencies = [
 
 [[package]]
 name = "settings-defaults-vmware-k8s-1_35"
+version = "0.1.0"
+dependencies = [
+ "bottlerocket-defaults-helper",
+]
+
+[[package]]
+name = "settings-defaults-vmware-k8s-1_36"
 version = "0.1.0"
 dependencies = [
  "bottlerocket-defaults-helper",
