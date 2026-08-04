@@ -1,43 +1,50 @@
 [package]
-# This is the aws-k8s-1.36 variant. "." is not allowed in crate names, but we
-# don't use this crate name anywhere.
-name = "aws-k8s-1_36"
+name = "aws-ecs-5-nvidia"
 version = "0.1.0"
 edition = "2021"
 publish = false
 build = "../build.rs"
-# Don't rebuild crate just because of changes to README.
-exclude = ["README.md"]
 
 [package.metadata.build-variant.image-features]
 grub-set-private-var = true
 uefi-secure-boot = true
 xfs-data-partition = true
-erofs-root-partition = true
 systemd-networkd = true
+erofs-root-partition = true
 external-kmod-development = false
+encrypted-storage = true
 fips = true
+
+[package.metadata.build-variant.image-layout]
+os-image-size-gib = 4
 
 [package.metadata.build-variant]
 included-packages = [
 # core
-    "release-swap",
+    "release",
     "kernel-6.18",
     "containerd-2.2",
     "systemd-257",
     "nftables",
     "whippet",
-# k8s
-    "cni",
-    "cni-plugins",
-    "kubelet-1.36",
-    "aws-iam-authenticator",
-    "soci-snapshotter",
+# docker
+    "docker-cli-29",
+    "docker-engine-29",
+    "docker-init",
+# ecs
+    "ecs-agent-nvidia-config",
     "aws-signer-notation-plugin",
     "digestion-image-verifier",
     "notation-image-verifier",
     "thar-be-image-verifiers",
+# NVIDIA support
+    "ecs-gpu-init",
+    "nvidia-container-toolkit-ecs",
+    "kmod-6.18-nvidia-r580-tesla",
+    "kmod-6.18-nvidia-r580-gdrcopy",
+    "kmod-6.18-nvidia-r580-imex-config",
 ]
+
 kernel-parameters = [
     "console=tty0",
     "console=ttyS0,115200n8",

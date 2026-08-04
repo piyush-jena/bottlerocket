@@ -107,6 +107,34 @@ Conflicts: %{_cross_os}settings-defaults(any)
 %description aws-ecs-4-nvidia
 %{summary}.
 
+%package aws-ecs-5
+Summary: Settings defaults for the aws-ecs-5 FIPS and non-FIPS variants
+Requires: (%{shrink:
+           %{_cross_os}variant(aws-ecs-5) or
+           %{_cross_os}variant(aws-ecs-5-fips)
+          %{nil}})
+Provides: %{_cross_os}settings-defaults(any)
+Provides: %{_cross_os}settings-defaults(aws-ecs-5)
+Provides: %{_cross_os}settings-defaults(aws-ecs-5-fips)
+Conflicts: %{_cross_os}settings-defaults(any)
+
+%description aws-ecs-5
+%{summary}.
+
+%package aws-ecs-5-nvidia
+Summary: Settings defaults for the aws-ecs-5-nvidia variant
+Requires: (%{shrink:
+           %{_cross_os}variant(aws-ecs-5-nvidia) or
+           %{_cross_os}variant(aws-ecs-5-nvidia-fips)
+           %{nil}})
+Provides: %{_cross_os}settings-defaults(any)
+Provides: %{_cross_os}settings-defaults(aws-ecs-5-nvidia)
+Provides: %{_cross_os}settings-defaults(aws-ecs-5-nvidia-fips)
+Conflicts: %{_cross_os}settings-defaults(any)
+
+%description aws-ecs-5-nvidia
+%{summary}.
+
 %package aws-k8s-1.31
 Summary: Settings defaults for the aws-k8s 1.31 variants
 Requires: (%{shrink:
@@ -383,6 +411,8 @@ for defaults in \
   aws-ecs-3-nvidia \
   aws-ecs-4 \
   aws-ecs-4-nvidia \
+  aws-ecs-5 \
+  aws-ecs-5-nvidia \
   aws-k8s-1.31 \
   aws-k8s-1.31-nvidia \
   aws-k8s-1.32 \
@@ -429,6 +459,8 @@ for defaults in \
   aws-ecs-3-nvidia \
   aws-ecs-4 \
   aws-ecs-4-nvidia \
+  aws-ecs-5 \
+  aws-ecs-5-nvidia \
   aws-k8s-1.31 \
   aws-k8s-1.31-nvidia \
   aws-k8s-1.32 \
@@ -489,6 +521,14 @@ done
 %files aws-ecs-4-nvidia
 %{_cross_defaultsdir}/aws-ecs-4-nvidia.toml
 %{_cross_tmpfilesdir}/storewolf-defaults-aws-ecs-4-nvidia.conf
+
+%files aws-ecs-5
+%{_cross_defaultsdir}/aws-ecs-5.toml
+%{_cross_tmpfilesdir}/storewolf-defaults-aws-ecs-5.conf
+
+%files aws-ecs-5-nvidia
+%{_cross_defaultsdir}/aws-ecs-5-nvidia.toml
+%{_cross_tmpfilesdir}/storewolf-defaults-aws-ecs-5-nvidia.conf
 
 %files aws-k8s-1.31
 %{_cross_defaultsdir}/aws-k8s-1.31.toml

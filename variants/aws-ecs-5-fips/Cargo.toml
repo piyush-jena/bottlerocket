@@ -1,7 +1,5 @@
 [package]
-# This is the aws-k8s-1.36 variant. "." is not allowed in crate names, but we
-# don't use this crate name anywhere.
-name = "aws-k8s-1_36"
+name = "aws-ecs-5-fips"
 version = "0.1.0"
 edition = "2021"
 publish = false
@@ -13,26 +11,27 @@ exclude = ["README.md"]
 grub-set-private-var = true
 uefi-secure-boot = true
 xfs-data-partition = true
-erofs-root-partition = true
 systemd-networkd = true
+erofs-root-partition = true
 external-kmod-development = false
+encrypted-storage = true
 fips = true
 
 [package.metadata.build-variant]
 included-packages = [
 # core
-    "release-swap",
+    "release",
     "kernel-6.18",
     "containerd-2.2",
     "systemd-257",
     "nftables",
     "whippet",
-# k8s
-    "cni",
-    "cni-plugins",
-    "kubelet-1.36",
-    "aws-iam-authenticator",
-    "soci-snapshotter",
+# docker
+    "docker-cli-29",
+    "docker-engine-29",
+    "docker-init",
+# ecs
+    "ecs-agent-config",
     "aws-signer-notation-plugin",
     "digestion-image-verifier",
     "notation-image-verifier",
