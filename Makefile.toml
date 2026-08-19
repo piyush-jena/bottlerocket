@@ -8,13 +8,17 @@ BUILDSYS_ROOT_DIR = "${CARGO_MAKE_WORKING_DIRECTORY}"
 # For binary installation, this should be a released version (prefixed with a v,
 # for example v0.1.0). For the git sourcecode installation method, this can be
 # any git rev, e.g. a tag, sha, or branch name.
-TWOLITER_VERSION = "v0.22.1"
+TWOLITER_VERSION = "ac85c5b9e4b922ab520c1aff58f89e00a29ce64c"
 TWOLITER_SHA256_AARCH64 = "1c14d29c8306890ce7fce06448b5239f026c0644358a2c4b1527a1e67117bfbb"
 TWOLITER_SHA256_X86_64 = "5322462570aff496f1fe6af1815d415b754177e3313a13951ddfaa88d5a0ee89"
 
 # For binary installation, this is the GitHub repository that has binary release artifacts attached
 # to it, for example https://github.com/bottlerocket-os/twoliter. For git sourcecode installation,
 # this is any URI that can be used in a git clone command.
+# Points at the grove `twoliter/` member (a local working branch carrying the
+# UKI boot-chain fix). A `file://` path triggers install-twoliter.sh's
+# local-path build (`cargo install --path`), so the custom twoliter is built
+# reproducibly from source and does not depend on a pre-placed binary.
 TWOLITER_REPO = "https://github.com/bottlerocket-os/twoliter"
 
 # Skip installing Twoliter if it is already installed and its version
@@ -23,14 +27,14 @@ TWOLITER_REUSE_EXISTING_INSTALL="true"
 
 # Allow Twoliter to be installed from a binary distribution if binaries are expected to exist for
 # the host OS and architecture.
-TWOLITER_ALLOW_BINARY_INSTALL="true"
+TWOLITER_ALLOW_BINARY_INSTALL="false"
 
 # Allow Twoliter to be installed by building from sourcecode.
 TWOLITER_ALLOW_SOURCE_INSTALL="true"
 
 # If you know the version string returned by Twoliter will not match TWOLITER_VERSION (e.g. when you
 # are testing changes to Twoliter itself), set this to true to prevent re-installation.
-TWOLITER_SKIP_VERSION_CHECK="false"
+TWOLITER_SKIP_VERSION_CHECK="true"
 
 # Where Twoliter will be installed.
 TWOLITER_INSTALL_DIR = "${BUILDSYS_ROOT_DIR}/tools/twoliter"
