@@ -16,6 +16,7 @@ usage: ${0##*/} [--sdk-image SDK_IMAGE]
                 [--shim-sign-key SHIM_SIGN_KEY]
                 [--code-sign-key CODE_SIGN_KEY]
                 [--config-sign-key CONFIG_SIGN_KEY]
+                [--uki-sign-key UKI_SIGN_KEY]
                 [--output-dir OUTPUT_DIR]
 
 Generate Secure Boot related files. AWS-aware edition.
@@ -32,6 +33,7 @@ Options:
     --shim-sign-key          KMS key ID or ARN for the shim signing key.
     --code-sign-key          KMS key ID or ARN for the code signing key (grub, vmlinuz).
     --config-sign-key        KMS key ID or ARN for the config signing key (grub.cfg).
+    --uki-sign-key          KMS key ID or ARN for the UKI signing key.
     --output-dir             Path where the keys will be written.
     --help                   shows this usage text
 EOF
@@ -76,6 +78,7 @@ parse_args() {
         --ca-signing-algorithm ) shift; CA_SIGNING_ALGORITHM="${1}" ;;
         --shim-sign-key ) shift; SHIM_SIGN_KEY="${1}" ;;
         --code-sign-key ) shift; CODE_SIGN_KEY="${1}" ;;
+        --uki-sign-key ) shift; UKI_SIGN_KEY="${1}" ;;
         --config-sign-key ) shift; CONFIG_SIGN_KEY="${1}" ;;
         --output-dir ) shift; OUTPUT_DIR="${1}" ;;
         *) ;;
@@ -92,6 +95,7 @@ parse_args() {
   required_arg "--shim-sign-key" "${SHIM_SIGN_KEY:-}"
   required_arg "--code-sign-key" "${CODE_SIGN_KEY:-}"
   required_arg "--config-sign-key" "${CONFIG_SIGN_KEY:-}"
+  required_arg "--uki-sign-key" "${UKI_SIGN_KEY:-}"
   required_arg "--output-dir" "${OUTPUT_DIR:-}"
 
   # Validate CA signing algorithm
@@ -100,7 +104,7 @@ parse_args() {
 
 # Set default variables
 if ! AWS_PARTITION=$(aws sts get-caller-identity | jq -r '.Arn' | awk -F: '{ print $2 }' 2>/dev/null) ; then
-   echo "Partition could not be determined, Defaulting to: aws." 
+   echo "Partition could not be determined, Defaulting to: aws."
    AWS_PARTITION="aws"
 fi
 
@@ -139,7 +143,12 @@ cat <<EOF > "${AWS_KMS_PKCS11_CONF}"
       "label": "config-sign-key",
       "kms_key_id": "${CONFIG_SIGN_KEY}",
       "aws_region": "${AWS_REGION}"
-    }
+    },
+    {
+      "label": "uki-sign-key",
+      "kms_key_id": "${UKI_SIGN_KEY}",
+      "aws_region": "${AWS_REGION}"
+    },
   ]
 }
 EOF
@@ -170,13 +179,14 @@ if [ -n "${SDK_IMAGE:-}" ] ; then
     -e SHIM_SIGN_KEY="${SHIM_SIGN_KEY}" \
     -e CODE_SIGN_KEY="${CODE_SIGN_KEY}" \
     -e CONFIG_SIGN_KEY="${CONFIG_SIGN_KEY}" \
+    -e UKI_SIGN_KEY="${UKI_SIGN_KEY}" \
     -e AWS_KMS_PKCS11_CONF="${AWS_KMS_PKCS11_CONF}" \
     -e OUTPUT_DIR="${OUTPUT_DIR}" \
     -w /tmp \
     "${SDK_IMAGE}" bash "${SBKEYS_SCRIPT}"
 else
   export PK_CA KEK_CA DB_CA VENDOR_CA
-  export CODE_SIGN_KEY CONFIG_SIGN_KEY SHIM_SIGN_KEY
+  export CODE_SIGN_KEY CONFIG_SIGN_KEY SHIM_SIGN_KEY UKI_SIGN_KEY
   export AWS_REGION AWS_KMS_PKCS11_CONF OUTPUT_DIR
   export AWS_PARTITION CA_SIGNING_ALGORITHM
   bash "${SBKEYS_SCRIPT}"
@@ -269,15 +279,17 @@ gencert() {
        > "${key}.crt"
 }
 
-# Sign shim, GRUB, kernel, and GRUB config signing keys.
+# Sign shim, GRUB, kernel, GRUB config and UKI signing keys.
 gencert shim-sign "shim-sign-key" "Bottlerocket Shim Signing Key" "${DB_CA}" "${AWS_PARTITION}" "${CA_SIGNING_ALGORITHM}"
 gencert code-sign "code-sign-key" "Bottlerocket Code Signing Key" "${VENDOR_CA}" "${AWS_PARTITION}" "${CA_SIGNING_ALGORITHM}"
 gencert config-sign "config-sign-key" "Bottlerocket Config Signing Key" "${VENDOR_CA}" "${AWS_PARTITION}" "${CA_SIGNING_ALGORITHM}"
+gencert uki-sign "uki-sign-key" "Bottlerocket UKI Signing Key" "${DB_CA}" "${AWS_PARTITION}" "${CA_SIGNING_ALGORITHM}"
 
 # Encode the certs for the PKCS11 helper.
 SHIM_SIGN_CERT="$(openssl x509 -in shim-sign.crt -outform der | openssl base64 -A)"
 CODE_SIGN_CERT="$(openssl x509 -in code-sign.crt -outform der | openssl base64 -A)"
 CONFIG_SIGN_CERT="$(openssl x509 -in config-sign.crt -outform der | openssl base64 -A)"
+UKI_SIGN_CERT="$(openssl x509 -in uki-sign.crt -outform der | openssl base64 -A)"
 
 # Reconfigure the PKCS11 helper for GPG.
 cat <<EOF > "${XDG_CONFIG_HOME}/aws-kms-pkcs11/config.json"
@@ -370,6 +382,12 @@ cat <<EOF > "kms-sign.json"
       "kms_key_id": "${CONFIG_SIGN_KEY}",
       "aws_region": "${AWS_REGION}",
       "certificate": "${CONFIG_SIGN_CERT}"
+    },
+    {
+      "label": "uki-sign-key",
+      "kms_key_id": "${UKI_SIGN_KEY}",
+      "aws_region": "${AWS_REGION}",
+      "certificate": "${UKI_SIGN_CERT}"
     }
   ]
 }
