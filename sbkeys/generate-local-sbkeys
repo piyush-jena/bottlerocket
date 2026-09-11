@@ -4,16 +4,21 @@
 
 set -euo pipefail
 
+MODE="standard"
+
 usage() {
    cat >&2 <<EOF
 usage: ${0##*/} [--sdk-image SDK_IMAGE]
                 [--output-dir OUTPUT_DIR]
+                [--mode 'standard' | 'uki']
 
 Generate Secure Boot related files. Local-only edition.
 
 Options:
     --sdk-image         Name of the (optional) SDK image to use.
     --output-dir        Path where the files will be written.
+    --mode              Mode to use when generating keys. Accepted values:
+                          'standard' or 'uki'. Default: 'standard'
     --help              shows this usage text
 EOF
 }
@@ -33,6 +38,7 @@ parse_args() {
         --help ) usage; exit 0 ;;
         --sdk-image ) shift; SDK_IMAGE="${1}" ;;
         --output-dir ) shift; OUTPUT_DIR="${1}" ;;
+        --mode ) shift; MODE="${1}" ;;
         *) ;;
     esac
     shift
@@ -43,6 +49,17 @@ parse_args() {
 }
 
 parse_args "${@}"
+
+case "${MODE}" in
+  standard | uki ) ;;
+  * )
+    echo "ERROR: Invalid mode '${MODE}' selected." >&2
+    echo "Mode must be either 'standard' or 'uki'." >&2
+    echo >&2
+    usage
+    exit 1
+    ;;
+esac
 
 # Create the output directory with the current user, rather than letting Docker
 # create it as a root-owned directory.
@@ -67,6 +84,7 @@ if [ -n "${SDK_IMAGE:-}" ] ; then
     -v "${OUTPUT_DIR}":"${OUTPUT_DIR}" \
     -v "${SBKEYS_SCRIPT}":"${SBKEYS_SCRIPT}" \
     -e OUTPUT_DIR="${OUTPUT_DIR}" \
+    -e MODE="${MODE}" \
     "${SDK_IMAGE}" bash "${SBKEYS_SCRIPT}"
 else
   export OUTPUT_DIR
@@ -122,14 +140,16 @@ genkey() {
 genca PK "Bottlerocket Secure Boot Platform CA"
 genca KEK "Bottlerocket Secure Boot Key Exchange CA"
 genca db "Bottlerocket Secure Boot Database CA"
-genca vendor "Bottlerocket Secure Boot Vendor CA"
 
-genkey db shim-sign "Bottlerocket Shim Signing Key"
-genkey vendor code-sign "Bottlerocket Code Signing Key"
+if [[ "${MODE}" == "standard" ]]; then
+  genca vendor "Bottlerocket Secure Boot Vendor CA"
 
-# Generate GPG key for signing grub.cfg.
-export GNUPGHOME="${WORKDIR}"
-gpg --gen-key --batch <<EOF
+  genkey db shim-sign "Bottlerocket Shim Signing Key"
+  genkey vendor code-sign "Bottlerocket Code Signing Key"
+
+  # Generate GPG key for signing grub.cfg.
+  export GNUPGHOME="${WORKDIR}"
+  gpg --gen-key --batch <<EOF
 Key-Type: RSA
 Key-Length: 2048
 Name-Real: Bottlerocket Config Signing Key
@@ -137,8 +157,11 @@ Expire-Date: 0
 %no-protection
 EOF
 
-# Export the GPG key.
-gpg --armor --export-secret-keys > config-sign.key
+  # Export the GPG key.
+  gpg --armor --export-secret-keys > config-sign.key
+elif [[ "${MODE}" == "uki" ]]; then
+  genkey db uki-sign "Bottlerocket UKI Signing Key"
+fi
 
 # Generate EFI vars for use with EC2 or others.
 GUID="$(uuidgen --random)"
@@ -153,13 +176,19 @@ virt-fw-vars \
   --set-json "efi-vars.json" \
   --output-aws "efi-vars.aws"
 
+declare -a expected_files
+
+expected_files+=(PK.{key,crt} KEK.{key,crt})
+expected_files+=(db.{key,crt})
+
+if [[ "${MODE}" == "standard" ]]; then
+  expected_files+=(vendor.{key,crt})
+  expected_files+=(shim-sign.{key,crt} code-sign.{key,crt} config-sign.key)
+elif [[ "${MODE}" == "uki" ]]; then
+  expected_files+=(uki-sign.{key,crt})
+fi
+
+expected_files+=(efi-vars.{json,aws})
+
 # Copy all expected files out.
-cp -t "${OUTPUT_DIR}" \
-  PK.{key,crt} \
-  KEK.{key,crt} \
-  db.{key,crt} \
-  vendor.{key,crt} \
-  shim-sign.{key,crt} \
-  code-sign.{key,crt} \
-  config-sign.key \
-  efi-vars.{aws,json}
+cp -t "${OUTPUT_DIR}" "${expected_files[@]}"
