@@ -1,9 +1,12 @@
 schema-version = 2
-release-version = "1.66.0"
+release-version = "1.66.0-symphony.17"
 project-vendor = "Bottlerocket"
 
 [vendor.bottlerocket]
 registry = "public.ecr.aws/bottlerocket"
+
+[vendor.local]
+registry = "localhost:5826"
 
 [sdk]
 name = "bottlerocket-sdk"
@@ -17,6 +20,6 @@ vendor = "bottlerocket"
 
 [[kit]]
 name = "bottlerocket-core-kit"
-version = "17.0.0"
+version = "17.0.1-symphony.17.build-5ab25fc6"
 
-vendor = "bottlerocket"
+vendor = "local"
