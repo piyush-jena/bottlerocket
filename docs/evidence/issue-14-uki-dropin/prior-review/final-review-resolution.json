@@ -1,0 +1,67 @@
+{
+  "all_findings_addressed": true,
+  "findings_sha256": "64182cd6b1525211993d3830454a9899210382842a1aec45748aae88fe69750a",
+  "product_heads": {
+    "bottlerocket": "63a2e676009cf33de4292bb37e88cdc7c37682cb",
+    "core-kit": "f9f6cfa67fe2dfb9decc0156c8ea05e9822fcc93",
+    "twoliter": "aa8a122d1b3f085fa792b2181c599dc5de503467"
+  },
+  "reviewed_product_heads": {
+    "bottlerocket": "6c246afce6a24d47536b6374a1fa19f856d7efc7",
+    "core-kit": "15903b6a17d47f0ea598e26e5f6f74931b86ef79",
+    "twoliter": "d2c650ad1489fe545f68c4fcbd481f2163ed5629"
+  },
+  "product_trees_unchanged": true,
+  "findings": [
+    {
+      "id": 1,
+      "disposition": "addressed",
+      "action": "Core-kit now has one commit on its base, with exactly the reviewed tree. The previous remote history is retained on archive/14-modprobe-policy-before-r10. The conductor published with an exact old-head lease and verified PR 3."
+    },
+    {
+      "id": 2,
+      "disposition": "addressed",
+      "action": "Bottlerocket now has one commit on its base. No test pin, release, lock or Makefile edits appear anywhere in that PR history. Test and archival branches are retained as evidence."
+    },
+    {
+      "id": 3,
+      "disposition": "addressed",
+      "action": "The Twoliter commit body and PR description explicitly identify variant manifests as the sole blacklist authority and require future UKI variants to declare i8042 when that policy is wanted."
+    },
+    {
+      "id": 4,
+      "disposition": "addressed with durable commit and PR rationale",
+      "action": "All three commits now have detailed bodies; both prerequisite descriptions explain systemd.mask, UKI parameter ordering and mantle. All messages pass the exact core-kit commitlint configuration. No inline comment was added to the sorted RPM file inventory: the move's commit records its purpose, while the live generator/mask checks cover the packaging contract. This preserves the exact tested source trees."
+    },
+    {
+      "id": 5,
+      "disposition": "addressed",
+      "action": "The base x86_64 instance rebooted once, changed boot ID, and passed all policy checks with a masked/inactive mount and no failed units."
+    },
+    {
+      "id": 6,
+      "disposition": "addressed",
+      "action": "A direct mount at a dedicated temporary mountpoint was denied with unknown filesystem type; systemctl start was denied because the unit is masked. Policy was verified afterward and the empty probe directory removed."
+    },
+    {
+      "id": 7,
+      "disposition": "addressed",
+      "action": "Five instances, five private AMIs, ten snapshots and the owned access stack were removed and verified. The conductor removed the temporary kit registry and volume. Existing default VPC/subnet, test/14-r10-ami and the archive branches remain intentionally retained."
+    }
+  ],
+  "validation_after_review": {
+    "source_equivalence": "exact Git tree identity for all three cleaned commits",
+    "commitlint": "all three commit messages passed",
+    "reboot_and_negative_mounts": {
+      "status": "passed",
+      "instance": "i-0b567f32cfbcee410",
+      "ami": "ami-024864c6a7d156ecb",
+      "before_boot_id": "55a74faa-42fb-4db6-a58e-0840a0d0435a",
+      "after_boot_id": "b9930519-5690-4d2c-a529-b68d0fe7afa5",
+      "direct_mount": "denied",
+      "unit_start": "masked",
+      "policy_after_reboot": "passed"
+    },
+    "rebuild": "not needed: only commit history, messages and evidence changed"
+  }
+}

@@ -111,8 +111,10 @@ All five instances were terminated, five AMIs deregistered, their ten
 snapshots deleted, and the issue access stack removed. Final queries
 found no issue-tagged AMIs, snapshots or volumes. Existing default VPC
 and subnets were retained. See [ec2-cleanup.json](ec2-cleanup.json).
-Registry cleanup is requested through the conductor; its receipt is
-still pending at this report milestone.
+The conductor removed the issue-owned registry at localhost:6539 in job
+`b4f66664-3558-8fb5-ae17-1345a7ac8403`, exit 0.
+[registry-cleanup.json](registry-cleanup.json) records the verified removal
+receipt. EC2 and registry cleanup are complete.
 
 Both GPU shutdown consoles reached `reboot: Power down`. They also
 reported busy filesystem/device teardown and `mdadm.shutdown` exit 1.
@@ -126,7 +128,9 @@ issue-owned GPU instance IDs. The request and final states are recorded.
 This revision did not rerun reboot tests or non-UKI EC2 controls. Those
 belong to superseded validation and are not claimed here. Firmware-variable
 restrictions remain in issue 11. The earlier final adversarial review
-was already addressed; no additional review round was requested.
+was already addressed; [prior-review/README.md](prior-review/README.md)
+identifies that historical resolution and its limits. No additional review
+round was requested.
 
 ## Reproducible command evidence
 
@@ -138,5 +142,10 @@ and publisher binaries; their hashes are retained.
 [bundle-manifest.json](bundle-manifest.json) records every included file
 with SHA-256 and size. Runtime scripts can create cloud resources and
 should be inspected before reuse.
+
+The bundle is the immutable snapshot captured after EC2 cleanup and before
+registry cleanup. Its pending-registry fields describe that earlier moment.
+The outer validation summary and separate registry receipt record the final
+state. No historical command output was rewritten.
 
 Bundle SHA-256: `2eadfad43ab54475e1101bdb24585dcf54350024b1aeb6c25e520f1b2659da5f`.
