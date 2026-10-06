@@ -49,7 +49,6 @@ kernel-parameters = [
     "quiet",
     "fips=1",
     "module_blacklist=i8042,binfmt_misc",
-    "systemd.mask=proc-sys-fs-binfmt_misc.mount",
 ]
 
 [lib]
