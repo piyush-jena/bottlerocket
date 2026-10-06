@@ -1,0 +1,301 @@
+{
+  "checks": [
+    {
+      "passed": true,
+      "check": "host PID namespace"
+    },
+    {
+      "passed": true,
+      "check": "numeric release version"
+    },
+    {
+      "passed": true,
+      "check": "exact tested source build identity"
+    },
+    {
+      "passed": true,
+      "check": "one effective blacklist, including i8042 and binfmt_misc"
+    },
+    {
+      "passed": true,
+      "check": "mount suppression does not depend on command-line mask"
+    },
+    {
+      "passed": true,
+      "check": "mantle update feature unchanged"
+    },
+    {
+      "passed": true,
+      "check": "superseded modprobe policy is absent: usr/lib/modprobe.d/00-binfmt-misc.conf"
+    },
+    {
+      "passed": true,
+      "check": "superseded modprobe policy is absent: usr/lib/systemd/system/proc-sys-fs-binfmt_misc.mount.d/10-encrypted-storage.conf"
+    },
+    {
+      "passed": true,
+      "check": "UKI drop-in carries always-false condition"
+    },
+    {
+      "passed": true,
+      "check": "UKI image format enabled"
+    },
+    {
+      "passed": true,
+      "check": "command succeeds: uname -r"
+    },
+    {
+      "passed": true,
+      "check": "binfmt_misc remains a shipped loadable module"
+    },
+    {
+      "passed": true,
+      "check": "before: absent module_lines"
+    },
+    {
+      "passed": true,
+      "check": "before: absent filesystem_lines"
+    },
+    {
+      "passed": true,
+      "check": "before: absent mount_lines"
+    },
+    {
+      "passed": true,
+      "check": "before: absent sys_module"
+    },
+    {
+      "passed": true,
+      "check": "kernel refuses modprobe binfmt_misc"
+    },
+    {
+      "passed": true,
+      "check": "kernel refuses modprobe fs-binfmt_misc"
+    },
+    {
+      "passed": true,
+      "check": "kernel refuses insmod /usr/lib/modules/6.18.48/kernel/fs/binfmt_misc.ko"
+    },
+    {
+      "passed": true,
+      "check": "after: absent module_lines"
+    },
+    {
+      "passed": true,
+      "check": "after: absent filesystem_lines"
+    },
+    {
+      "passed": true,
+      "check": "after: absent mount_lines"
+    },
+    {
+      "passed": true,
+      "check": "after: absent sys_module"
+    },
+    {
+      "passed": true,
+      "check": "command succeeds: systemctl start proc-sys-fs-binfmt_misc.mount"
+    },
+    {
+      "passed": true,
+      "check": "command succeeds: systemctl show proc-sys-fs-binfmt_misc.mount -p LoadState -p ActiveState -p FragmentPath -p ConditionResult -p DropInPaths -p Result"
+    },
+    {
+      "passed": true,
+      "check": "mount unit loads normally"
+    },
+    {
+      "passed": true,
+      "check": "mount start skipped by condition"
+    },
+    {
+      "passed": true,
+      "check": "packaged drop-in is effective"
+    },
+    {
+      "passed": true,
+      "check": "skipped mount remains inactive"
+    },
+    {
+      "passed": true,
+      "check": "skipped mount is not failed"
+    },
+    {
+      "passed": true,
+      "check": "after_mount_start: absent module_lines"
+    },
+    {
+      "passed": true,
+      "check": "after_mount_start: absent filesystem_lines"
+    },
+    {
+      "passed": true,
+      "check": "after_mount_start: absent mount_lines"
+    },
+    {
+      "passed": true,
+      "check": "after_mount_start: absent sys_module"
+    },
+    {
+      "passed": true,
+      "check": "command succeeds: systemctl --failed --no-pager --no-legend"
+    },
+    {
+      "passed": true,
+      "check": "no failed boot units"
+    },
+    {
+      "passed": true,
+      "check": "command succeeds: journalctl -k -b --no-pager -o cat"
+    },
+    {
+      "passed": true,
+      "check": "kernel log confirms blacklist denial"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "uname",
+        "-r"
+      ],
+      "exit_code": 0,
+      "stdout": "6.18.48\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "modprobe",
+        "binfmt_misc"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "modprobe: ERROR: could not insert 'binfmt_misc': Operation not permitted\n"
+    },
+    {
+      "argv": [
+        "modprobe",
+        "fs-binfmt_misc"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "modprobe: ERROR: could not insert 'binfmt_misc': Operation not permitted\n"
+    },
+    {
+      "argv": [
+        "insmod",
+        "/usr/lib/modules/6.18.48/kernel/fs/binfmt_misc.ko"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "insmod: ERROR: could not insert module /usr/lib/modules/6.18.48/kernel/fs/binfmt_misc.ko: Operation not permitted\n"
+    },
+    {
+      "argv": [
+        "systemctl",
+        "start",
+        "proc-sys-fs-binfmt_misc.mount"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "show",
+        "proc-sys-fs-binfmt_misc.mount",
+        "-p",
+        "LoadState",
+        "-p",
+        "ActiveState",
+        "-p",
+        "FragmentPath",
+        "-p",
+        "ConditionResult",
+        "-p",
+        "DropInPaths",
+        "-p",
+        "Result"
+      ],
+      "exit_code": 0,
+      "stdout": "Result=success\nLoadState=loaded\nActiveState=inactive\nFragmentPath=/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system/proc-sys-fs-binfmt_misc.mount\nDropInPaths=/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system/proc-sys-fs-binfmt_misc.mount.d/10-uki.conf\nConditionResult=no\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "--failed",
+        "--no-pager",
+        "--no-legend"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "journalctl",
+        "-k",
+        "-b",
+        "--no-pager",
+        "-o",
+        "cat"
+      ],
+      "exit_code": 0,
+      "stdout": "Linux version 6.18.48 (builder@buildkitsandbox) (x86_64-bottlerocket-linux-gnu-gcc (Buildroot 2025.05.1) 13.4.0, GNU ld (GNU Binutils) 2.44) #2 SMP PREEMPT_DYNAMIC Sat Sep 19 00:16:01 UTC 2026\nCommand line: console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet fips=1 module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 fips=1 init.systemd.unit=fipscheck.target root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 416656 verity 1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=2 4096 4096 52082 1 sha256 79a0f0a897f1636f48f8a4e826d68ae7748a2697fde73d090f416b391507a02b 52ee77b60bd5c3d308716aa7224639242a6f1dae42075ee894645958c8773202 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true\nKASLR enabled\nx86/tme: enabled by BIOS\nBIOS-provided physical RAM map:\nBIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable\nBIOS-e820: [mem 0x0000000000100000-0x00000000b8bf4fff] usable\nBIOS-e820: [mem 0x00000000b8bf5000-0x00000000b8bf7fff] ACPI data\nBIOS-e820: [mem 0x00000000b8bf8000-0x00000000bbccdfff] usable\nBIOS-e820: [mem 0x00000000bbcce000-0x00000000bbf4dfff] reserved\nBIOS-e820: [mem 0x00000000bbf4e000-0x00000000bbf5dfff] ACPI data\nBIOS-e820: [mem 0x00000000bbf5e000-0x00000000bbfddfff] ACPI NVS\nBIOS-e820: [mem 0x00000000bbfde000-0x00000000bff7bfff] usable\nBIOS-e820: [mem 0x00000000bff7c000-0x00000000bfffffff] reserved\nBIOS-e820: [mem 0x0000000100000000-0x0000000235ffffff] usable\nBIOS-e820: [mem 0x0000000236000000-0x000000023fffffff] reserved\nNX (Execute Disable) protection: active\nAPIC: Static calls initialized\nefi: EFI v2.7 by EDK II\nefi: TPMFinalLog=0xbbfd6000 SMBIOS=0xbbe6a000 ACPI=0xbbf5d000 ACPI 2.0=0xbbf5d014 MEMATTR=0xba37a518 INITRD=0xb9a4cf98 TPMEventLog=0xb8bf5018 \nSMBIOS 2.7 present.\nDMI: Amazon EC2 m6i.large/, BIOS 1.0 10/16/2017\nDMI: Memory slots populated: 1/1\nHypervisor detected: KVM\nlast_pfn = 0xbff7c max_arch_pfn = 0x400000000\nkvm-clock: Using msrs 4b564d01 and 4b564d00\nkvm-clock: using sched offset of 1290693886 cycles\nclocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns\ntsc: Detected 2899.966 MHz processor\ne820: update [mem 0x00000000-0x00000fff] usable ==> reserved\ne820: remove [mem 0x000a0000-0x000fffff] usable\nlast_pfn = 0x236000 max_arch_pfn = 0x400000000\nMTRR map: 4 entries (2 fixed + 2 variable; max 18), built from 8 variable MTRRs\nx86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  \nlast_pfn = 0xbff7c max_arch_pfn = 0x400000000\nUsing GB pages for direct mapping\nSecure boot enabled\nRAMDISK: [mem 0xb8bf8000-0xb8bf8fff]\nACPI: Early table checksum verification disabled\nACPI: RSDP 0x00000000BBF5D014 000024 (v02 AMAZON)\nACPI: XSDT 0x00000000BBF5C0E8 000074 (v01 AMAZON AMZNFACP 00000001      01000013)\nACPI: FACP 0x00000000BBF55000 000114 (v01 AMAZON AMZNFACP 00000001 AMZN 00000001)\nACPI: DSDT 0x00000000BBF56000 0016FB (v01 AMAZON AMZNDSDT 00000001 AMZN 00000001)\nACPI: FACS 0x00000000BBFC7000 000040\nACPI: WAET 0x00000000BBF5B000 000028 (v01 AMAZON AMZNWAET 00000001 AMZN 00000001)\nACPI: SLIT 0x00000000BBF5A000 00006C (v01 AMAZON AMZNSLIT 00000001 AMZN 00000001)\nACPI: APIC 0x00000000BBF59000 000076 (v01 AMAZON AMZNAPIC 00000001 AMZN 00000001)\nACPI: SRAT 0x00000000BBF58000 0000A0 (v01 AMAZON AMZNSRAT 00000001 AMZN 00000001)\nACPI: HPET 0x00000000BBF54000 000038 (v01 AMAZON AMZNHPET 00000001 AMZN 00000001)\nACPI: TPM2 0x00000000BBF53000 00004C (v04 AMAZON AMZNTPM2 00000001 AMZN 00000001)\nACPI: SSDT 0x00000000BBF52000 000759 (v01 AMAZON AMZNSSDT 00000001 AMZN 00000001)\nACPI: SSDT 0x00000000BBF51000 0000D1 (v01 AMAZON AMZNSSDT 00000001 AMZN 00000001)\nACPI: BGRT 0x00000000BBF50000 000038 (v01 AMAZON AMAZON   00000002      01000013)\nACPI: Reserving FACP table memory at [mem 0xbbf55000-0xbbf55113]\nACPI: Reserving DSDT table memory at [mem 0xbbf56000-0xbbf576fa]\nACPI: Reserving FACS table memory at [mem 0xbbfc7000-0xbbfc703f]\nACPI: Reserving WAET table memory at [mem 0xbbf5b000-0xbbf5b027]\nACPI: Reserving SLIT table memory at [mem 0xbbf5a000-0xbbf5a06b]\nACPI: Reserving APIC table memory at [mem 0xbbf59000-0xbbf59075]\nACPI: Reserving SRAT table memory at [mem 0xbbf58000-0xbbf5809f]\nACPI: Reserving HPET table memory at [mem 0xbbf54000-0xbbf54037]\nACPI: Reserving TPM2 table memory at [mem 0xbbf53000-0xbbf5304b]\nACPI: Reserving SSDT table memory at [mem 0xbbf52000-0xbbf52758]\nACPI: Reserving SSDT table memory at [mem 0xbbf51000-0xbbf510d0]\nACPI: Reserving BGRT table memory at [mem 0xbbf50000-0xbbf50037]\nACPI: SRAT: Node 0 PXM 0 [mem 0x00000000-0xbfffffff]\nACPI: SRAT: Node 0 PXM 0 [mem 0x100000000-0x23fffffff]\nNUMA: Node 0 [mem 0x00001000-0xbfffffff] + [mem 0x100000000-0x235ffffff] -> [mem 0x00001000-0x235ffffff]\nNODE_DATA(0) allocated [mem 0x235fd4500-0x235ffefff]\nZone ranges:\n  DMA      [mem 0x0000000000001000-0x0000000000ffffff]\n  DMA32    [mem 0x0000000001000000-0x00000000ffffffff]\n  Normal   [mem 0x0000000100000000-0x0000000235ffffff]\n  Device   empty\nMovable zone start for each node\nEarly memory node ranges\n  node   0: [mem 0x0000000000001000-0x000000000009ffff]\n  node   0: [mem 0x0000000000100000-0x00000000b8bf4fff]\n  node   0: [mem 0x00000000b8bf8000-0x00000000bbccdfff]\n  node   0: [mem 0x00000000bbfde000-0x00000000bff7bfff]\n  node   0: [mem 0x0000000100000000-0x0000000235ffffff]\nInitmem setup node 0 [mem 0x0000000000001000-0x0000000235ffffff]\nOn node 0, zone DMA: 1 pages in unavailable ranges\nOn node 0, zone DMA: 96 pages in unavailable ranges\nOn node 0, zone DMA32: 3 pages in unavailable ranges\nOn node 0, zone DMA32: 784 pages in unavailable ranges\nOn node 0, zone Normal: 132 pages in unavailable ranges\nOn node 0, zone Normal: 8192 pages in unavailable ranges\nACPI: PM-Timer IO Port: 0xb008\nACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])\nIOAPIC[0]: apic_id 0, version 32, address 0xfec00000, GSI 0-23\nACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)\nACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)\nACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)\nACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)\nACPI: Using ACPI (MADT) for SMP configuration information\nACPI: HPET id: 0x8086a201 base: 0xfed00000\nTSC deadline timer available\nCPU topo: Max. logical packages:   1\nCPU topo: Max. logical dies:       1\nCPU topo: Max. dies per package:   1\nCPU topo: Max. threads per core:   2\nCPU topo: Num. cores per package:     1\nCPU topo: Num. threads per package:   2\nCPU topo: Allowing 2 present CPUs plus 0 hotplug CPUs\nkvm-guest: APIC: eoi() replaced with kvm_guest_apic_eoi_write()\n[mem 0xc0000000-0xffffffff] available for PCI devices\nBooting paravirtualized kernel on KVM\nclocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns\nsetup_percpu: NR_CPUS:8192 nr_cpumask_bits:2 nr_cpu_ids:2 nr_node_ids:1\npercpu: Embedded 60 pages/cpu s208896 r8192 d28672 u1048576\npcpu-alloc: s208896 r8192 d28672 u1048576 alloc=1*2097152\npcpu-alloc: [0] 0 1 \nkvm-guest: PV spinlocks disabled, no host support\nKernel command line: console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet fips=1 module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 fips=1 init.systemd.unit=fipscheck.target root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 416656 verity 1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=2 4096 4096 52082 1 sha256 79a0f0a897f1636f48f8a4e826d68ae7748a2697fde73d090f416b391507a02b 52ee77b60bd5c3d308716aa7224639242a6f1dae42075ee894645958c8773202 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true\nfips mode: enabled\nfips mode: enabled\nUnknown kernel command line parameters \"SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 selinux=1 enforcing=1\", will be passed to user space.\nrandom: crng init done\nprintk: log buffer data + meta data: 2097152 + 7340032 = 9437184 bytes\nDentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)\nInode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)\nsoftware IO TLB: area num 2.\nFallback order for Node 0: 0 \nBuilt 1 zonelists, mobility grouping on.  Total pages: 2055176\nPolicy zone: Normal\nmem auto-init: stack:off, heap alloc:off, heap free:off\nSLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1\nftrace: allocating 47785 entries in 188 pages\nftrace: allocated 188 pages with 5 groups\nDynamic Preempt: none\nrcu: Preemptible hierarchical RCU implementation.\nrcu: \tRCU restricting CPUs from NR_CPUS=8192 to nr_cpu_ids=2.\n\tTrampoline variant of Tasks RCU enabled.\n\tRude variant of Tasks RCU enabled.\n\tTracing variant of Tasks RCU enabled.\nrcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.\nrcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2\nRCU Tasks: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.\nRCU Tasks Rude: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.\nRCU Tasks Trace: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.\nNR_IRQS: 524544, nr_irqs: 440, preallocated irqs: 16\nrcu: srcu_init: Setting srcu_struct sizes based on contention.\nclocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns\nConsole: colour dummy device 80x25\nprintk: legacy console [tty0] enabled\nprintk: legacy console [ttyS0] enabled\nACPI: Core revision 20250807\nclocksource: hpet: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 30580167144 ns\nAPIC: Switch to symmetric I/O mode setup\nx2apic enabled\nAPIC: Switched APIC routing to: physical x2apic\nclocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x29cd22e93ed, max_idle_ns: 440795302389 ns\nCalibrating delay loop (skipped) preset value.. 5799.93 BogoMIPS (lpj=28999660)\nLast level iTLB entries: 4KB 0, 2MB 0, 4MB 0\nLast level dTLB entries: 4KB 0, 2MB 0, 4MB 0, 1GB 0\nmitigations: Enabled attack vectors: user_kernel, user_user, guest_host, guest_guest, SMT mitigations: auto\nSpeculative Store Bypass: Mitigation: Speculative Store Bypass disabled via prctl\nSpectre V2 : Mitigation: Enhanced / Automatic IBRS\nITS: Mitigation: Aligned branch/return thunks\nMMIO Stale Data: Mitigation: Clear CPU buffers\nSpectre V1 : Mitigation: usercopy/swapgs barriers and __user pointer sanitization\nSpectre V2 : Spectre v2 / PBRSB-eIBRS: Retire a single CALL on VMEXIT\nSpectre V2 : Enabling IBPB for BPF\nSpectre V2 : mitigation: Enabling conditional Indirect Branch Prediction Barrier\nGDS: Unknown: Dependent on hypervisor status\nactive return thunk: its_return_thunk\nSpectre V2 : Spectre BHI mitigation: SW BHB clearing on syscall and VM exit\nx86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'\nx86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'\nx86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'\nx86/fpu: Supporting XSAVE feature 0x020: 'AVX-512 opmask'\nx86/fpu: Supporting XSAVE feature 0x040: 'AVX-512 Hi256'\nx86/fpu: Supporting XSAVE feature 0x080: 'AVX-512 ZMM_Hi256'\nx86/fpu: Supporting XSAVE feature 0x200: 'Protection Keys User registers'\nx86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256\nx86/fpu: xstate_offset[5]:  832, xstate_sizes[5]:   64\nx86/fpu: xstate_offset[6]:  896, xstate_sizes[6]:  512\nx86/fpu: xstate_offset[7]: 1408, xstate_sizes[7]: 1024\nx86/fpu: xstate_offset[9]: 2432, xstate_sizes[9]:    8\nx86/fpu: Enabled xstate features 0x2e7, context size is 2440 bytes, using 'compacted' format.\nFreeing SMP alternatives memory: 40K\npid_max: default: 32768 minimum: 301\nLSM: initializing lsm=lockdown,capability,landlock,yama,selinux,bpf\nlandlock: Up and running.\nYama: becoming mindful.\nSELinux:  Initializing.\nLSM support for eBPF active\nMount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)\nMountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)\nsmpboot: CPU0: Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz (family: 0x6, model: 0x6a, stepping: 0x6)\nPerformance Events: unsupported CPU family 6 model 106 no PMU driver, software events only.\nsignal: max sigframe size: 3632\nEstimated ratio of average max frequency by base frequency (times 1024): 1235\nrcu: Hierarchical SRCU implementation.\nrcu: \tMax phase no-delay instances is 1000.\nTimer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level\nsmp: Bringing up secondary CPUs ...\nsmpboot: x86: Booting SMP configuration:\n.... node  #0, CPUs:      #1\nMMIO Stale Data CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/processor_mmio_stale_data.html for more details.\nsmp: Brought up 1 node, 2 CPUs\nsmpboot: Total of 2 processors activated (11599.86 BogoMIPS)\nnode 0 deferred pages initialised in 10ms\nMemory: 7904080K/8220704K available (14911K kernel code, 9460K rwdata, 13832K rodata, 3924K init, 6184K bss, 310024K reserved, 0K cma-reserved)\ndevtmpfs: initialized\nx86/mm: Memory block size: 128MB\nposixtimers hash table entries: 1024 (order: 2, 16384 bytes, linear)\nfutex hash table entries: 512 (32768 bytes on 1 NUMA nodes, total 32 KiB, linear).\nNET: Registered PF_NETLINK/PF_ROUTE protocol family\nDMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations\nDMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations\nDMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations\naudit: initializing netlink subsys (disabled)\naudit: type=2000 audit(1791326692.047:1): state=initialized audit_enabled=0 res=1\nthermal_sys: Registered thermal governor 'fair_share'\nthermal_sys: Registered thermal governor 'step_wise'\nthermal_sys: Registered thermal governor 'user_space'\ncpuidle: using governor ladder\ncpuidle: using governor menu\nefi: Freeing EFI boot services memory: 43636K\nacpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5\nPCI: Using configuration type 1 for base access\nFIPS140: Attempting BTF injection, btf_size=77040\nFIPS140: Injected embedded BTF data, size 77040\nFIPS140 BTF MODULE_STATE_COMING: processing BTF registration\nloading FIPS 140 Kernel Cryptographic Module\nFIPS 140: run_initcalls starting\nkprobes: kprobe jump-optimization is enabled. All kprobes are optimized if possible.\nHugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages\nHugeTLB: 16380 KiB vmemmap can be freed for a 1.00 GiB page\nHugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages\nHugeTLB: 28 KiB vmemmap can be freed for a 2.00 MiB page\nACPI: Added _OSI(Module Device)\nACPI: Added _OSI(Processor Device)\nACPI: Added _OSI(Processor Aggregator Device)\nACPI: 3 ACPI AML tables successfully acquired and loaded\nACPI: Interpreter enabled\nACPI: PM: (supports S0 S5)\nACPI: Using IOAPIC for interrupt routing\nPCI: Using host bridge windows from ACPI; if necessary, use \"pci=nocrs\" and report a bug\nPCI: Using E820 reservations for host bridge windows\nACPI: Enabled 2 GPEs in block 00 to 0F\nACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])\nacpi PNP0A03:00: _OSC: OS supports [ASPM ClockPM Segments MSI HPX-Type3]\nacpi PNP0A03:00: _OSC: not requesting OS control; OS requires [ExtendedConfig ASPM ClockPM MSI]\nacpi PNP0A03:00: fail to add MMCONFIG information, can't access extended configuration space under this bridge\nacpiphp: Slot [3] registered\nacpiphp: Slot [4] registered\nacpiphp: Slot [5] registered\nacpiphp: Slot [6] registered\nacpiphp: Slot [7] registered\nacpiphp: Slot [8] registered\nacpiphp: Slot [9] registered\nacpiphp: Slot [10] registered\nacpiphp: Slot [11] registered\nacpiphp: Slot [12] registered\nacpiphp: Slot [13] registered\nacpiphp: Slot [14] registered\nacpiphp: Slot [15] registered\nacpiphp: Slot [16] registered\nacpiphp: Slot [17] registered\nacpiphp: Slot [18] registered\nacpiphp: Slot [19] registered\nacpiphp: Slot [20] registered\nacpiphp: Slot [21] registered\nacpiphp: Slot [22] registered\nacpiphp: Slot [23] registered\nacpiphp: Slot [24] registered\nacpiphp: Slot [25] registered\nacpiphp: Slot [26] registered\nacpiphp: Slot [27] registered\nacpiphp: Slot [28] registered\nacpiphp: Slot [29] registered\nacpiphp: Slot [30] registered\nacpiphp: Slot [31] registered\nPCI host bridge to bus 0000:00\npci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]\npci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]\npci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]\npci_bus 0000:00: root bus resource [mem 0xc0000000-0xfebfffff window]\npci_bus 0000:00: root bus resource [mem 0x240000000-0x20023fffffff window]\npci_bus 0000:00: root bus resource [bus 00-ff]\npci 0000:00:00.0: [8086:1237] type 00 class 0x060000 conventional PCI endpoint\npci 0000:00:01.0: [8086:7000] type 00 class 0x060100 conventional PCI endpoint\npci 0000:00:01.3: [8086:7113] type 00 class 0x000000 conventional PCI endpoint\npci 0000:00:01.3: quirk: [io  0xb000-0xb03f] claimed by PIIX4 ACPI\npci 0000:00:01.3: PIIX4 devres E PIO at fff0-ffff\npci 0000:00:01.3: PIIX4 devres F MMIO at ffc00000-ffffffff\npci 0000:00:01.3: PIIX4 devres G PIO at fff0-ffff\npci 0000:00:01.3: PIIX4 devres H MMIO at ffc00000-ffffffff\npci 0000:00:01.3: PIIX4 devres I PIO at fff0-ffff\npci 0000:00:01.3: PIIX4 devres J PIO at fff0-ffff\npci 0000:00:03.0: [1d0f:1111] type 00 class 0x030000 conventional PCI endpoint\npci 0000:00:03.0: BAR 0 [mem 0xc0000000-0xc03fffff pref]\npci 0000:00:03.0: ROM [mem 0xffff0000-0xffffffff pref]\npci 0000:00:03.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]\npci 0000:00:04.0: [1d0f:8061] type 00 class 0x010802 PCIe Endpoint\npci 0000:00:04.0: BAR 0 [mem 0xc0444000-0xc0447fff]\npci 0000:00:04.0: enabling Extended Tags\npci 0000:00:05.0: [1d0f:ec20] type 00 class 0x020000 PCIe Endpoint\npci 0000:00:05.0: BAR 0 [mem 0xc044a000-0xc044bfff]\npci 0000:00:05.0: BAR 1 [mem 0xc0448000-0xc0449fff]\npci 0000:00:05.0: BAR 2 [mem 0xc0400000-0xc043ffff pref]\npci 0000:00:05.0: enabling Extended Tags\npci 0000:00:1f.0: [1d0f:8061] type 00 class 0x010802 PCIe Endpoint\npci 0000:00:1f.0: BAR 0 [mem 0xc0440000-0xc0443fff]\npci 0000:00:1f.0: enabling Extended Tags\nACPI: PCI: Interrupt link LNKA configured for IRQ 10\nACPI: PCI: Interrupt link LNKB configured for IRQ 10\nACPI: PCI: Interrupt link LNKC configured for IRQ 11\nACPI: PCI: Interrupt link LNKD configured for IRQ 11\nACPI: PCI: Interrupt link LNKS configured for IRQ 9\niommu: Default domain type: Translated\niommu: DMA domain TLB invalidation policy: lazy mode\npps_core: LinuxPPS API ver. 1 registered\npps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>\nPTP clock support registered\nEDAC MC: Ver: 3.0.0\nefivars: Registered efivars operations\nNetLabel: Initializing\nNetLabel:  domain hash size = 128\nNetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO\nNetLabel:  unlabeled traffic allowed by default\nPCI: Using ACPI for IRQ routing\nPCI: pci_cache_line_size set to 64 bytes\ne820: reserve RAM buffer [mem 0xb8bf5000-0xbbffffff]\ne820: reserve RAM buffer [mem 0xbbcce000-0xbbffffff]\ne820: reserve RAM buffer [mem 0xbff7c000-0xbfffffff]\ne820: reserve RAM buffer [mem 0x236000000-0x237ffffff]\nhpet0: at MMIO 0xfed00000, IRQs 2, 8, 0, 0, 0, 0, 0, 0\nhpet0: 8 comparators, 32-bit 62.500000 MHz counter\nclocksource: Switched to clocksource kvm-clock\nVFS: Disk quotas dquot_6.6.0\nVFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)\npnp: PnP ACPI init\npnp: PnP ACPI: found 5 devices\nclocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns\nNET: Registered PF_INET protocol family\nIP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)\ntcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)\nTable-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)\nTCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)\nTCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)\nTCP: Hash tables configured (established 65536 bind 65536)\nMPTCP token hash table entries: 8192 (order: 6, 196608 bytes, linear)\nUDP hash table entries: 4096 (order: 6, 262144 bytes, linear)\nUDP-Lite hash table entries: 4096 (order: 6, 262144 bytes, linear)\nNET: Registered PF_UNIX/PF_LOCAL protocol family\nNET: Registered PF_XDP protocol family\npci_bus 0000:00: resource 4 [io  0x0000-0x0cf7 window]\npci_bus 0000:00: resource 5 [io  0x0d00-0xffff window]\npci_bus 0000:00: resource 6 [mem 0x000a0000-0x000bffff window]\npci_bus 0000:00: resource 7 [mem 0xc0000000-0xfebfffff window]\npci_bus 0000:00: resource 8 [mem 0x240000000-0x20023fffffff window]\npci 0000:00:00.0: Limiting direct PCI/PCI transfers\nPCI: CLS 0 bytes, default 64\nPCI-DMA: Using software bounce buffering for IO (SWIOTLB)\nsoftware IO TLB: mapped [mem 0x00000000b4bec000-0x00000000b8bec000] (64MB)\nFreeing initrd memory: 4K\nInitialise system trusted keyrings\nalg: self-tests for sha3-256-generic (sha3-256) passed\nKey type asymmetric registered\nAsymmetric key parser 'x509' registered\nclocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x29cd22e93ed, max_idle_ns: 440795302389 ns\nclocksource: Switched to clocksource tsc\nKey type blacklist registered\nworkingset: timestamp_bits=36 max_order=21 bucket_order=0\nSGI XFS with ACLs, security attributes, quota, no debug enabled\nintegrity: Platform Keyring initialized\nintegrity: Machine keyring initialized\ncryptd: max_cpu_qlen set to 1000\nNET: Registered PF_ALG protocol family\nBlock layer SCSI generic (bsg) driver version 0.4 loaded (major 248)\nio scheduler mq-deadline registered\nio scheduler kyber registered\nio scheduler bfq registered\nSerial: 8250/16550 driver, 4 ports, IRQ sharing disabled\n00:04: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A\nrtc_cmos 00:00: RTC can wake from S4\nnvme nvme1: pci function 0000:00:1f.0\nACPI: \\_SB_.LNKC: Enabled at IRQ 11\nrtc_cmos 00:00: registered as rtc0\nrtc_cmos 00:00: setting system clock to 2026-10-06T22:44:51 UTC (1791326691)\nrtc_cmos 00:00: alarms up to one day, 114 bytes nvram\nvmclock AMZNC10C:00: vmclock0: registered miscdev\ndevice-mapper: uevent: version 1.0.3\ndevice-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev\nnvme nvme0: pci function 0000:00:04.0\nACPI: \\_SB_.LNKD: Enabled at IRQ 10\nintel_pstate: P-states controlled by the platform\nefifb: probing for efifb\nefifb: framebuffer at 0xc0000000, using 1876k, total 1875k\nefifb: mode is 800x600x32, linelength=3200, pages=1\nefifb: scrolling: redraw\nefifb: Truecolor: size=8:8:8:8, shift=24:16:8:0\nfbcon: Deferring console take-over\nfb0: EFI VGA frame buffer device\npstore: Using crash dump compression: deflate\npstore: Registered efi_pstore as persistent store backend\nhid: raw HID events driver (C) Jiri Kosina\nNET: Registered PF_INET6 protocol family\nSegment Routing with IPv6\nIn-situ OAM (IOAM) with IPv6\nNET: Registered PF_PACKET protocol family\nLoading compiled-in X.509 certificates\nalg: self-tests for sha512-lib (sha512) passed\nalg: self-tests for rsa-generic (rsa) passed\nalg: self-tests for pkcs1(rsa-generic,sha512) (pkcs1(rsa,sha512)) passed\nLoaded X.509 cert 'Build time autogenerated kernel key: 17ce6a40681b5f2904bc4ac2a65d5a6378fdc4c5'\nalg: self-tests for lzo-rle-scomp (lzo-rle) passed\nalg: self-tests for lzo-scomp (lzo) passed\nalg: self-tests for aes-fixed-time (aes) passed\nalg: self-tests for deflate-generic (deflate) passed\nalg: hmac(md5) (hmac-md5-lib) is disabled due to FIPS\nalg: md5 (md5-lib) is disabled due to FIPS\nalg: self-tests for ecb-cipher_null (ecb(cipher_null)) passed\nalg: digest_null (digest_null-generic) is disabled due to FIPS\nalg: self-tests for cipher_null-generic (cipher_null) passed\nalg: ecdh-nist-p192 (ecdh-nist-p192-generic) is disabled due to FIPS\nalg: self-tests for jitterentropy_rng (jitterentropy_rng) passed\nnvme nvme0: 2/0/0 default/read/poll queues\nalg: ghash (ghash-generic) is disabled due to FIPS\nalg: self-tests for drbg_nopr_hmac_sha384 (stdrng) passed\nalg: self-tests for drbg_nopr_sha512 (stdrng) passed\nalg: self-tests for drbg_nopr_sha384 (stdrng) passed\nalg: self-tests for drbg_pr_hmac_sha512 (stdrng) passed\nalg: self-tests for drbg_pr_hmac_sha384 (stdrng) passed\nalg: self-tests for drbg_pr_sha512 (stdrng) passed\nalg: self-tests for drbg_pr_sha384 (stdrng) passed\nalg: self-tests for drbg_pr_ctr_aes256 (stdrng) passed\nalg: self-tests for drbg_pr_ctr_aes192 (stdrng) passed\nalg: self-tests for crc32c-lib (crc32c) passed\nalg: self-tests for aes-generic (aes) passed\nalg: self-tests for ecdh-nist-p384-generic (ecdh-nist-p384) passed\nnvme nvme1: 2/0/0 default/read/poll queues\nalg: self-tests for sha3-512-generic (sha3-512) passed\nalg: self-tests for sha3-384-generic (sha3-384) passed\nalg: self-tests for sha3-224-generic (sha3-224) passed\nalg: self-tests for hmac-sha512-lib (hmac(sha512)) passed\nalg: self-tests for drbg_nopr_hmac_sha512 (stdrng) passed\nalg: self-tests for sha384-lib (sha384) passed\nalg: self-tests for hmac-sha384-lib (hmac(sha384)) passed\nalg: self-tests for hmac-sha256-lib (hmac(sha256)) passed\nalg: self-tests for drbg_pr_hmac_sha256 (stdrng) passed\nalg: self-tests for hmac-sha224-lib (hmac(sha224)) passed\nalg: self-tests for drbg_nopr_hmac_sha256 (stdrng) passed\nalg: self-tests for sha256-lib (sha256) passed\nalg: self-tests for drbg_pr_sha256 (stdrng) passed\nalg: self-tests for sha224-lib (sha224) passed\nalg: self-tests for drbg_nopr_sha256 (stdrng) passed\nalg: self-tests for hmac-sha1-lib (hmac(sha1)) passed\nalg: self-tests for sha1-lib (sha1) passed\nalg: self-tests for ecdsa-nist-p521-generic (ecdsa-nist-p521) passed\nalg: self-tests for ecdsa-nist-p384-generic (ecdsa-nist-p384) passed\nalg: self-tests for ecdh-nist-p256-generic (ecdh-nist-p256) passed\nalg: ecdsa-nist-p192 (ecdsa-nist-p192-generic) is disabled due to FIPS\nalg: dh (dh-generic) is disabled due to FIPS\nalg: self-tests for rfc4106-gcm-vaes-avx10_512 (rfc4106(gcm(aes))) passed\nalg: self-tests for generic-gcm-vaes-avx10_512 (gcm(aes)) passed\nalg: xctr(aes) (xctr-aes-vaes-avx512) is disabled due to FIPS\nalg: self-tests for ctr-aes-vaes-avx512 (ctr(aes)) passed\nalg: self-tests for xts-aes-vaes-avx512 (xts(aes)) passed\nalg: self-tests for rfc4106-gcm-vaes-avx10_256 (rfc4106(gcm(aes))) passed\nalg: self-tests for generic-gcm-vaes-avx10_256 (gcm(aes)) passed\nalg: xctr(aes) (xctr-aes-vaes-avx2) is disabled due to FIPS\nalg: self-tests for ctr-aes-vaes-avx2 (ctr(aes)) passed\nalg: self-tests for xts-aes-vaes-avx2 (xts(aes)) passed\nalg: self-tests for ecdsa-nist-p256-generic (ecdsa-nist-p256) passed\nalg: self-tests for generic-gcm-aesni-avx (gcm(aes)) passed\nalg: xctr(aes) (xctr-aes-aesni-avx) is disabled due to FIPS\nalg: self-tests for ctr-aes-aesni-avx (ctr(aes)) passed\nalg: self-tests for rfc4106-gcm-aesni-avx (rfc4106(gcm(aes))) passed\nalg: self-tests for xts-aes-aesni-avx (xts(aes)) passed\nalg: self-tests for generic-gcm-aesni (gcm(aes)) passed\nalg: self-tests for xts-aes-aesni (xts(aes)) passed\nalg: self-tests for rfc4106-gcm-aesni (rfc4106(gcm(aes))) passed\nalg: self-tests for ctr-aes-aesni (ctr(aes)) passed\nalg: self-tests for cts-cbc-aes-aesni (cts(cbc(aes))) passed\nalg: self-tests for ecb-aes-aesni (ecb(aes)) passed\nalg: self-tests for cbc-aes-aesni (cbc(aes)) passed\nalg: self-tests for aes-aesni (aes) passed\nalg: self-tests for drbg_nopr_ctr_aes256 (stdrng) passed\nalg: self-tests for drbg_nopr_ctr_aes192 (stdrng) passed\nFIPS 140: run_initcalls finished\nalg: self-tests for drbg_pr_ctr_aes128 (stdrng) passed\nalg: self-tests for drbg_nopr_ctr_aes128 (stdrng) passed\nIPI shorthand broadcast: enabled\nFIPS 140: integrity verification passed\nOverwrite extrng\nsched_clock: Marking stable (275336163, 2653125)->(303222088, -25232800)\n nvme0n1: p1 p2 p3 p4 p5 p6 p7\nregistered taskstats version 1\nFIPS140 BTF registration completed\nGPT:Primary header thinks Alt. header is not at the end of the disk.\nGPT:2097151 != 41943039\nGPT:Alternate GPT header not at the end of the disk.\nGPT:2097151 != 41943039\nGPT: Use GNU Parted to correct GPT errors.\n nvme1n1: p1\nDemotion targets for Node 0: null\nKey type .fscrypt registered\nKey type fscrypt-provisioning registered\nintegrity: Loading X.509 certificate: UEFI:db\nalg: self-tests for pkcs1(rsa-generic,sha256) (pkcs1(rsa,sha256)) passed\nintegrity: Loaded X.509 cert 'Bottlerocket Secure Boot Database CA: c4de07fa180e5a1ff744e850274a9908869450da'\nintegrity: Loading X.509 certificate: UEFI:db\nintegrity: Loaded X.509 cert 'Bottlerocket Secure Boot Database CA: c4de07fa180e5a1ff744e850274a9908869450da'\ndevice-mapper: init: waiting for all devices to be available before creating mapped devices\ndevice-mapper: verity: sha256 using \"sha256-lib\"\ndevice-mapper: ioctl: dm-0 (root) is ready\nclk: Disabling unused clocks\ncheck access for rdinit=/init failed: -2, ignoring\nmd: Skipping autodetection of RAID arrays. (raid=autodetect will force)\nerofs (device dm-0): mounted with root inode @ nid 43.\nVFS: Mounted root (erofs filesystem) readonly on device 252:0.\ndevtmpfs: mounted\nFreeing unused decrypted memory: 2028K\nFreeing unused kernel image (initmem) memory: 3924K\nWrite protecting the kernel read-only data: 32768k\nFreeing unused kernel image (text/rodata gap) memory: 1472K\nFreeing unused kernel image (rodata/data gap) memory: 2552K\nRun /sbin/init as init process\n  with arguments:\n    /sbin/init\n    systemd.log_target=journal-or-kmsg\n    systemd.log_color=0\n    systemd.show_status=true\n  with environment:\n    HOME=/\n    TERM=linux\n    SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1\n    SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25\n    selinux=1\n    enforcing=1\nSELinux:  policy capability network_peer_controls=1\nSELinux:  policy capability open_perms=1\nSELinux:  policy capability extended_socket_class=1\nSELinux:  policy capability always_check_network=0\nSELinux:  policy capability cgroup_seclabel=1\nSELinux:  policy capability nnp_nosuid_transition=1\nSELinux:  policy capability genfs_seclabel_symlinks=1\nSELinux:  policy capability ioctl_skip_cloexec=1\nSELinux:  policy capability userspace_initial_context=1\nSELinux:  policy capability netlink_xperm=0\nSELinux:  policy capability netif_wildcard=0\nSELinux:  policy capability genfs_seclabel_wildcard=0\nSELinux:  policy capability functionfs_seclabel=0\naudit: type=1403 audit(1791326691.740:2): auid=4294967295 ses=4294967295 lsm=selinux res=1\nSuccessfully loaded SELinux policy in 65.108ms.\nRelabeled /dev/, /dev/shm/, /run/ in 251us.\nsystemd 257.13 running in system mode (-PAM -AUDIT +SELINUX -APPARMOR -IMA +IPE -SMACK +SECCOMP -GCRYPT -GNUTLS +OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE +TPM2 -BZIP2 -LZ4 -XZ -ZLIB -ZSTD -BPF_FRAMEWORK -BTF -XKBCOMMON -UTMP -SYSVINIT -LIBARCHIVE)\nDetected virtualization amazon.\nDetected architecture x86-64.\nDetected first boot.\nNo hostname configured, using default hostname.\nHostname set to <localhost>.\nInitializing machine ID from SMBIOS/DMI UUID.\nPopulated /etc with preset unit settings.\nQueued start job for default target Bottlerocket initial configuration complete.\nCreated slice Slice /system/fips-modprobe.\nCreated slice Slice /system/modprobe.\nCreated slice Slice /user.\nExpecting device /dev/disk/by-partlabel/BOTTLEROCKET-DATA...\nExpecting device /dev/disk/by-partlabel/BOTTLEROCKET-PRIVATE...\nExpecting device /dev/disk/by-partuuid/5b94e8df-28b8-485c-9d19-362263b5944c...\nExpecting device /dev/disk/by-partuuid/69040874-417d-4e26-a764-7885f22007ea...\nExpecting device /dev/mapper/BOTTLEROCKET-DATA...\nExpecting device /dev/mapper/BOTTLEROCKET-PRIVATE...\nReached target Local Integrity Protected Volumes.\nReached target Path Units.\nReached target Slice Units.\nReached target Swaps.\nReached target Local Verity Protected Volumes.\nListening on D-Bus System Message Bus Socket.\nListening on Credential Encryption/Decryption.\nListening on Journal Audit Socket.\nListening on Journal Socket (/dev/log).\nListening on Journal Sockets.\nListening on Network Service Netlink Socket.\nListening on udev Control Socket.\nListening on udev Kernel Socket.\nReached target Socket Units.\nMounting Huge Pages File System...\nMounting POSIX Message Queue File System...\nMounting CNI Configuration Directory (/etc/cni)...\nArbitrary Executable File Formats File System skipped, unmet condition check ConditionPathExists=!/\nMounting Kernel Debug File System...\nMounting Kernel Trace File System...\nMounting Temporary Directory /tmp...\nx86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-bin.mount: Directory /x86_64-bottlerocket-linux-gnu/sys-root/usr/bin to mount over is not empty, mounting anyway.\nMounting Binaries...\nx86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-libexec.mount: Directory /x86_64-bottlerocket-linux-gnu/sys-root/usr/libexec to mount over is not empty, mounting anyway.\nMounting Program Binaries...\nMounted Huge Pages File System.\nMounted POSIX Message Queue File System.\nMounted CNI Configuration Directory (/etc/cni).\nMounted Kernel Debug File System.\nMounted Kernel Trace File System.\nMounted Temporary Directory /tmp.\nStarting Load audit rules...\nStarting Create FIPS system marker file...\nStarting Generate FIPS Go environment...\nStarting Determine FIPS HMAC in UKI image...\nStarting Determine FIPS HMAC in vmlinuz image...\nStarting Create List of Static Device Nodes...\nStarting Measure Kernel Command Line into PCR 9...\nStarting Load Kernel Module configfs...\nStarting Load Kernel Module drm...\nStarting Load Kernel Module efi_pstore...\nStarting Load Kernel Module fuse...\nStarting Prepare Boot Directory (/boot)...\nStarting Copy SELinux policy files...\nStarting Journal Service...\nStarting Load Kernel Modules...\nStarting Generate Network Units from Kernel Command Line...\nStarting Remount Root and Kernel File Systems...\nStarting Load udev Rules from Credentials...\nMounted Binaries.\nMounted Program Binaries.\nFinished Load audit rules.\nFinished Create FIPS system marker file.\nFinished Generate FIPS Go environment.\ngenerate-fips-hmac-path-vmlinuz.service: Skipped due to 'exec-condition'.\nCondition check resulted in Determine FIPS HMAC in vmlinuz image being skipped.\nFinished Create List of Static Device Nodes.\nmeasure-cmdline.service: Skipped due to 'exec-condition'.\nCondition check resulted in Measure Kernel Command Line into PCR 9 being skipped.\nFinished Load Kernel Module configfs.\nFinished Load Kernel Module efi_pstore.\nFinished Copy SELinux policy files.\nMounting Containerd Configuration Directory (/etc/containerd)...\nfuse: init (API version 7.45)\nMounting Host containers Configuration Directory (/etc/host-containers)...\nMounting AWS configuration directory (/root/.aws)...\nMounting Docker configuration directory (/root/.docker)...\nMounting ECR cache directory (/root/.ecr)...\nCollecting audit messages is enabled.\nMounting Ephemeral netdog configuration directory...\nACPI: bus type drm_connector registered\nMounting Ephemeral keystore directory...\nMounting Kernel Configuration File System...\nStarting Create Static Device Nodes in /dev gracefully...\nStarting Coldplug All udev Devices...\nStarted Journal Service.\nalg: ghash (ghash-pclmulqdqni) is disabled due to FIPS\npiix4_smbus 0000:00:01.3: SMBus base address uninitialized - upgrade BIOS or use force_addr=0xaddr\nfbcon: Taking over console\nConsole: switching to colour frame buffer device 100x37\nena 0000:00:05.0: Elastic Network Adapter (ENA) v2.17.2g\nModule i8042 is blacklisted\ninput: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0\nena 0000:00:05.0: ENA device version: 0.10\nena 0000:00:05.0: ENA controller version: 0.0.1 implementation version 1\nACPI: button: Power Button [PWRF]\ninput: Sleep Button as /devices/LNXSYSTM:00/LNXSLPBN:00/input/input1\nACPI: button: Sleep Button [SLPF]\nnvme nvme1: using unchecked data buffer\nena 0000:00:05.0: Forcing large headers and decreasing maximum TX queue size to 512\nena 0000:00:05.0: ENA Large LLQ is enabled\nena 0000:00:05.0: Elastic Network Adapter (ENA) found at mem c044a000, mac addr 02:ff:d9:d3:52:75\nalg: des3_ede (des3_ede-asm) is disabled due to FIPS\nalg: ecb(des3_ede) (ecb-des3_ede-asm) is disabled due to FIPS\nalg: cbc(des3_ede) (cbc-des3_ede-asm) is disabled due to FIPS\nalg: des (des-generic) is disabled due to FIPS\nalg: des3_ede (des3_ede-generic) is disabled due to FIPS\nalg: xxhash64 (xxhash64-generic) is disabled due to FIPS\nalg: self-tests for sha1 (sha1) passed\nalg: self-tests for sha256 (sha256) passed\nalg: self-tests for ecb(aes) (ecb(aes)) passed\nalg: self-tests for cbc(aes) (cbc(aes)) passed\nalg: self-tests for xts(aes) (xts(aes)) passed\nalg: self-tests for ctr(aes) (ctr(aes)) passed\nalg: self-tests for rfc3686(ctr-aes-vaes-avx2) (rfc3686(ctr(aes))) passed\nalg: self-tests for rfc3686(ctr(aes)) (rfc3686(ctr(aes))) passed\nalg: self-tests for sha384 (sha384) passed\nalg: self-tests for sha512 (sha512) passed\nalg: self-tests for deflate (deflate) passed\nalg: self-tests for crc32c (crc32c) passed\nalg: self-tests for sha224 (sha224) passed\nalg: self-tests for gcm(aes) (gcm(aes)) passed\nalg: self-tests for lzo (lzo) passed\nalg: cbcmac(aes) (cbcmac(aes-aesni)) is disabled due to FIPS\nalg: self-tests for ccm_base(ctr-aes-vaes-avx2,cbcmac(aes-aesni)) (ccm(aes)) passed\nalg: self-tests for ccm(aes) (ccm(aes)) passed\nalg: self-tests for cts(cbc(aes)) (cts(cbc(aes))) passed\nalg: self-tests for rfc4309(ccm_base(ctr-aes-vaes-avx2,cbcmac(aes-aesni))) (rfc4309(ccm(aes))) passed\nalg: self-tests for rfc4309(ccm(aes)) (rfc4309(ccm(aes))) passed\nalg: self-tests for sha3-224 (sha3-224) passed\nalg: self-tests for sha3-256 (sha3-256) passed\nalg: self-tests for sha3-384 (sha3-384) passed\nalg: self-tests for sha3-512 (sha3-512) passed\nalg: self-tests for hmac(sha1) (hmac(sha1)) passed\nalg: self-tests for hmac(sha256) (hmac(sha256)) passed\nalg: self-tests for hmac(sha384) (hmac(sha384)) passed\nalg: self-tests for hmac(sha512) (hmac(sha512)) passed\nalg: self-tests for hmac(sha224) (hmac(sha224)) passed\nalg: self-tests for hmac(sha3-224-generic) (hmac(sha3-224)) passed\nalg: self-tests for hmac-shash(sha3-224-generic) (hmac(sha3-224)) passed\nalg: self-tests for hmac(sha3-224) (hmac(sha3-224)) passed\nalg: self-tests for hmac(sha3-256-generic) (hmac(sha3-256)) passed\nalg: self-tests for hmac-shash(sha3-256-generic) (hmac(sha3-256)) passed\nalg: self-tests for hmac(sha3-256) (hmac(sha3-256)) passed\nalg: self-tests for hmac(sha3-384-generic) (hmac(sha3-384)) passed\nalg: self-tests for hmac-shash(sha3-384-generic) (hmac(sha3-384)) passed\nalg: self-tests for hmac(sha3-384) (hmac(sha3-384)) passed\nalg: self-tests for hmac(sha3-512-generic) (hmac(sha3-512)) passed\nalg: self-tests for hmac-shash(sha3-512-generic) (hmac(sha3-512)) passed\nalg: self-tests for hmac(sha3-512) (hmac(sha3-512)) passed\nalg: self-tests for rfc4106(gcm(aes)) (rfc4106(gcm(aes))) passed\nalg: self-tests for cmac(aes-aesni) (cmac(aes)) passed\nalg: self-tests for cmac(aes) (cmac(aes)) passed\nalg: self-tests for authenc(hmac-sha1-lib,cbc-aes-aesni) (authenc(hmac(sha1),cbc(aes))) passed\nalg: self-tests for authenc(hmac(sha1),cbc(aes)) (authenc(hmac(sha1),cbc(aes))) passed\n nvme1n1: p1\nalg: self-tests for ffdhe2048(dh-generic) (ffdhe2048(dh)) passed\nKey type trusted registered\nKey type encrypted registered\nalg: self-tests for ffdhe2048(dh) (ffdhe2048(dh)) passed\nEXT4-fs (dm-1): mounted filesystem f5b96ae5-79f1-4fbe-a83b-5607447da8a5 r/w with ordered data mode. Quota mode: none.\nXFS (dm-2): Mounting V5 Filesystem 7d51cda3-b2bc-4cd7-a5be-124c20f56a04\nXFS (dm-2): Ending clean mount\nReceived client request to flush runtime journal.\nfscrypt: AES-256-CBC-CTS using implementation \"cts-cbc-aes-aesni\"\nfscrypt: AES-256-XTS using implementation \"xts-aes-vaes-avx2\"\nKernel is locked down from securityfs; see man kernel_lockdown.7\nModule binfmt_misc is blacklisted\nModule binfmt_misc is blacklisted\nModule binfmt_misc is blacklisted\nModule binfmt_misc is blacklisted\nModule binfmt_misc is blacklisted\nModule binfmt_misc is blacklisted\n",
+      "stderr": ""
+    }
+  ],
+  "errors": [],
+  "boot_id": "9133432e-b934-4b08-8f56-ec01b3ce7d1e",
+  "os_release": "NAME=Bottlerocket\nID=bottlerocket\nVERSION=\"1.66.1 (aws-mantle-1-fips)\"\nPRETTY_NAME=\"Bottlerocket OS 1.66.1 (aws-mantle-1-fips)\"\nVARIANT_ID=aws-mantle-1-fips\nVERSION_ID=1.66.1\nBUILD_ID=3f1f18e7-dirty\nVENDOR_NAME=\"Bottlerocket\"\nHOME_URL=\"https://github.com/bottlerocket-os/bottlerocket\"\nSUPPORT_URL=\"https://github.com/bottlerocket-os/bottlerocket/discussions\"\nBUG_REPORT_URL=\"https://github.com/bottlerocket-os/bottlerocket/issues\"\nDOCUMENTATION_URL=\"https://bottlerocket.dev\"\n",
+  "cmdline": "console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet fips=1 module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 fips=1 init.systemd.unit=fipscheck.target root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 416656 verity 1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=2 4096 4096 52082 1 sha256 79a0f0a897f1636f48f8a4e826d68ae7748a2697fde73d090f416b391507a02b 52ee77b60bd5c3d308716aa7224639242a6f1dae42075ee894645958c8773202 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true",
+  "features": "DATA_PARTITION_FILESYSTEM=xfs\nIN_PLACE_UPDATES=false\nENCRYPTED_STORAGE=true\nEPHEMERAL_ENCRYPTION_KEYS=true\nSTANDALONE_IMAGE=false\n",
+  "dropin": "[Unit]\n# This drop-in is installed only on UKI images. Never start this mount.\nConditionPathExists=!/\n",
+  "image_format": "IMAGE_FORMAT=uki\nUKI_IMAGE=true\n",
+  "module_objects": [
+    {
+      "path": "usr/lib/modules/6.18.48/kernel/fs/binfmt_misc.ko",
+      "sha256": "baa9948899530ea9e7024347131979cc8883825b06e123a272f4555e4d2cd1ec"
+    }
+  ],
+  "before": {
+    "module_lines": [],
+    "filesystem_lines": [],
+    "mount_lines": [],
+    "sys_module": false
+  },
+  "after": {
+    "module_lines": [],
+    "filesystem_lines": [],
+    "mount_lines": [],
+    "sys_module": false
+  },
+  "mount_unit": {
+    "Result": "success",
+    "LoadState": "loaded",
+    "ActiveState": "inactive",
+    "FragmentPath": "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system/proc-sys-fs-binfmt_misc.mount",
+    "DropInPaths": "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system/proc-sys-fs-binfmt_misc.mount.d/10-uki.conf",
+    "ConditionResult": "no"
+  },
+  "after_mount_start": {
+    "module_lines": [],
+    "filesystem_lines": [],
+    "mount_lines": [],
+    "sys_module": false
+  },
+  "failed_units": "",
+  "blacklist_journal": [
+    "Command line: console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet fips=1 module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 fips=1 init.systemd.unit=fipscheck.target root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 416656 verity 1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=2 4096 4096 52082 1 sha256 79a0f0a897f1636f48f8a4e826d68ae7748a2697fde73d090f416b391507a02b 52ee77b60bd5c3d308716aa7224639242a6f1dae42075ee894645958c8773202 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true",
+    "Kernel command line: console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet fips=1 module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 fips=1 init.systemd.unit=fipscheck.target root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 416656 verity 1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=1 PARTUUID=CD8AA310-E2BA-4098-9C64-C3E9A28EF6F1/PARTNROFF=2 4096 4096 52082 1 sha256 79a0f0a897f1636f48f8a4e826d68ae7748a2697fde73d090f416b391507a02b 52ee77b60bd5c3d308716aa7224639242a6f1dae42075ee894645958c8773202 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true",
+    "Module binfmt_misc is blacklisted",
+    "Module binfmt_misc is blacklisted",
+    "Module binfmt_misc is blacklisted",
+    "Module binfmt_misc is blacklisted",
+    "Module binfmt_misc is blacklisted",
+    "Module binfmt_misc is blacklisted"
+  ],
+  "status": "passed"
+}

@@ -1,0 +1,18 @@
+{
+  "source": "3f1f18e74640c671872a6b114bd42dddb612ea68",
+  "version": "1.66.1",
+  "build_id": "3f1f18e7-dirty",
+  "ami_identity": "symphony.14.r10",
+  "kit": "17.0.1-symphony.14.build-fa6d388f",
+  "core_source": "fa6d388f834b2c370fed8f61c6c7145a20c0bab0",
+  "twoliter_revision": "d2c650ad1489fe545f68c4fcbd481f2163ed5629",
+  "core_index_digest": "sha256:92e8ca62c4b3244aef4e48d892a48670e15c0cf04327cfdd1c008e302f4c1545",
+  "tracked_changes": "M Release.toml\n M Twoliter.lock\n M Twoliter.toml",
+  "configuration_patch_sha256": "8e57d15715b98c08e369c5f18208ff983cc9bf97379332a760a7a8c85e45ceaf",
+  "configuration_sha256": {
+    "Release.toml": "d601f54e077b1e6677cfbe62ef0d8b8b2acf5caf60522d5c1a5e26aa9737b57b",
+    "Twoliter.lock": "44429a47b444071744761bc7e3e9230505a49b949f5fc0d04c5b998b3cc67862",
+    "Twoliter.toml": "65791273b4390acee352ccb0e77354820080677b786456bd77a5d71917d14114"
+  },
+  "temporary_changes": "Only three release/dependency files; restore from original-config after all image builds finish."
+}

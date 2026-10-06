@@ -1,0 +1,27 @@
+{
+  "source": "https://github.com/piyush-jena/bottlerocket-forest/tree/develop/nvidia-smoke-test",
+  "revision": "3e979b92109619605a0bd9a5f518e3673b1a4109",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "4c3688a836f197967f12ec340919820e8a1a831107199cb911f46de5d1cbc7ab"
+    },
+    {
+      "path": "run-nvidia-smoke.sh",
+      "sha256": "6debf87a43698ffc5fa0e618840192aa722e075595d41a5e3b2503a958c8ec2b"
+    },
+    {
+      "path": "merge_cdi.py",
+      "sha256": "9565cc9ad39355efa388a73b26123a1c08bc6ae6c3b5185242bb2af5ea19be2d"
+    },
+    {
+      "path": "sheltie.sh",
+      "sha256": "2e9de07a6f0d62bd3b240328931216a3722458568dd4cd9e49383d0321beb03e"
+    },
+    {
+      "path": "deliver-file.sh",
+      "sha256": "0cee4bb145bb6009c6ea66879d5a665996211703c5f8f3ff9f96da46d508b84d"
+    }
+  ],
+  "adaptation": "Run main script and CDI merge unchanged; replace transport with recorded SSM, host sheltie without --, full compressed output retrieval and verified spec delivery."
+}

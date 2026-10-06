@@ -1,0 +1,82 @@
+[
+  {
+    "job": "42e12d73-8b95-8714-a64c-5e1c5e7fa725",
+    "verified": {
+      "source-provenance.json": {
+        "sha256": "dbd8ec6b5301a6d4a93e4cb5f873f997d4cf348f41b958bb8ff61491a46bdc8f",
+        "contents": "{\n  \"input_sha256\": \"84366782cbea10e857ad26bb0e35c7f03a1f79f5ac08685dfbbe73b5e6cac2db\",\n  \"sources\": {\n    \"member\": {\n      \"revision\": \"3f1f18e74640c671872a6b114bd42dddb612ea68\",\n      \"tracked_changes\": \"M Release.toml\\n M Twoliter.lock\\n M Twoliter.toml\"\n    },\n    \"twoliter\": {\n      \"revision\": \"d2c650ad1489fe545f68c4fcbd481f2163ed5629\",\n      \"tracked_changes\": \"\"\n    }\n  },\n  \"dependencies\": [\n    {\n      \"kit\": \"bottlerocket-core-kit\",\n      \"vendor\": \"local\",\n      \"version\": \"17.0.1-symphony.14.build-fa6d388f\",\n      \"index_digest\": \"sha256:92e8ca62c4b3244aef4e48d892a48670e15c0cf04327cfdd1c008e302f4c1545\"\n    }\n  ],\n  \"request_id\": \"42e12d73-8b95-8714-a64c-5e1c5e7fa725\"\n}\n"
+      },
+      "twoliter-provenance.txt": {
+        "sha256": "82684dd570f0f8f7fc025f897ebdeb92e521dda77901ba9ec8a2f44d69378ee9",
+        "contents": "revision=d2c650ad1489fe545f68c4fcbd481f2163ed5629\nhost=x86_64-unknown-linux-gnu\n0ef48f453b135515f50722b62c236d5a0fdcabd22cd4195422ddb328afa07614  /work/export/twoliter\n"
+      },
+      "twoliter": {
+        "sha256": "0ef48f453b135515f50722b62c236d5a0fdcabd22cd4195422ddb328afa07614"
+      }
+    }
+  },
+  {
+    "job": "efac8751-c1fb-8915-aca8-0baec23a2c68",
+    "verified": {
+      "source-provenance.json": {
+        "sha256": "9292fc8ac33b7f652699b68ac6c368d2b82d5217a0b4adef50ed3fd525aef59b",
+        "contents": "{\n  \"input_sha256\": \"d0e40ebfc5e9b058e2a1860244a64ab86dca30ad69fc2e130ca9fc9f1c3a99cb\",\n  \"sources\": {\n    \"member\": {\n      \"revision\": \"3f1f18e74640c671872a6b114bd42dddb612ea68\",\n      \"tracked_changes\": \"M Release.toml\\n M Twoliter.lock\\n M Twoliter.toml\"\n    },\n    \"twoliter\": {\n      \"revision\": \"d2c650ad1489fe545f68c4fcbd481f2163ed5629\",\n      \"tracked_changes\": \"\"\n    }\n  },\n  \"dependencies\": [\n    {\n      \"kit\": \"bottlerocket-core-kit\",\n      \"vendor\": \"local\",\n      \"version\": \"17.0.1-symphony.14.build-fa6d388f\",\n      \"index_digest\": \"sha256:92e8ca62c4b3244aef4e48d892a48670e15c0cf04327cfdd1c008e302f4c1545\"\n    }\n  ],\n  \"request_id\": \"efac8751-c1fb-8915-aca8-0baec23a2c68\"\n}\n"
+      },
+      "twoliter-provenance.txt": {
+        "sha256": "b9c2760dd95af5759c7ccd22283c45e20133012d4d4bd06a02fd627fcec8c4cd",
+        "contents": "revision=d2c650ad1489fe545f68c4fcbd481f2163ed5629\nhost=x86_64-unknown-linux-gnu\n0150c5638298ff46474e1bb9d44e6e5dd409806311dcba81f4292f4249bf83bc  /work/export/twoliter\n"
+      },
+      "twoliter": {
+        "sha256": "0150c5638298ff46474e1bb9d44e6e5dd409806311dcba81f4292f4249bf83bc"
+      }
+    }
+  },
+  {
+    "job": "cd6571d2-298a-8f62-a9ba-57a62967cc05",
+    "verified": {
+      "source-provenance.json": {
+        "sha256": "a40e1fb89088043521ffe784e2c72af9b5a291c14167927125070e48c24b7ef1",
+        "contents": "{\n  \"input_sha256\": \"d61b9928cbbe6fbdfc78f1e7cb9742c7a7c540df47510e0cab94421bc85479a6\",\n  \"sources\": {\n    \"member\": {\n      \"revision\": \"3f1f18e74640c671872a6b114bd42dddb612ea68\",\n      \"tracked_changes\": \"M Release.toml\\n M Twoliter.lock\\n M Twoliter.toml\"\n    },\n    \"twoliter\": {\n      \"revision\": \"d2c650ad1489fe545f68c4fcbd481f2163ed5629\",\n      \"tracked_changes\": \"\"\n    }\n  },\n  \"dependencies\": [\n    {\n      \"kit\": \"bottlerocket-core-kit\",\n      \"vendor\": \"local\",\n      \"version\": \"17.0.1-symphony.14.build-fa6d388f\",\n      \"index_digest\": \"sha256:92e8ca62c4b3244aef4e48d892a48670e15c0cf04327cfdd1c008e302f4c1545\"\n    }\n  ],\n  \"request_id\": \"cd6571d2-298a-8f62-a9ba-57a62967cc05\"\n}\n"
+      },
+      "twoliter-provenance.txt": {
+        "sha256": "8adb785615f8dde44e60e65433916e1ae4036bb743a8edc26d137995d907721f",
+        "contents": "revision=d2c650ad1489fe545f68c4fcbd481f2163ed5629\nhost=x86_64-unknown-linux-gnu\n19f2cafeb982312a25c5c8ba56cdb88888d1008a89435bb0844ed589169a7bd5  /work/export/twoliter\n"
+      },
+      "twoliter": {
+        "sha256": "19f2cafeb982312a25c5c8ba56cdb88888d1008a89435bb0844ed589169a7bd5"
+      }
+    }
+  },
+  {
+    "job": "b0ecfae7-01b1-8ae2-ad01-ca9a0f47c151",
+    "verified": {
+      "source-provenance.json": {
+        "sha256": "c882c620371ffdb862bf3b954e6ef25e8d721f7b86e470baa34b464bafa924a1",
+        "contents": "{\n  \"input_sha256\": \"ff6ab49612a81ee21198b7fb5126ecb6c41756b29fdeb6689d4d750ac5e17282\",\n  \"sources\": {\n    \"member\": {\n      \"revision\": \"3f1f18e74640c671872a6b114bd42dddb612ea68\",\n      \"tracked_changes\": \"M Release.toml\\n M Twoliter.lock\\n M Twoliter.toml\"\n    },\n    \"twoliter\": {\n      \"revision\": \"d2c650ad1489fe545f68c4fcbd481f2163ed5629\",\n      \"tracked_changes\": \"\"\n    }\n  },\n  \"dependencies\": [\n    {\n      \"kit\": \"bottlerocket-core-kit\",\n      \"vendor\": \"local\",\n      \"version\": \"17.0.1-symphony.14.build-fa6d388f\",\n      \"index_digest\": \"sha256:92e8ca62c4b3244aef4e48d892a48670e15c0cf04327cfdd1c008e302f4c1545\"\n    }\n  ],\n  \"request_id\": \"b0ecfae7-01b1-8ae2-ad01-ca9a0f47c151\"\n}\n"
+      },
+      "twoliter-provenance.txt": {
+        "sha256": "9dd4bc2997083a04a985b8273c79179860011f6cac1cc561334d9f23d06793ae",
+        "contents": "revision=d2c650ad1489fe545f68c4fcbd481f2163ed5629\nhost=x86_64-unknown-linux-gnu\n3ea56deba62458af771f33199bd80917b53c043c7d0af9414766ebcdaff3d6db  /work/export/twoliter\n"
+      },
+      "twoliter": {
+        "sha256": "3ea56deba62458af771f33199bd80917b53c043c7d0af9414766ebcdaff3d6db"
+      }
+    }
+  },
+  {
+    "job": "a172c296-6f34-80e9-a560-fe9c2a730b11",
+    "verified": {
+      "source-provenance.json": {
+        "sha256": "368a799a7378641a579f96b1d4bf31439f2cb860a8eea162fdd82179ccbaa328",
+        "contents": "{\n  \"input_sha256\": \"f551747a23e4e3ec4d5ae43d0d8bbc668f10d5370a82cfa39d2edfb750709b0b\",\n  \"sources\": {\n    \"member\": {\n      \"revision\": \"3f1f18e74640c671872a6b114bd42dddb612ea68\",\n      \"tracked_changes\": \"M Release.toml\\n M Twoliter.lock\\n M Twoliter.toml\"\n    },\n    \"twoliter\": {\n      \"revision\": \"d2c650ad1489fe545f68c4fcbd481f2163ed5629\",\n      \"tracked_changes\": \"\"\n    }\n  },\n  \"dependencies\": [\n    {\n      \"kit\": \"bottlerocket-core-kit\",\n      \"vendor\": \"local\",\n      \"version\": \"17.0.1-symphony.14.build-fa6d388f\",\n      \"index_digest\": \"sha256:92e8ca62c4b3244aef4e48d892a48670e15c0cf04327cfdd1c008e302f4c1545\"\n    }\n  ],\n  \"request_id\": \"a172c296-6f34-80e9-a560-fe9c2a730b11\"\n}\n"
+      },
+      "twoliter-provenance.txt": {
+        "sha256": "92f13685c6eaf1f9c14fd2505ec9608399e49df6c2a491f5076f15540a09a368",
+        "contents": "revision=d2c650ad1489fe545f68c4fcbd481f2163ed5629\nhost=x86_64-unknown-linux-gnu\n4ce6e35b36cc4b5106df803ff6ed175f6c779a5f41270443de25682415c63aac  /work/export/twoliter\n"
+      },
+      "twoliter": {
+        "sha256": "4ce6e35b36cc4b5106df803ff6ed175f6c779a5f41270443de25682415c63aac"
+      }
+    }
+  }
+]

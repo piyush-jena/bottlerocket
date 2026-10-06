@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "case": {
+    "status": "passed",
+    "ami": "ami-00f2b4235b558b774",
+    "snapshot_ids": [
+      "snap-0c1941fb90f95e0e3",
+      "snap-0ec9ba50e7f35ebf8"
+    ],
+    "job": "cd6571d2-298a-8f62-a9ba-57a62967cc05",
+    "arch": "x86_64",
+    "variant": "aws-mantle-1-fips",
+    "source": "3f1f18e74640c671872a6b114bd42dddb612ea68",
+    "input_sha256": "d61b9928cbbe6fbdfc78f1e7cb9742c7a7c540df47510e0cab94421bc85479a6",
+    "region": "us-east-2",
+    "private": true,
+    "boot_mode": "uefi",
+    "tpm": "v2.0",
+    "runtime": "pending"
+  },
+  "instance": "i-04b39cc386d65f0d9",
+  "smoke": {
+    "kind": "native",
+    "image": "public.ecr.aws/docker/library/busybox@sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e",
+    "exit_code": 0,
+    "output": "R10_NATIVE_CONTAINER_PASS\nx86_64"
+  },
+  "boot_id": "9133432e-b934-4b08-8f56-ec01b3ce7d1e",
+  "finished_at": "2026-10-06T22:47:24.393543+00:00"
+}

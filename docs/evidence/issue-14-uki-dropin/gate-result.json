@@ -1,0 +1,6 @@
+{
+  "command": "make -C /home/fedora/Repositories/symphony integ",
+  "exit_code": 0,
+  "log": "make-integ.log",
+  "log_sha256": "0406b4d6d0903eb6faac7855fc80ccb4d4504b245b08a419d3b0f011e70ff4e9"
+}

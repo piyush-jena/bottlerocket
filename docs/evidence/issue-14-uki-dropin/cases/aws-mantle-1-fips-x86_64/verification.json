@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "ami": "ami-00f2b4235b558b774",
+  "snapshot_ids": [
+    "snap-0c1941fb90f95e0e3",
+    "snap-0ec9ba50e7f35ebf8"
+  ],
+  "job": "cd6571d2-298a-8f62-a9ba-57a62967cc05",
+  "arch": "x86_64",
+  "variant": "aws-mantle-1-fips",
+  "source": "3f1f18e74640c671872a6b114bd42dddb612ea68",
+  "input_sha256": "d61b9928cbbe6fbdfc78f1e7cb9742c7a7c540df47510e0cab94421bc85479a6",
+  "region": "us-east-2",
+  "private": true,
+  "boot_mode": "uefi",
+  "tpm": "v2.0",
+  "runtime": "pending"
+}

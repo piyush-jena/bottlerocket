@@ -1,0 +1,232 @@
+### target: i-063fae68a34d43e3a  region=us-east-2  image=public.ecr.aws/s2v1a1q8/nvidia-smoke-test@sha256:7f532735bf01894113c2294814d55e43f94d9b9605e2f6d69b79e76472aa6544
+### [1/9] pull image (up to ~15m)
+### [2/9] materialize writable rootfs -> /local/nvidia-rootfs
+### [3/9] relabel rootfs -> data_t
+### [4/9] capture image base OCI spec via a helper container
+### [5/9] fetch boot-generated CDI spec (/etc/cdi/nvidia.json)
+### [6/9] merge CDI containerEdits + patch SELinux/rootfs (local)
+    spec bytes: 25414
+### [7/9] deliver spec -> /local/nvidia-oci-spec.json
+### [8/9] run nvidia-smoke-test via ctr (GPU) — output below
+-----------------------------------------------------------------
+
+=========================================
+  Running sample UnifiedMemoryPerf
+=========================================
+
+GPU Device 0: "Ada" with compute capability 8.9
+
+Running ........................................................
+
+Overall Time For matrixMultiplyPerf 
+
+Printing Average of 20 measurements in (ms)
+Size_KB	 UMhint	UMhntAs	 UMeasy	  0Copy	MemCopy	CpAsync	CpHpglk	CpPglAs
+4	  0.233	  0.293	  0.334	  0.014	  0.076	  0.025	  0.031	  0.024
+16	  0.240	  0.284	  0.509	  0.027	  0.042	  0.035	  0.047	  0.044
+64	  0.310	  0.360	  0.925	  0.090	  0.094	  0.084	  0.084	  0.076
+256	  0.654	  0.582	  1.403	  0.498	  0.301	  0.280	  0.262	  0.256
+1024	  2.003	  1.732	  3.221	  3.079	  1.150	  1.099	  1.002	  0.992
+4096	  7.144	  6.168	 11.888	 22.169	  4.678	  4.605	  4.516	  4.503
+16384	 32.099	 28.712	 52.801	168.624	 33.203	 33.750	 23.510	 23.486
+
+NOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.
+
+=========================================
+  Running sample deviceQuery
+=========================================
+
+./deviceQuery Starting...
+
+ CUDA Device Query (Runtime API) version (CUDART static linking)
+
+Detected 1 CUDA Capable device(s)
+
+Device 0: "NVIDIA L4"
+  CUDA Driver Version / Runtime Version          13.0 / 12.9
+  CUDA Capability Major/Minor version number:    8.9
+  Total amount of global memory:                 22563 MBytes (23659151360 bytes)
+  (058) Multiprocessors, (128) CUDA Cores/MP:    7424 CUDA Cores
+  GPU Max Clock rate:                            2040 MHz (2.04 GHz)
+  Memory Clock rate:                             6251 Mhz
+  Memory Bus Width:                              192-bit
+  L2 Cache Size:                                 50331648 bytes
+  Maximum Texture Dimension Size (x,y,z)         1D=(131072), 2D=(131072, 65536), 3D=(16384, 16384, 16384)
+  Maximum Layered 1D Texture Size, (num) layers  1D=(32768), 2048 layers
+  Maximum Layered 2D Texture Size, (num) layers  2D=(32768, 32768), 2048 layers
+  Total amount of constant memory:               65536 bytes
+  Total amount of shared memory per block:       49152 bytes
+  Total shared memory per multiprocessor:        102400 bytes
+  Total number of registers available per block: 65536
+  Warp size:                                     32
+  Maximum number of threads per multiprocessor:  1536
+  Maximum number of threads per block:           1024
+  Max dimension size of a thread block (x,y,z): (1024, 1024, 64)
+  Max dimension size of a grid size    (x,y,z): (2147483647, 65535, 65535)
+  Maximum memory pitch:                          2147483647 bytes
+  Texture alignment:                             512 bytes
+  Concurrent copy and kernel execution:          Yes with 2 copy engine(s)
+  Run time limit on kernels:                     No
+  Integrated GPU sharing Host Memory:            No
+  Support host page-locked memory mapping:       Yes
+  Alignment requirement for Surfaces:            Yes
+  Device has ECC support:                        Enabled
+  Device supports Unified Addressing (UVA):      Yes
+  Device supports Managed Memory:                Yes
+  Device supports Compute Preemption:            Yes
+  Supports Cooperative Kernel Launch:            Yes
+  Supports MultiDevice Co-op Kernel Launch:      Yes
+  Device PCI Domain ID / Bus ID / location ID:   0 / 49 / 0
+  Compute Mode:
+     < Default (multiple host threads can use ::cudaSetDevice() with device simultaneously) >
+
+deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 13.0, CUDA Runtime Version = 12.9, NumDevs = 1
+Result = PASS
+
+=========================================
+  Running sample globalToShmemAsyncCopy
+=========================================
+
+[globalToShmemAsyncCopy] - Starting...
+GPU Device 0: "Ada" with compute capability 8.9
+
+MatrixA(1280,1280), MatrixB(1280,1280)
+Running kernel = 0 - AsyncCopyMultiStageLargeChunk
+Computing result using CUDA Kernel...
+done
+Performance= 1968.80 GFlop/s, Time= 2.130 msec, Size= 4194304000 Ops, WorkgroupSize= 256 threads/block
+Checking computed result for correctness: Result = PASS
+
+NOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.
+
+=========================================
+  Running sample immaTensorCoreGemm
+=========================================
+
+Initializing...
+GPU Device 0: "Ada" with compute capability 8.9
+
+M: 4096 (16 x 256)
+N: 4096 (16 x 256)
+K: 4096 (16 x 256)
+Preparing data for GPU...
+Required shared memory size: 64 Kb
+Computing... using high performance kernel compute_gemm_imma 
+Time: 25.282560 ms
+TOPS: 5.44
+
+=========================================
+  Running sample reductionMultiBlockCG
+=========================================
+
+reductionMultiBlockCG Starting...
+
+GPU Device 0: "Ada" with compute capability 8.9
+
+33554432 elements
+numThreads: 768
+numBlocks: 58
+
+Launching SinglePass Multi Block Cooperative Groups kernel
+Average time: 0.583630 ms
+Bandwidth:    229.970544 GB/s
+
+GPU result = 1.992401242256
+CPU result = 1.992401361465
+
+=========================================
+  Running sample shfl_scan
+=========================================
+
+Starting shfl_scan
+GPU Device 0: "Ada" with compute capability 8.9
+
+> Detected Compute SM 8.9 hardware with 58 multi-processors
+Starting shfl_scan
+GPU Device 0: "Ada" with compute capability 8.9
+
+> Detected Compute SM 8.9 hardware with 58 multi-processors
+Computing Simple Sum test
+---------------------------------------------------
+Initialize test data [1, 1, 1...]
+Scan summation for 65536 elements, 256 partial sums
+Partial summing 256 elements with 1 blocks of size 256
+Test Sum: 65536
+Time (ms): 12.327584
+65536 elements scanned in 12.327584 ms -> 5.316208 MegaElements/s
+CPU verify result diff (GPUvsCPU) = 0
+CPU sum (naive) took 0.117100 ms
+
+Computing Integral Image Test on size 1920 x 1080 synthetic data
+---------------------------------------------------
+Method: Fast  Time (GPU Timer): 0.030720 ms Diff = 0
+Method: Vertical Scan  Time (GPU Timer): 0.061984 ms 
+CheckSum: 2073600, (expect 1920x1080=2073600)
+
+=========================================
+  Running sample simpleAWBarrier
+=========================================
+
+./simpleAWBarrier starting...
+GPU Device 0: "Ada" with compute capability 8.9
+
+Launching normVecByDotProductAWBarrier kernel with numBlocks = 116 blockSize = 768
+Result = PASSED
+./simpleAWBarrier completed, returned OK
+
+=========================================
+  Running sample simpleAtomicIntrinsics
+=========================================
+
+simpleAtomicIntrinsics starting...
+GPU Device 0: "Ada" with compute capability 8.9
+
+Processing time: 5.785000 (ms)
+simpleAtomicIntrinsics completed, returned OK
+
+=========================================
+  Running sample simpleVoteIntrinsics
+=========================================
+
+[simpleVoteIntrinsics]
+GPU Device 0: "Ada" with compute capability 8.9
+
+> GPU device has 58 Multi-Processors, SM 8.9 compute capabilities
+
+[VOTE Kernel Test 1/3]
+	Running <<Vote.Any>> kernel1 ...
+	OK
+
+[VOTE Kernel Test 2/3]
+	Running <<Vote.All>> kernel2 ...
+	OK
+
+[VOTE Kernel Test 3/3]
+	Running <<Vote.Any>> kernel3 ...
+	OK
+	Shutting down...
+
+=========================================
+  Running sample vectorAdd
+=========================================
+
+[Vector addition of 50000 elements]
+Copy input data from the host memory to the CUDA device
+CUDA kernel launch with 196 blocks of 256 threads
+Copy output data from the CUDA device to the host memory
+Test PASSED
+Done
+
+=========================================
+  Running sample warpAggregatedAtomicsCG
+=========================================
+
+GPU Device 0: "Ada" with compute capability 8.9
+
+CPU max matches GPU max
+
+Warp Aggregated Atomics PASSED 
+{'GL_VENDOR': 'NVIDIA Corporation', 'GL_RENDERER': 'NVIDIA L4/PCIe/SSE2', 'GL_VERSION': '3.3.0 NVIDIA 580.178.04', 'GL_POINT_SIZE_RANGE': (1.0, 2047.0), 'GL_SMOOTH_LINE_WIDTH_RANGE': (0.5, 10.0), 'GL_ALIASED_LINE_WIDTH_RANGE': (1.0, 10.0), 'GL_POINT_FADE_THRESHOLD_SIZE': 1.0, 'GL_POINT_SIZE_GRANULARITY': 0.125, 'GL_SMOOTH_LINE_WIDTH_GRANULARITY': 0.125, 'GL_MIN_PROGRAM_TEXEL_OFFSET': -8.0, 'GL_MAX_PROGRAM_TEXEL_OFFSET': 7.0, 'GL_MINOR_VERSION': 3, 'GL_MAJOR_VERSION': 3, 'GL_SAMPLE_BUFFERS': 0, 'GL_SUBPIXEL_BITS': 8, 'GL_CONTEXT_PROFILE_MASK': 1, 'GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT': 256, 'GL_DOUBLEBUFFER': False, 'GL_STEREO': False, 'GL_MAX_VIEWPORT_DIMS': (32768, 32768), 'GL_MAX_3D_TEXTURE_SIZE': 16384, 'GL_MAX_ARRAY_TEXTURE_LAYERS': 2048, 'GL_MAX_CLIP_DISTANCES': 8, 'GL_MAX_COLOR_ATTACHMENTS': 8, 'GL_MAX_COLOR_TEXTURE_SAMPLES': 64, 'GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS': 233472, 'GL_MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS': 231424, 'GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS': 192, 'GL_MAX_COMBINED_UNIFORM_BLOCKS': 84, 'GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS': 233472, 'GL_MAX_CUBE_MAP_TEXTURE_SIZE': 32768, 'GL_MAX_DEPTH_TEXTURE_SAMPLES': 64, 'GL_MAX_DRAW_BUFFERS': 8, 'GL_MAX_DUAL_SOURCE_DRAW_BUFFERS': 1, 'GL_MAX_ELEMENTS_INDICES': 1048576, 'GL_MAX_ELEMENTS_VERTICES': 1048576, 'GL_MAX_FRAGMENT_INPUT_COMPONENTS': 128, 'GL_MAX_FRAGMENT_UNIFORM_COMPONENTS': 4096, 'GL_MAX_FRAGMENT_UNIFORM_VECTORS': 1024, 'GL_MAX_FRAGMENT_UNIFORM_BLOCKS': 14, 'GL_MAX_GEOMETRY_INPUT_COMPONENTS': 128, 'GL_MAX_GEOMETRY_OUTPUT_COMPONENTS': 128, 'GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS': 32, 'GL_MAX_GEOMETRY_UNIFORM_BLOCKS': 14, 'GL_MAX_GEOMETRY_UNIFORM_COMPONENTS': 2048, 'GL_MAX_GEOMETRY_OUTPUT_VERTICES': 1024, 'GL_MAX_INTEGER_SAMPLES': 64, 'GL_MAX_SAMPLES': 64, 'GL_MAX_RECTANGLE_TEXTURE_SIZE': 32768, 'GL_MAX_RENDERBUFFER_SIZE': 32768, 'GL_MAX_SAMPLE_MASK_WORDS': 2, 'GL_MAX_TEXTURE_BUFFER_SIZE': 134217728, 'GL_MAX_TEXTURE_IMAGE_UNITS': 32, 'GL_MAX_TEXTURE_LOD_BIAS': 15, 'GL_MAX_TEXTURE_SIZE': 32768, 'GL_MAX_UNIFORM_BUFFER_BINDINGS': 84, 'GL_MAX_UNIFORM_BLOCK_SIZE': 65536, 'GL_MAX_VARYING_VECTORS': 31, 'GL_MAX_VERTEX_ATTRIBS': 16, 'GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS': 32, 'GL_MAX_VERTEX_UNIFORM_COMPONENTS': 4096, 'GL_MAX_VERTEX_UNIFORM_VECTORS': 1024, 'GL_MAX_VERTEX_OUTPUT_COMPONENTS': 128, 'GL_MAX_VERTEX_UNIFORM_BLOCKS': 14, 'GL_MAX_SERVER_WAIT_TIMEOUT': -1}
+-----------------------------------------------------------------
+### [9/9] cleanup
+### DONE — expect deviceQuery 'Device 0: "NVIDIA L4"', NumDevs = 1, Result = PASS

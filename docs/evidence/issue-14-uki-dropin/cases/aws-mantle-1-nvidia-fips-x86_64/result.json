@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "case": {
+    "status": "passed",
+    "ami": "ami-00a1be9870b34c930",
+    "snapshot_ids": [
+      "snap-0c48ebba70327970f",
+      "snap-0804d01a28798421a"
+    ],
+    "job": "a172c296-6f34-80e9-a560-fe9c2a730b11",
+    "arch": "x86_64",
+    "variant": "aws-mantle-1-nvidia-fips",
+    "source": "3f1f18e74640c671872a6b114bd42dddb612ea68",
+    "input_sha256": "f551747a23e4e3ec4d5ae43d0d8bbc668f10d5370a82cfa39d2edfb750709b0b",
+    "region": "us-east-2",
+    "private": true,
+    "boot_mode": "uefi",
+    "tpm": "v2.0",
+    "runtime": "pending"
+  },
+  "instance": "i-0788bbca00e537a35",
+  "smoke": {
+    "kind": "nvidia",
+    "image": "public.ecr.aws/s2v1a1q8/nvidia-smoke-test@sha256:7f532735bf01894113c2294814d55e43f94d9b9605e2f6d69b79e76472aa6544",
+    "exit_code": 0,
+    "device_query": "PASS",
+    "vector_add": "PASSED"
+  },
+  "boot_id": "b1227297-3106-4f99-9620-11bbcf2bd786",
+  "finished_at": "2026-10-06T22:55:25.831805+00:00"
+}

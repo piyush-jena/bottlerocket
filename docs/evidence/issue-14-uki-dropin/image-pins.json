@@ -1,0 +1,96 @@
+{
+  "nvidia": {
+    "image": "public.ecr.aws/s2v1a1q8/nvidia-smoke-test@sha256:7f532735bf01894113c2294814d55e43f94d9b9605e2f6d69b79e76472aa6544",
+    "digest": "sha256:7f532735bf01894113c2294814d55e43f94d9b9605e2f6d69b79e76472aa6544",
+    "media_type": "application/vnd.docker.distribution.manifest.list.v2+json",
+    "platforms": [
+      {
+        "architecture": "arm64",
+        "os": "linux"
+      },
+      {
+        "architecture": "amd64",
+        "os": "linux"
+      }
+    ]
+  },
+  "native": {
+    "image": "public.ecr.aws/docker/library/busybox@sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e",
+    "digest": "sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e",
+    "media_type": "application/vnd.oci.image.index.v1+json",
+    "platforms": [
+      {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      {
+        "architecture": "unknown",
+        "os": "unknown"
+      },
+      {
+        "architecture": "arm",
+        "os": "linux",
+        "variant": "v5"
+      },
+      {
+        "architecture": "unknown",
+        "os": "unknown"
+      },
+      {
+        "architecture": "arm",
+        "os": "linux",
+        "variant": "v6"
+      },
+      {
+        "architecture": "arm",
+        "os": "linux",
+        "variant": "v7"
+      },
+      {
+        "architecture": "unknown",
+        "os": "unknown"
+      },
+      {
+        "architecture": "arm64",
+        "os": "linux",
+        "variant": "v8"
+      },
+      {
+        "architecture": "unknown",
+        "os": "unknown"
+      },
+      {
+        "architecture": "386",
+        "os": "linux"
+      },
+      {
+        "architecture": "unknown",
+        "os": "unknown"
+      },
+      {
+        "architecture": "ppc64le",
+        "os": "linux"
+      },
+      {
+        "architecture": "unknown",
+        "os": "unknown"
+      },
+      {
+        "architecture": "riscv64",
+        "os": "linux"
+      },
+      {
+        "architecture": "unknown",
+        "os": "unknown"
+      },
+      {
+        "architecture": "s390x",
+        "os": "linux"
+      },
+      {
+        "architecture": "unknown",
+        "os": "unknown"
+      }
+    ]
+  }
+}

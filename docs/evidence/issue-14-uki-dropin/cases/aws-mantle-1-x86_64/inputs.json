@@ -1,0 +1,50 @@
+{
+  "job": "42e12d73-8b95-8714-a64c-5e1c5e7fa725",
+  "input_sha256": "84366782cbea10e857ad26bb0e35c7f03a1f79f5ac08685dfbbe73b5e6cac2db",
+  "source": "3f1f18e74640c671872a6b114bd42dddb612ea68",
+  "variant": "aws-mantle-1",
+  "arch": "x86_64",
+  "images": [
+    {
+      "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/42e12d73-8b95-8714-a64c-5e1c5e7fa725/images/x86_64-aws-mantle-1/1.66.1-3f1f18e7-dirty/bottlerocket-aws-mantle-1-x86_64-1.66.1-3f1f18e7-dirty-data.img.lz4",
+      "archive_sha256": "7034bc1f7ae44d226696bc8f6dd9101fc64329d8b3230c57d2078c6cb7fe2a1f",
+      "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-uki-runtime/images/42e12d73-8b95-8714-a64c-5e1c5e7fa725/bottlerocket-aws-mantle-1-x86_64-1.66.1-3f1f18e7-dirty-data.img",
+      "sha256": "51b9f174050d317c32042048eb3210448ce7da1c3e7d475040432e5a7de4056e",
+      "size": 1073741824
+    },
+    {
+      "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/42e12d73-8b95-8714-a64c-5e1c5e7fa725/images/x86_64-aws-mantle-1/1.66.1-3f1f18e7-dirty/bottlerocket-aws-mantle-1-x86_64-1.66.1-3f1f18e7-dirty.img.lz4",
+      "archive_sha256": "0e6a73ea032c0d0112f0474a07a1f7e5995c368bcfde9d2eb70bf6fc41df6286",
+      "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-uki-runtime/images/42e12d73-8b95-8714-a64c-5e1c5e7fa725/bottlerocket-aws-mantle-1-x86_64-1.66.1-3f1f18e7-dirty.img",
+      "sha256": "0ebbc08f1d64f837fcd1993fb3bc18bde2d2653cc771c790fa3bf77423b0ce5d",
+      "size": 2147483648
+    }
+  ],
+  "uefi_sha256": "7dc69ef5cb5d0584b14ea5c671cf46e4e3c86a763097072129c41191d3549fe8",
+  "publisher_sha256": "accafb87fd7127891026c1a3f63c8aa8405d35d0758cb65eb8fddd1288317e91",
+  "argv": [
+    "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-uki-runtime/tools/pubsys",
+    "--infra-config-path",
+    "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-uki-runtime/images/42e12d73-8b95-8714-a64c-5e1c5e7fa725/Infra.toml",
+    "ami",
+    "--os-image",
+    "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-uki-runtime/images/42e12d73-8b95-8714-a64c-5e1c5e7fa725/bottlerocket-aws-mantle-1-x86_64-1.66.1-3f1f18e7-dirty.img",
+    "--data-image",
+    "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-uki-runtime/images/42e12d73-8b95-8714-a64c-5e1c5e7fa725/bottlerocket-aws-mantle-1-x86_64-1.66.1-3f1f18e7-dirty-data.img",
+    "--variant-manifest",
+    "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/variants/aws-mantle-1/Cargo.toml",
+    "--uefi-data",
+    "/home/fedora/Repositories/symphony/.symphony/builds/42e12d73-8b95-8714-a64c-5e1c5e7fa725/artifacts/state/sbkeys/local/efi-vars.aws",
+    "--arch",
+    "x86_64",
+    "--name",
+    "symphony.14.r10-bottlerocket-aws-mantle-1-x86_64-v1.66.1-3f1f18e7-42e12d73",
+    "--description",
+    "Private Symphony issue 14 binfmt EC2 validation; source 3f1f18e74640c671872a6b114bd42dddb612ea68; build 42e12d73-8b95-8714-a64c-5e1c5e7fa725",
+    "--regions",
+    "us-east-2",
+    "--ami-output",
+    "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-uki-runtime/images/42e12d73-8b95-8714-a64c-5e1c5e7fa725/ami.json",
+    "--no-progress"
+  ]
+}
