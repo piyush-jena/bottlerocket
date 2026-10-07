@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "mount",
+    "-t",
+    "binfmt_misc",
+    "none",
+    "/local/symphony14-binfmt-probe"
+  ],
+  "exit_code": 32,
+  "stdout": "",
+  "stderr": "mount: /local/symphony14-binfmt-probe: unknown filesystem type 'binfmt_misc'.\n       dmesg(1) may have more information after failed mount system call.\n"
+}

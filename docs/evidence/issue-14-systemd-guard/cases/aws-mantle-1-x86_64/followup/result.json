@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "instance": "i-03149ce5fa6c9952b",
+  "old_boot_id": "be801fee-e122-4b33-9dd8-1bf9278c7e8c",
+  "new_boot_id": "d917b8c5-3e9d-4a37-8b63-31d6d71797c6",
+  "direct_mount_refused": true,
+  "finished_at": "2026-10-07T00:59:22.720868+00:00"
+}
