@@ -1,5 +1,10 @@
 # Issue 14: UKI drop-in acceptance, 2026-10-06
 
+Historical result: core-kit PR 3's 2026-10-07 review replaces this drop-in
+with a systemd package image-feature guard. The pass below applies only
+to the recorded drop-in revision. Fresh kit, AMI and runtime validation
+is pending for the replacement.
+
 Fresh private AMIs passed boot, effective binfmt policy and native container
 execution on all five required cases. Both GPU cases passed the supplied
 NVIDIA deviceQuery and vectorAdd smoke tests. The same 38 policy checks
