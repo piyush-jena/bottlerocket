@@ -21,8 +21,6 @@ ephemeral-encryption-keys = true
 [package.metadata.build-variant]
 image-format = "uki"
 included-packages = [
-    "kexec-probe",
-    "strace",
 # core
     "release",
     "kernel-6.18",
@@ -41,7 +39,7 @@ kernel-parameters = [
     "net.ifnames=0",
     "netdog.default-interface=eth0:dhcp4,dhcp6?",
     "quiet",
-    # Private issue 17 calibration: leave kexec enabled until the paired test.
+    "sysctl.kernel.kexec_load_disabled=1",
     "module_blacklist=i8042",
 ]
 
@@ -49,7 +47,6 @@ kernel-parameters = [
 path = "../variants.rs"
 
 [build-dependencies]
-kexec-probe = { path = "../../packages/kexec-probe" }
 settings-defaults = { path = "../../packages/settings-defaults" }
 settings-plugins = { path = "../../packages/settings-plugins" }
 settings-migrations = { path = "../../packages/settings-migrations" }
