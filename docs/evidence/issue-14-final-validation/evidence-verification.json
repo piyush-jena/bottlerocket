@@ -7,5 +7,9 @@
   "static_nvidia_passed_cases": 2,
   "unique_successful_ssm_commands": 161,
   "cloud_cleanup": "both regions passed",
-  "registry_cleanup": "pending conductor"
+  "registry_cleanup": {
+    "status": "passed",
+    "job": "176f6e3a-19ac-8fa8-a9d4-19e0c8e742aa",
+    "evidence": "registry-clean-verification.json"
+  }
 }

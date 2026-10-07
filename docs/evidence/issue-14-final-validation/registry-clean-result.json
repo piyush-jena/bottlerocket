@@ -1,0 +1,20 @@
+{
+  "request_id": "176f6e3a-19ac-8fa8-a9d4-19e0c8e742aa",
+  "request": {
+    "target": "core-kit",
+    "arch": "x86_64",
+    "reason": "Validation and cloud cleanup are complete under the operator's GPU-capacity exception. Remove the issue-owned registry before final PR updates.",
+    "testing": "Confirm removal of the issue-owned registry and volume after preserving verified artifact receipts and validation evidence.",
+    "last_change": "No product source changed. Three runtime cases and both NVIDIA image inspections passed; GPU runtime coverage was waived after capacity refusals. Evidence: bottlerocket 555c4bba.",
+    "operation": "registry-clean"
+  },
+  "status": "succeeded",
+  "exit_code": 0,
+  "log": "/home/fedora/Repositories/symphony/.symphony/builds/176f6e3a-19ac-8fa8-a9d4-19e0c8e742aa/build.log",
+  "wall_clock_s": 1.0,
+  "artifacts": [
+    "/home/fedora/Repositories/symphony/.symphony/builds/176f6e3a-19ac-8fa8-a9d4-19e0c8e742aa/registry-result.json"
+  ],
+  "cache": "unknown",
+  "executor": "local"
+}

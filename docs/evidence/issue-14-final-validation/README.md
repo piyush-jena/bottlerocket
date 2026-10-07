@@ -7,7 +7,8 @@ us-west-2 g6.2xlarge. Those attempts also failed with insufficient capacity.
 NVIDIA and NVIDIA-FIPS passed built-image inspection, but their runtime
 policy, native-container and supplied GPU smoke tests did not run.
 This report closes validation under that explicit coverage exception.
-Registry removal and final PR updates remain pending the conductor.
+Registry removal is confirmed. The three PR updates are ready for the
+conductor; no additional adversarial review is requested.
 
 ## Implementation and tested sources
 
@@ -113,15 +114,21 @@ No historical mask or drop-in runtime result is counted as a current pass.
 Cleanup receipts confirm all five instances terminated, seven private AMIs
 deregistered, fourteen snapshots deleted, and both issue-owned access stacks
 deleted. Final region queries found no issue-owned images, snapshots or
-volumes. Existing default VPCs and subnets were retained. The local kit
-registry awaits conductor removal; no further compilation is needed.
+volumes. Existing default VPCs and subnets were retained. Conductor job
+`176f6e3a-19ac-8fa8-a9d4-19e0c8e742aa` removed the local kit registry.
+`registry-clean-verification.json` records the successful receipt and
+read-only Docker checks confirming the owned container and volume are absent.
+No further compilation is needed.
 
 One adversarial review already ran before the later human packaging request.
 Its findings were addressed. The changed packaging was rebuilt and validated
 as recorded here, including fresh negative mount and reboot checks. No second
-adversarial review is requested. Final PR descriptions must state the package
-guard adjustment and GPU coverage exception, link the prerequisites, and
-remove WIP only after the remaining registry cleanup is confirmed.
+adversarial review is requested. The final PR descriptions state the package
+guard adjustment and GPU coverage exception and link the prerequisites.
+With cleanup confirmed and review findings addressed, they request removal
+of WIP. The prior review record is retained in
+`../issue-14-uki-dropin/prior-review/`; its historical runtime results do not
+validate the newer guard.
 
 `commands-and-receipts.tar.gz` contains both regions' commands, outputs,
 statuses, scripts, build receipts, static inspection and cleanup records.
@@ -130,3 +137,8 @@ the archive. Disk images, binary tools, private keys and HTTP debug traces
 are excluded. The earlier blocked checkpoint remains historical in
 `../issue-14-systemd-guard/`; this report supersedes its capacity blocker
 and retained-resource status.
+
+The command bundle is the immutable snapshot captured before registry
+cleanup. Its internal summary therefore retains the then-pending registry
+status. The adjacent final summary and `registry-clean-*` receipts include
+the subsequent successful removal without rewriting the archived commands.

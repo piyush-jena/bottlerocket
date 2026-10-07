@@ -1761,5 +1761,9 @@
     }
   },
   "gpu_smoke": "Not run: capacity unavailable in both regions. NVIDIA flavors reached driver initialization on ordinary instances, then failed without GPU hardware, preventing configured.target and SSM. Their runtime policy/native/GPU smoke checks did not run. Both built images passed static blacklist and unit-absence checks. The operator authorized proceeding without GPU capacity.",
-  "registry_cleanup": "pending conductor"
+  "registry_cleanup": {
+    "status": "passed",
+    "job": "176f6e3a-19ac-8fa8-a9d4-19e0c8e742aa",
+    "evidence": "registry-clean-verification.json"
+  }
 }

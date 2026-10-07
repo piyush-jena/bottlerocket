@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "bottlerocket",
+        "diff",
+        "--exit-code",
+        "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+        "HEAD",
+        "--",
+        "variants"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "bottlerocket",
+        "diff",
+        "--exit-code",
+        "1ad6b4a40390696d772e9821bb331d25846d4cad",
+        "HEAD",
+        "--",
+        "Release.toml",
+        "Twoliter.toml",
+        "Twoliter.lock"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "kits/bottlerocket-core-kit",
+        "diff",
+        "--exit-code",
+        "f36d9c2bbc25887c07d7c8b79662b3944eb60ddc",
+        "HEAD",
+        "--",
+        "packages"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "twoliter",
+        "diff",
+        "--exit-code",
+        "d2c650ad1489fe545f68c4fcbd481f2163ed5629",
+        "HEAD",
+        "--"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "bundle_members_reverified": 1652,
+  "product_changes_since_test": "none"
+}
