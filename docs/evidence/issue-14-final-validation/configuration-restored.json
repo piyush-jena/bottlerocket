@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "restored_sha256": {
+    "Release.toml": "f2f26ba6e56d085c68fd0aeb22c80037aa4c6b13885ae8417931831a21aad315",
+    "Twoliter.lock": "26d4236ada055208a3bd09bbbd357e70857ec7b8e5732e6d85c5d4561ccf6046",
+    "Twoliter.toml": "b8470f6aaa34fd0a7aa73a34fc4986508d4d46c6b835b8b5117a858666d9e038"
+  },
+  "reason": "All five immutable image builds completed. Temporary release and local kit overrides are excluded from product changes."
+}

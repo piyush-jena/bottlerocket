@@ -1,0 +1,50 @@
+[
+  {
+    "job": "ab22cee4-84e2-802a-a72f-98618416d7e8",
+    "status": "identical image and boot metadata bytes",
+    "east_ami": "ami-0815f12c43391c4c3",
+    "west_ami": "ami-04d2282bb9e8665e7",
+    "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+    "images": [
+      {
+        "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/ab22cee4-84e2-802a-a72f-98618416d7e8/images/x86_64-aws-mantle-1-nvidia/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty-data.img.lz4",
+        "archive_sha256": "cfb2b7f5f67f46483af73240bf1a31388f7c53cb39090385b1c8e9bf6a16ae8a",
+        "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty-data.img",
+        "sha256": "4022a6d212aa4a1eed7a6cb728c171ed1573f0cfced21d30ea4ecc7a0f19d0fd",
+        "size": 1073741824
+      },
+      {
+        "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/ab22cee4-84e2-802a-a72f-98618416d7e8/images/x86_64-aws-mantle-1-nvidia/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img.lz4",
+        "archive_sha256": "171733e33deab51987f7ff533bee12b6ab072ed26a6fdb41200250ba2a60fd4d",
+        "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img",
+        "sha256": "fa7917093c97ecc1ce6c0ff85afdb02422aa8170de6da0e35a92be7b06cd00a3",
+        "size": 4294967296
+      }
+    ],
+    "uefi_sha256": "7dc69ef5cb5d0584b14ea5c671cf46e4e3c86a763097072129c41191d3549fe8"
+  },
+  {
+    "job": "13bc80f4-41c1-847f-a217-c52eb49d66bb",
+    "status": "identical image and boot metadata bytes",
+    "east_ami": "ami-0a05dc5449a1f139e",
+    "west_ami": "ami-0a4eb2f70f4726144",
+    "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+    "images": [
+      {
+        "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/13bc80f4-41c1-847f-a217-c52eb49d66bb/images/x86_64-aws-mantle-1-nvidia-fips/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty-data.img.lz4",
+        "archive_sha256": "076ba20789e201e34c4aea5233d709576001f22b9c0e49eea61cc549753c0a93",
+        "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty-data.img",
+        "sha256": "c2480911a9f36b834a12794053ae3c33993b5bb33738105ccfd0cb13d6f24ce8",
+        "size": 1073741824
+      },
+      {
+        "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/13bc80f4-41c1-847f-a217-c52eb49d66bb/images/x86_64-aws-mantle-1-nvidia-fips/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img.lz4",
+        "archive_sha256": "6c2528a41dea6638bbf3261960efe7eae3f614efff51fe398fb14c3288638e7a",
+        "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img",
+        "sha256": "d7b7c9bc6fc9ee102b95c77546b56c85346bff47834efcf45fd508c18278fd90",
+        "size": 4294967296
+      }
+    ],
+    "uefi_sha256": "7dc69ef5cb5d0584b14ea5c671cf46e4e3c86a763097072129c41191d3549fe8"
+  }
+]

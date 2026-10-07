@@ -1,5 +1,10 @@
 # Issue 14 systemd guard validation, 2026-10-07
 
+Historical checkpoint. The subsequent operator GPU-capacity waiver,
+us-west-2 attempts, static NVIDIA inspection and cloud cleanup are recorded
+in [the final validation report](../issue-14-final-validation/README.md).
+Its results supersede the blocker and retained-resource status below.
+
 GPU validation is blocked by EC2 capacity. All five fresh image builds and
 private AMI registrations succeeded. Base mantle on both architectures and
 FIPS on x86_64 passed boot, native container execution, and policy checks

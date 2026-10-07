@@ -1,0 +1,6 @@
+{
+  "date": "2026-10-07",
+  "issue": 14,
+  "author": "symphony-admin",
+  "instruction": "Try us-west-2, g6.2xlarge. Do not block on GPU instances though. If you are not able to get it, continue testing on other instances and proceed."
+}

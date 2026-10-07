@@ -1,0 +1,27 @@
+{
+  "status": "not_run_missing_gpu",
+  "case": {
+    "instance": "i-0d283097985d51b34",
+    "instance_type": "m6i.large",
+    "status": "passed",
+    "ami": "ami-0a4eb2f70f4726144",
+    "snapshot_ids": [
+      "snap-05dabb432eb53e4d8",
+      "snap-039a5b259c36d1781"
+    ],
+    "job": "13bc80f4-41c1-847f-a217-c52eb49d66bb",
+    "arch": "x86_64",
+    "variant": "aws-mantle-1-nvidia-fips",
+    "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+    "input_sha256": "432cbc56474bb1b5d3ea04814199fc5d93eedca1aa48d9149e7383980ce414df",
+    "region": "us-west-2",
+    "private": true,
+    "boot_mode": "uefi",
+    "tpm": "v2.0",
+    "runtime": "pending"
+  },
+  "instance": "i-0d283097985d51b34",
+  "reason": "Ordinary-instance fallback reached NVIDIA initialization, which failed without hardware and prevented configured.target/SSM. No GPU or native smoke test ran. Operator authorized proceeding without GPU coverage.",
+  "local_observer_stopped": true,
+  "at": "2026-10-07T01:16:02.032477+00:00"
+}

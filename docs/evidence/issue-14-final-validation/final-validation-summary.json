@@ -1,0 +1,1765 @@
+{
+  "at": "2026-10-07T01:19:36.510569+00:00",
+  "status": "completed_with_operator_approved_gpu_coverage_limit",
+  "operator_instruction": {
+    "date": "2026-10-07",
+    "issue": 14,
+    "author": "symphony-admin",
+    "instruction": "Try us-west-2, g6.2xlarge. Do not block on GPU instances though. If you are not able to get it, continue testing on other instances and proceed."
+  },
+  "release": {
+    "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+    "version": "1.66.1",
+    "build_id": "b26951c7-dirty",
+    "ami_identity": "symphony.14.r10",
+    "kit": "17.0.1-symphony.14.build-f36d9c2b",
+    "core_source": "f36d9c2bbc25887c07d7c8b79662b3944eb60ddc",
+    "twoliter_revision": "d2c650ad1489fe545f68c4fcbd481f2163ed5629",
+    "core_index_digest": "sha256:5ff08d597ba9aa781c8d760fb6fa9d59058bf6d4fbaf2dc666b286b5a09c6b9e",
+    "tracked_changes": "M Release.toml\n M Twoliter.lock\n M Twoliter.toml",
+    "configuration_patch_sha256": "f2d1ed1ecc93ac5cd92df444693a884302fbfb9b4a2c64fd467f722e07e4b0e1",
+    "configuration_sha256": {
+      "Release.toml": "d601f54e077b1e6677cfbe62ef0d8b8b2acf5caf60522d5c1a5e26aa9737b57b",
+      "Twoliter.lock": "a8a2ddf20c8283a7703321f068fa38d419e4c929e47d2b2e201c7fd13f36f5fa",
+      "Twoliter.toml": "f0c755a2b3dd1807d83c4cd65a089bebc417a89225d3230a7fea8da49615f3fe"
+    },
+    "temporary_changes": "Only three release/dependency files; restore from original-config after all image builds finish."
+  },
+  "cases": [
+    {
+      "case": "aws-mantle-1-x86_64",
+      "region": "us-east-2",
+      "image": {
+        "status": "passed",
+        "ami": "ami-01945aec9e04a7d37",
+        "snapshot_ids": [
+          "snap-008e8d7b5b0a1c159",
+          "snap-0d1fb6eac6e5fdb13"
+        ],
+        "job": "1c7c145d-b165-81c9-a667-e4368d21c016",
+        "arch": "x86_64",
+        "variant": "aws-mantle-1",
+        "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+        "input_sha256": "c1ed6f3605c4057f6b82e07fbc09f1b7c2b2b77f60c243ea052ddf04185fbcb6",
+        "region": "us-east-2",
+        "private": true,
+        "boot_mode": "uefi",
+        "tpm": "v2.0",
+        "runtime": "pending"
+      },
+      "artifacts": [
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/1c7c145d-b165-81c9-a667-e4368d21c016/images/x86_64-aws-mantle-1/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-x86_64-1.66.1-b26951c7-dirty-data.img.lz4",
+          "archive_sha256": "4a71cbfe04ccfd48b59e6da2fefd8f34d5b16d816ea339b7079f7384ed0f150d",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-runtime/images/1c7c145d-b165-81c9-a667-e4368d21c016/bottlerocket-aws-mantle-1-x86_64-1.66.1-b26951c7-dirty-data.img",
+          "sha256": "efef1d4af8e8e6d5d911012d4aa8b970af0616e562d580b026299a126c90499c",
+          "size": 1073741824
+        },
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/1c7c145d-b165-81c9-a667-e4368d21c016/images/x86_64-aws-mantle-1/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-x86_64-1.66.1-b26951c7-dirty.img.lz4",
+          "archive_sha256": "cbc71e3ebe5e6981c035f65676c00775ebcde9b659b93dea371c53e175ba99c0",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-runtime/images/1c7c145d-b165-81c9-a667-e4368d21c016/bottlerocket-aws-mantle-1-x86_64-1.66.1-b26951c7-dirty.img",
+          "sha256": "1de0e3ec5c5571a5e36098e0dc27cb238e17cd82d7674593aac79b08d22c478f",
+          "size": 2147483648
+        }
+      ],
+      "uefi_sha256": "7dc69ef5cb5d0584b14ea5c671cf46e4e3c86a763097072129c41191d3549fe8",
+      "runtime": {
+        "status": "passed",
+        "case": {
+          "status": "passed",
+          "ami": "ami-01945aec9e04a7d37",
+          "snapshot_ids": [
+            "snap-008e8d7b5b0a1c159",
+            "snap-0d1fb6eac6e5fdb13"
+          ],
+          "job": "1c7c145d-b165-81c9-a667-e4368d21c016",
+          "arch": "x86_64",
+          "variant": "aws-mantle-1",
+          "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+          "input_sha256": "c1ed6f3605c4057f6b82e07fbc09f1b7c2b2b77f60c243ea052ddf04185fbcb6",
+          "region": "us-east-2",
+          "private": true,
+          "boot_mode": "uefi",
+          "tpm": "v2.0",
+          "runtime": "pending"
+        },
+        "instance": "i-03149ce5fa6c9952b",
+        "smoke": {
+          "kind": "native",
+          "image": "public.ecr.aws/docker/library/busybox@sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e",
+          "exit_code": 0,
+          "output": "R10_NATIVE_CONTAINER_PASS\nx86_64"
+        },
+        "boot_id": "be801fee-e122-4b33-9dd8-1bf9278c7e8c",
+        "finished_at": "2026-10-07T00:57:35.778043+00:00"
+      },
+      "ssm_commands": [
+        {
+          "command_id": "29823659-58d5-47ea-a3aa-b1fc7af7b303",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-preflight-e55c27e2df85/invocation.json"
+        },
+        {
+          "command_id": "da6d58db-e1fd-4f8a-b122-61b8c3edcd54",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-preflight-read-out-64200493cb9a/invocation.json"
+        },
+        {
+          "command_id": "14fbf263-347a-4c16-b0b8-cc8e1dcf779f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-preflight-read-err-9af79ffe2b61/invocation.json"
+        },
+        {
+          "command_id": "f3e79ac7-f597-4200-ab6f-76f73704f7ab",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-create-4a08f4f25d9d/invocation.json"
+        },
+        {
+          "command_id": "82eb1a06-e7b6-4585-874c-3b9765d8ece6",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-create-read-out-9880ab706351/invocation.json"
+        },
+        {
+          "command_id": "8540855c-d7f2-4057-b5b2-0db89b7fd560",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-create-read-err-d1812172502e/invocation.json"
+        },
+        {
+          "command_id": "01b63908-3b7e-49e4-a414-f54035572998",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/direct-mount-b0996db6f09c/invocation.json"
+        },
+        {
+          "command_id": "c9fba3ed-8b76-4849-b7f8-d912d9166747",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/direct-mount-read-out-e5bd7378b9e4/invocation.json"
+        },
+        {
+          "command_id": "951ca719-1526-4f74-83af-271c9d8b12c5",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/direct-mount-read-err-9b8b8eb13058/invocation.json"
+        },
+        {
+          "command_id": "eec92d75-a93f-4f89-800c-c0c1fa5d5fcf",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/policy-after-direct-mount-9c8cb6031b1b/invocation.json"
+        },
+        {
+          "command_id": "25e438ec-8f50-4002-80cc-a73d52b62c1c",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/policy-after-direct-mount-read-4df368869f08/invocation.json"
+        },
+        {
+          "command_id": "690b8ef6-5c50-403c-81b2-816e28ede3fe",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/policy-after-direct-mount-read-88ce25458d62/invocation.json"
+        },
+        {
+          "command_id": "183c0e92-08a1-419a-bea3-cbf04844cf41",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/policy-after-direct-mount-read-c9ecb645d92c/invocation.json"
+        },
+        {
+          "command_id": "c71e2c8c-85cb-4abf-a5de-473f058eb4e1",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-remove-b4c5240b993b/invocation.json"
+        },
+        {
+          "command_id": "c802515c-f39e-48d9-bb73-6973fb8acb63",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-remove-read-out-6d3a631b1967/invocation.json"
+        },
+        {
+          "command_id": "22779b62-2c2e-45ba-b3c4-edf780623cbb",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/mount-target-remove-read-err-bb34231ea499/invocation.json"
+        },
+        {
+          "command_id": "51e614e6-d578-43aa-845b-9a0b8fec5b0b",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/reboot-readiness-9d063b1a145a/invocation.json"
+        },
+        {
+          "command_id": "63a2cd21-c77e-41e0-8e5e-4c428df109d6",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/reboot-boot-id-fa0d56605594/invocation.json"
+        },
+        {
+          "command_id": "9a3b9ca0-d6dd-434f-9b9e-bda26f657644",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/policy-after-reboot-0141ba6bded2/invocation.json"
+        },
+        {
+          "command_id": "68a1a607-526c-484d-a78d-fbdc4b0eabd9",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/policy-after-reboot-read-0bdef67bb214/invocation.json"
+        },
+        {
+          "command_id": "42e64629-df21-47b0-b33c-dd10f0840bb8",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/policy-after-reboot-read-c99be678b571/invocation.json"
+        },
+        {
+          "command_id": "7f602c1f-6e87-4778-ac82-2ae5e46c28e7",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/followup/commands/policy-after-reboot-read-21dc84614ec5/invocation.json"
+        },
+        {
+          "command_id": "19438ef2-f32d-407d-bfa1-919b7e03bdb4",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/admin-readiness-0ed713e47c1b/invocation.json"
+        },
+        {
+          "command_id": "7ca8cffa-12a7-4f9c-b313-31f10050ae73",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/policy-before-be4e368cebaa/invocation.json"
+        },
+        {
+          "command_id": "9e1d8344-e54b-4e3a-a533-c73108bac093",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/policy-before-read-fe4e6d1b508f/invocation.json"
+        },
+        {
+          "command_id": "82ad168f-e5ae-4f8d-b7eb-e42d38326508",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/policy-before-read-478fe6115342/invocation.json"
+        },
+        {
+          "command_id": "7979b3bf-fb7e-4b2b-a578-4cf4ba7e2edc",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/policy-before-read-2215ac8ba82d/invocation.json"
+        },
+        {
+          "command_id": "5ce57a97-04b0-40e0-999f-a4e4ad989f4e",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/container-preflight-1512fc532fa9/invocation.json"
+        },
+        {
+          "command_id": "75fb2f71-7690-48e6-8bf9-0d185d5a9835",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/container-preflight-read-out-6968cab96e01/invocation.json"
+        },
+        {
+          "command_id": "6a61ffd7-98a0-4b40-94f9-631c21008c40",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/container-preflight-read-err-04a95735fccf/invocation.json"
+        },
+        {
+          "command_id": "8ed3649b-8551-44ec-b573-4455f5726861",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/rootfs-preflight-3281ff91ce16/invocation.json"
+        },
+        {
+          "command_id": "42fccbd4-6517-43f7-88fd-e6dfa968cfd5",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/rootfs-preflight-read-out-0c51118095e9/invocation.json"
+        },
+        {
+          "command_id": "9be9c2a4-2f03-416e-9744-6955e2149728",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/rootfs-preflight-read-err-f563d713530b/invocation.json"
+        },
+        {
+          "command_id": "6bedf6dd-ca2e-48ea-b667-fbdc14a24225",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-pull-68e1b29b3a5f/invocation.json"
+        },
+        {
+          "command_id": "0ac76441-69c7-45e5-9130-d6177202dcf8",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-pull-read-out-1b037a558602/invocation.json"
+        },
+        {
+          "command_id": "e003d25e-33ff-4fc4-b043-7b6b1e4b13b2",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-pull-read-err-3e209e7bebf3/invocation.json"
+        },
+        {
+          "command_id": "43a3403b-9ae9-4854-b968-75ab1ae03762",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-mkdir-5cfb735140ba/invocation.json"
+        },
+        {
+          "command_id": "699c40b5-c383-4279-bd6f-0af3089c8cc1",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-mkdir-read-out-bda7c2752c13/invocation.json"
+        },
+        {
+          "command_id": "65b76d9e-a67e-4b44-8c52-49bb680bc1a5",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-mkdir-read-err-bbe814107488/invocation.json"
+        },
+        {
+          "command_id": "10ede5c7-2526-4527-9d29-8652619a23c7",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-mount-5d8f01bd5aae/invocation.json"
+        },
+        {
+          "command_id": "8e4e0a6d-54db-4d6a-8b78-0ba1d3b9b438",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-mount-read-out-7bde5a28fd12/invocation.json"
+        },
+        {
+          "command_id": "bccb4899-4e4f-4f0a-9569-94840ebc75e3",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-mount-read-err-ca3a037e834d/invocation.json"
+        },
+        {
+          "command_id": "1d0c0e49-cadc-472a-aed4-06089653868b",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-label-0d7559b6f117/invocation.json"
+        },
+        {
+          "command_id": "e6882e61-5f34-403c-8293-10c8b5a435bc",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-label-read-out-deb9b42cb3b0/invocation.json"
+        },
+        {
+          "command_id": "bb6f2430-075c-4b34-bc35-979987457a56",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-label-read-err-f59141017a84/invocation.json"
+        },
+        {
+          "command_id": "3b04bcf0-a0ea-4e0f-ace0-96de8652fac3",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-helper-2aa553ba2d1a/invocation.json"
+        },
+        {
+          "command_id": "ab704221-8772-4adc-b0fd-945c4aaf75ef",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-helper-read-out-895314aa9bad/invocation.json"
+        },
+        {
+          "command_id": "89251a67-f6b1-4b5c-8748-b912ce54f96f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-helper-read-err-ffb1458e3629/invocation.json"
+        },
+        {
+          "command_id": "940d670e-98c9-488d-9b13-096d6511c84c",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-info-07f4a1fd1d45/invocation.json"
+        },
+        {
+          "command_id": "9a18254d-e353-4de1-98b7-a29e9d7641e1",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-info-read-out-ea61d28bd786/invocation.json"
+        },
+        {
+          "command_id": "4537e388-a179-47e5-bb99-b8ebdba10aaa",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-info-read-err-fbd8c09139d6/invocation.json"
+        },
+        {
+          "command_id": "53c4d8bb-80e7-4efa-9f6e-cf035ed4709e",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/deliver-spec-5dd312edd898/invocation.json"
+        },
+        {
+          "command_id": "40edc1e9-c684-45bb-a6ad-4a697ca4fa4a",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/verify-spec-30e1efcd0725/invocation.json"
+        },
+        {
+          "command_id": "6aff1669-aba8-438e-8595-321469841ce1",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-run-8f9f6130a2d4/invocation.json"
+        },
+        {
+          "command_id": "6b244ee5-a331-4334-9647-3ae508a8eae1",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-run-read-out-d39a6a971d3a/invocation.json"
+        },
+        {
+          "command_id": "7b6489c1-d4fd-4425-9f2f-bb6ec81ada15",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-run-read-err-06d3b77233b4/invocation.json"
+        },
+        {
+          "command_id": "05f1cbd1-a8e7-4cbe-ba8c-2160a4438a7e",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-helper-9aa44e1a1cc4/invocation.json"
+        },
+        {
+          "command_id": "f09da47d-18d4-40f4-9a2f-19f404280678",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-helper-read-out-d79e4fb3fed0/invocation.json"
+        },
+        {
+          "command_id": "6d0b9431-35a1-41b4-bb5a-aedf912b550c",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-helper-read-err-409b160a7b68/invocation.json"
+        },
+        {
+          "command_id": "d21c4c23-6bab-44a1-85d3-34be400fce25",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-mount-1cd272782778/invocation.json"
+        },
+        {
+          "command_id": "83ddd73a-aba8-4945-a316-21921268adfd",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-mount-read-out-c2ba8f5f84ca/invocation.json"
+        },
+        {
+          "command_id": "b1bb0b94-f3d0-42b5-8d07-dad76f14aeef",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-mount-read-err-0e9908bcc828/invocation.json"
+        },
+        {
+          "command_id": "eaca0405-0430-4e9c-a0a4-6e28762db737",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-snapshot-7279c8d55746/invocation.json"
+        },
+        {
+          "command_id": "8134deb3-50a5-431d-9cd0-35505b7a3496",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-snapshot-read-out-5af56b8b320e/invocation.json"
+        },
+        {
+          "command_id": "295b2cff-e52e-41df-bbed-3b4ecabaca57",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/native-clean-snapshot-read-err-62f7882f3555/invocation.json"
+        },
+        {
+          "command_id": "b05bb42d-95ce-44db-bcfc-a3c7a13a3034",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/policy-after-2e46e887b271/invocation.json"
+        },
+        {
+          "command_id": "ad98bb73-c8f8-49c0-b219-1f9c8423ff24",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/policy-after-read-937815d6d114/invocation.json"
+        },
+        {
+          "command_id": "486decd6-9e0e-42e2-8547-8717446c6c29",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/policy-after-read-f2c40fa7e4a0/invocation.json"
+        },
+        {
+          "command_id": "c6a24a50-5fb1-4712-978b-9a00d3d616ed",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-x86_64/commands/policy-after-read-c17178f06a95/invocation.json"
+        }
+      ],
+      "followup": {
+        "status": "passed",
+        "instance": "i-03149ce5fa6c9952b",
+        "old_boot_id": "be801fee-e122-4b33-9dd8-1bf9278c7e8c",
+        "new_boot_id": "d917b8c5-3e9d-4a37-8b63-31d6d71797c6",
+        "direct_mount_refused": true,
+        "finished_at": "2026-10-07T00:59:22.720868+00:00"
+      }
+    },
+    {
+      "case": "aws-mantle-1-aarch64",
+      "region": "us-east-2",
+      "image": {
+        "status": "passed",
+        "ami": "ami-0a02773f67275735e",
+        "snapshot_ids": [
+          "snap-0f639e627cb6cbad5",
+          "snap-0ee3bfaa615315652"
+        ],
+        "job": "e2209cfc-01bc-8357-a66c-a655c592d1a3",
+        "arch": "aarch64",
+        "variant": "aws-mantle-1",
+        "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+        "input_sha256": "a2994373a339f5620819ead31bba25a05ff64f6c9e20808f22214572920aba2b",
+        "region": "us-east-2",
+        "private": true,
+        "boot_mode": "uefi",
+        "tpm": "v2.0",
+        "runtime": "pending"
+      },
+      "artifacts": [
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/e2209cfc-01bc-8357-a66c-a655c592d1a3/images/aarch64-aws-mantle-1/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-aarch64-1.66.1-b26951c7-dirty-data.img.lz4",
+          "archive_sha256": "2863cb29ba6001cbf6e7517a9796822d069ed4865d7a73219ab1ca95f609c0da",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-runtime/images/e2209cfc-01bc-8357-a66c-a655c592d1a3/bottlerocket-aws-mantle-1-aarch64-1.66.1-b26951c7-dirty-data.img",
+          "sha256": "cb7788948ac0b63c358a7748ee4da351edd2155ed84de8f97e98eafb1ca94876",
+          "size": 1073741824
+        },
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/e2209cfc-01bc-8357-a66c-a655c592d1a3/images/aarch64-aws-mantle-1/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-aarch64-1.66.1-b26951c7-dirty.img.lz4",
+          "archive_sha256": "bffc9667107874e6bab4ce4c9039f462f2f4295b3eb0137713432c005ad64e88",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-runtime/images/e2209cfc-01bc-8357-a66c-a655c592d1a3/bottlerocket-aws-mantle-1-aarch64-1.66.1-b26951c7-dirty.img",
+          "sha256": "f4fe493d62f6468062c19c0cb95467f0ece26d8a249a82cfae1cb6235695fb52",
+          "size": 2147483648
+        }
+      ],
+      "uefi_sha256": "7dc69ef5cb5d0584b14ea5c671cf46e4e3c86a763097072129c41191d3549fe8",
+      "runtime": {
+        "status": "passed",
+        "case": {
+          "status": "passed",
+          "ami": "ami-0a02773f67275735e",
+          "snapshot_ids": [
+            "snap-0f639e627cb6cbad5",
+            "snap-0ee3bfaa615315652"
+          ],
+          "job": "e2209cfc-01bc-8357-a66c-a655c592d1a3",
+          "arch": "aarch64",
+          "variant": "aws-mantle-1",
+          "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+          "input_sha256": "a2994373a339f5620819ead31bba25a05ff64f6c9e20808f22214572920aba2b",
+          "region": "us-east-2",
+          "private": true,
+          "boot_mode": "uefi",
+          "tpm": "v2.0",
+          "runtime": "pending"
+        },
+        "instance": "i-0d60151a84fd6d4e3",
+        "smoke": {
+          "kind": "native",
+          "image": "public.ecr.aws/docker/library/busybox@sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e",
+          "exit_code": 0,
+          "output": "R10_NATIVE_CONTAINER_PASS\naarch64"
+        },
+        "boot_id": "97ad5db5-c584-495f-9f4e-c920aaef4c9e",
+        "finished_at": "2026-10-07T00:57:50.564658+00:00"
+      },
+      "ssm_commands": [
+        {
+          "command_id": "ebbc37d1-f8ce-46d2-a524-f97a0657f33c",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/admin-readiness-b78a92a89efc/invocation.json"
+        },
+        {
+          "command_id": "2aaf04db-01c8-4569-84f0-448fcf5ee81f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/policy-before-72ffb6a49d5f/invocation.json"
+        },
+        {
+          "command_id": "67e0d978-89ce-49f4-bccb-1658e648edf1",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/policy-before-read-ca92d2a6a837/invocation.json"
+        },
+        {
+          "command_id": "4d15a284-55a6-4d88-9213-b2abd0597f50",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/policy-before-read-7cb32f518724/invocation.json"
+        },
+        {
+          "command_id": "f282c0e2-7c60-4c4d-9527-9383e9bba785",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/container-preflight-e4bfe563183c/invocation.json"
+        },
+        {
+          "command_id": "49d7dd70-c76c-49d0-a4cd-b0c0bfa83240",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/container-preflight-read-out-4163c283dc11/invocation.json"
+        },
+        {
+          "command_id": "20ca07c1-78df-453f-a259-865e42843028",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/container-preflight-read-err-465e98b52df1/invocation.json"
+        },
+        {
+          "command_id": "ab2ab9d0-6ddc-4a46-82f5-b43661c79eca",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/rootfs-preflight-f360b3f44925/invocation.json"
+        },
+        {
+          "command_id": "cbc6067d-64a4-4cf1-bc95-642f638ac523",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/rootfs-preflight-read-out-cc7eb2acdcd9/invocation.json"
+        },
+        {
+          "command_id": "26a1fc24-f04f-4ff4-9d2a-d93a27bd6583",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/rootfs-preflight-read-err-adcc991a58ce/invocation.json"
+        },
+        {
+          "command_id": "d4f30beb-ec9a-478d-a445-964b6d4e432b",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-pull-415d15818add/invocation.json"
+        },
+        {
+          "command_id": "f80f31d9-f44d-4c89-837d-4fe2a4b53717",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-pull-read-out-b8605531d77f/invocation.json"
+        },
+        {
+          "command_id": "0b50089c-872a-43f0-83ab-be9cccf8aea8",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-pull-read-err-8f853276d7ac/invocation.json"
+        },
+        {
+          "command_id": "ca14ceef-5a90-4eb8-ba66-a4909dc93a63",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-mkdir-be2df8799961/invocation.json"
+        },
+        {
+          "command_id": "a08c1d11-11df-49cb-8e65-48f5c0443490",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-mkdir-read-out-ddd6a6cb9227/invocation.json"
+        },
+        {
+          "command_id": "22ebc7d1-05d1-47ce-978d-69d2165ae816",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-mkdir-read-err-ede827f051c2/invocation.json"
+        },
+        {
+          "command_id": "0840da41-b503-4481-a1ed-6eaf1863c156",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-mount-883c394a2dfc/invocation.json"
+        },
+        {
+          "command_id": "9dade391-290b-405a-82b5-927fab275e93",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-mount-read-out-ae1b8fba3c69/invocation.json"
+        },
+        {
+          "command_id": "cbc5ab47-08a2-4e72-a45a-605d461868a7",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-mount-read-err-2fb3fe26e243/invocation.json"
+        },
+        {
+          "command_id": "212c00f1-dd6f-4d82-85e8-a368b1b50aa7",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-label-0f4a5288cabf/invocation.json"
+        },
+        {
+          "command_id": "9a74de32-7691-456a-a038-c2e6997b5c0b",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-label-read-out-f5af41896362/invocation.json"
+        },
+        {
+          "command_id": "0ebb005e-7586-467c-ab2d-c65f4e132f29",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-label-read-err-431355907b4c/invocation.json"
+        },
+        {
+          "command_id": "0c092200-28fb-4e77-a3b1-74e1d000f7dd",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-helper-3b7dada83759/invocation.json"
+        },
+        {
+          "command_id": "058c473b-3e38-40da-9168-325b6df9ffbd",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-helper-read-out-08b18051aaf9/invocation.json"
+        },
+        {
+          "command_id": "84b0e188-e3c5-49c5-b2c7-b55df3b7320f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-helper-read-err-49d83c9258c7/invocation.json"
+        },
+        {
+          "command_id": "a110e52c-2875-4ee0-894f-202f6ff05e66",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-info-c5fa17bcc54c/invocation.json"
+        },
+        {
+          "command_id": "07b26a07-b5a1-4d6c-9df2-7607eb667d87",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-info-read-out-01e3ff91fb4a/invocation.json"
+        },
+        {
+          "command_id": "7ba9a831-7949-40c9-96c9-28451739344b",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-info-read-err-0748317c733d/invocation.json"
+        },
+        {
+          "command_id": "8ffa5cb9-a42c-4eec-8d92-ee605a0b7043",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/deliver-spec-7b0f28443ebb/invocation.json"
+        },
+        {
+          "command_id": "0408fb84-d931-486d-9606-5c2d96368639",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/verify-spec-0d6430f29ad1/invocation.json"
+        },
+        {
+          "command_id": "cde0dcba-5902-4b31-ae9f-b29fb0fe620f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-run-ad5f1876913d/invocation.json"
+        },
+        {
+          "command_id": "82a3a811-02a6-475d-b05f-cccbf48ef6c7",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-run-read-out-76e46c25c047/invocation.json"
+        },
+        {
+          "command_id": "694aa143-eedc-457e-a6b4-d1c59faceee9",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-run-read-err-0881f9e8379f/invocation.json"
+        },
+        {
+          "command_id": "7b9f8495-b6ba-4d85-bf9e-90054954fca7",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-helper-96c9b6e421ca/invocation.json"
+        },
+        {
+          "command_id": "f9e97060-b26a-4f3a-a757-eebcfe5c2712",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-helper-read-out-29a61e46932d/invocation.json"
+        },
+        {
+          "command_id": "47a52b16-f318-400d-aa99-ac008665db17",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-helper-read-err-e9eab03df31f/invocation.json"
+        },
+        {
+          "command_id": "a999ec7c-8276-41b2-a4db-d7895ef0d580",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-mount-1baab8a66c45/invocation.json"
+        },
+        {
+          "command_id": "caea22a1-72c7-42eb-9347-8edfee5c3f8d",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-mount-read-out-9f8054dfa0b8/invocation.json"
+        },
+        {
+          "command_id": "a375035d-59fe-4897-b942-926250ad370d",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-mount-read-err-6ec4aa33bbe7/invocation.json"
+        },
+        {
+          "command_id": "69de2ad3-730b-459a-823d-dc34537fc670",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-snapshot-caafc7c79e5c/invocation.json"
+        },
+        {
+          "command_id": "28efc839-4ce9-4009-8424-f43dc7c00136",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-snapshot-read-out-d7ffb70b205f/invocation.json"
+        },
+        {
+          "command_id": "43e411fa-4756-48f6-8f9d-1752ad7ab285",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/native-clean-snapshot-read-err-8617025bd7d4/invocation.json"
+        },
+        {
+          "command_id": "4af09ac3-2322-4bed-b3e0-482dc3bdaa3f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/policy-after-b68212067241/invocation.json"
+        },
+        {
+          "command_id": "cf3f0417-e4e9-4e04-8e08-95e3e87c4c1f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/policy-after-read-9dda4da2ee75/invocation.json"
+        },
+        {
+          "command_id": "5239c37b-a2a7-4701-b753-f011d3360e54",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-aarch64/commands/policy-after-read-5c044b3d9ca8/invocation.json"
+        }
+      ]
+    },
+    {
+      "case": "aws-mantle-1-fips-x86_64",
+      "region": "us-east-2",
+      "image": {
+        "status": "passed",
+        "ami": "ami-0ad5b2fd39f6ad7ad",
+        "snapshot_ids": [
+          "snap-09b7806e2f22934b8",
+          "snap-047ad07ab3ff21e1d"
+        ],
+        "job": "49bcb8e3-ea6a-88b3-a5a3-d57dbf0bf278",
+        "arch": "x86_64",
+        "variant": "aws-mantle-1-fips",
+        "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+        "input_sha256": "0ffc4de75c88a5f872c7006543875f119200588d795bc900aab818bcba436fd4",
+        "region": "us-east-2",
+        "private": true,
+        "boot_mode": "uefi",
+        "tpm": "v2.0",
+        "runtime": "pending"
+      },
+      "artifacts": [
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/49bcb8e3-ea6a-88b3-a5a3-d57dbf0bf278/images/x86_64-aws-mantle-1-fips/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-fips-x86_64-1.66.1-b26951c7-dirty-data.img.lz4",
+          "archive_sha256": "f18e6bc3bc1d09f07dd684576623e6f94412a7a2f72aa825019a2e711b04c909",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-runtime/images/49bcb8e3-ea6a-88b3-a5a3-d57dbf0bf278/bottlerocket-aws-mantle-1-fips-x86_64-1.66.1-b26951c7-dirty-data.img",
+          "sha256": "4d5f2d996ff8333e19964fe4214896914cd1786c630006e083347f5f49255dcb",
+          "size": 1073741824
+        },
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/49bcb8e3-ea6a-88b3-a5a3-d57dbf0bf278/images/x86_64-aws-mantle-1-fips/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-fips-x86_64-1.66.1-b26951c7-dirty.img.lz4",
+          "archive_sha256": "5db37eeefdbc812f8cf2220ebcc80f9d2da3e259ab7d7ef94c5344ac5453fc59",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-runtime/images/49bcb8e3-ea6a-88b3-a5a3-d57dbf0bf278/bottlerocket-aws-mantle-1-fips-x86_64-1.66.1-b26951c7-dirty.img",
+          "sha256": "a330f65a2189e3de214e4a374d092ea4943613b8ac34740a9fbcd28a794550e6",
+          "size": 2147483648
+        }
+      ],
+      "uefi_sha256": "7dc69ef5cb5d0584b14ea5c671cf46e4e3c86a763097072129c41191d3549fe8",
+      "runtime": {
+        "status": "passed",
+        "case": {
+          "status": "passed",
+          "ami": "ami-0ad5b2fd39f6ad7ad",
+          "snapshot_ids": [
+            "snap-09b7806e2f22934b8",
+            "snap-047ad07ab3ff21e1d"
+          ],
+          "job": "49bcb8e3-ea6a-88b3-a5a3-d57dbf0bf278",
+          "arch": "x86_64",
+          "variant": "aws-mantle-1-fips",
+          "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+          "input_sha256": "0ffc4de75c88a5f872c7006543875f119200588d795bc900aab818bcba436fd4",
+          "region": "us-east-2",
+          "private": true,
+          "boot_mode": "uefi",
+          "tpm": "v2.0",
+          "runtime": "pending"
+        },
+        "instance": "i-04b3d0fd515aa69fa",
+        "smoke": {
+          "kind": "native",
+          "image": "public.ecr.aws/docker/library/busybox@sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e",
+          "exit_code": 0,
+          "output": "R10_NATIVE_CONTAINER_PASS\nx86_64"
+        },
+        "boot_id": "8d7c567f-3592-43c7-bf29-49d1b3a32ecf",
+        "finished_at": "2026-10-07T00:57:34.093083+00:00"
+      },
+      "ssm_commands": [
+        {
+          "command_id": "650363eb-8444-4b5e-be8b-80db00f2787f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/admin-readiness-d1fd0e0e369f/invocation.json"
+        },
+        {
+          "command_id": "1f67c73b-8364-49f0-a13d-1005dfdbec92",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/policy-before-ba2708263945/invocation.json"
+        },
+        {
+          "command_id": "cef0a4e4-0133-4d41-b33f-023e7c2db33b",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/policy-before-read-61f4cfa793e2/invocation.json"
+        },
+        {
+          "command_id": "4bc85aa3-6621-4f9f-80b4-d2b2e866969f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/policy-before-read-dfa28477b746/invocation.json"
+        },
+        {
+          "command_id": "ec47d94d-14a6-4956-bdb4-9dd137da9acf",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/policy-before-read-cd97ce9f1987/invocation.json"
+        },
+        {
+          "command_id": "c9d64fbb-cad6-4d40-9163-de851d86932e",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/container-preflight-deb9c62b6d46/invocation.json"
+        },
+        {
+          "command_id": "9ca0d992-64c8-4271-abe1-948d6936f580",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/container-preflight-read-out-771908ab83e4/invocation.json"
+        },
+        {
+          "command_id": "fcafdec8-c627-4255-bf4d-f33630b07317",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/container-preflight-read-err-986653a3a148/invocation.json"
+        },
+        {
+          "command_id": "75e1728c-0943-4b09-a1e6-322e8978d609",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/rootfs-preflight-b6fd1bb7edd4/invocation.json"
+        },
+        {
+          "command_id": "266cb00d-a3c5-4a7c-a423-884980edbccb",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/rootfs-preflight-read-out-90e407c2ff54/invocation.json"
+        },
+        {
+          "command_id": "5904afd9-8df6-40f4-9ac5-62b56317a1cf",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/rootfs-preflight-read-err-a183df3f6a08/invocation.json"
+        },
+        {
+          "command_id": "217a83b1-a6e8-4222-81a9-957e90c43170",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-pull-84108463830e/invocation.json"
+        },
+        {
+          "command_id": "253a7dc5-76fe-4177-8dec-9f67fab23630",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-pull-read-out-67f43349254c/invocation.json"
+        },
+        {
+          "command_id": "9e60e73c-4023-4aa9-ba4d-8a85235cfec4",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-pull-read-err-b5b2e6476796/invocation.json"
+        },
+        {
+          "command_id": "b8acb1e1-b6e0-42f5-ac26-a60d7a08ee22",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-mkdir-5fcc0731713f/invocation.json"
+        },
+        {
+          "command_id": "d7edd43c-de7f-4fb5-b48f-3580847e83eb",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-mkdir-read-out-a31f0795352a/invocation.json"
+        },
+        {
+          "command_id": "6a16dd19-433e-4422-9429-c81d44b195d1",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-mkdir-read-err-5aea62166cc2/invocation.json"
+        },
+        {
+          "command_id": "1a283cbe-815c-4baf-80df-25a643e539b9",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-mount-3d24db13c205/invocation.json"
+        },
+        {
+          "command_id": "e3383a45-8d79-46e0-8c9d-af88091ebc00",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-mount-read-out-2b3828446833/invocation.json"
+        },
+        {
+          "command_id": "2c701fe3-d7a6-4ad0-a233-d9c74468c458",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-mount-read-err-03f8982ebe22/invocation.json"
+        },
+        {
+          "command_id": "7afc1172-a174-410a-bad7-a46abfd6e6e4",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-label-8f821490e260/invocation.json"
+        },
+        {
+          "command_id": "9dc9bd2d-8f52-48a0-8bc1-0b54b01699b1",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-label-read-out-089b04d544ef/invocation.json"
+        },
+        {
+          "command_id": "80f161cf-7b9e-4d9d-b228-c6167ee49372",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-label-read-err-9cca6ad00353/invocation.json"
+        },
+        {
+          "command_id": "819a39ae-7b88-44a5-aba9-3d59ce597d83",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-helper-4796c7a81d0e/invocation.json"
+        },
+        {
+          "command_id": "4ed8b29d-3899-4e5b-be78-02fb433c2abc",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-helper-read-out-b4766e274b6f/invocation.json"
+        },
+        {
+          "command_id": "7c365745-4304-4816-9eb2-eff01ac196e5",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-helper-read-err-6deb9b6f7302/invocation.json"
+        },
+        {
+          "command_id": "29039108-b7e0-4cea-a8d3-10b689e8f99b",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-info-59e9162a0b48/invocation.json"
+        },
+        {
+          "command_id": "a2276d74-9ab7-4aa5-abc5-8e2065faa780",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-info-read-out-b5d808eee78e/invocation.json"
+        },
+        {
+          "command_id": "44f98569-4076-465a-8618-a4a985e63197",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-info-read-err-de2bfbbfe5f7/invocation.json"
+        },
+        {
+          "command_id": "9e91ff78-8204-49c6-b84d-5e7fdc76ac23",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/deliver-spec-2abcd6b226cc/invocation.json"
+        },
+        {
+          "command_id": "fb8f7063-08dd-4e1f-8e59-c81239a609ab",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/verify-spec-cd31ffe0dd67/invocation.json"
+        },
+        {
+          "command_id": "ade70862-c00d-433f-a558-125e5b42b2bb",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-run-16f899aabcd4/invocation.json"
+        },
+        {
+          "command_id": "aa6620b0-9940-4cc7-a727-e8eab4f09fb9",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-run-read-out-fcecc89278de/invocation.json"
+        },
+        {
+          "command_id": "46ccb214-0b9f-4c3d-97e7-03786d878d23",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-run-read-err-07a2f5645cc3/invocation.json"
+        },
+        {
+          "command_id": "91d2f9d2-b4d9-404d-8350-66bfd65c3bcd",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-helper-f8ed659d61ca/invocation.json"
+        },
+        {
+          "command_id": "bd52a61e-e32c-4d75-9742-747e7c0333bb",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-helper-read-out-5db5b5afab7d/invocation.json"
+        },
+        {
+          "command_id": "2ed47071-dcfc-4cff-9737-e804eec4a36a",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-helper-read-err-cdf6d0727bac/invocation.json"
+        },
+        {
+          "command_id": "36f810a7-a1ab-488c-92df-9618685d74f9",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-mount-6e245d2a07a1/invocation.json"
+        },
+        {
+          "command_id": "51659d72-63d9-4ade-8692-e56d2501c46f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-mount-read-out-7ba7be400714/invocation.json"
+        },
+        {
+          "command_id": "1f244fe8-1e4d-463c-b0dc-27c691d1a9f3",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-mount-read-err-f55e4c025a0b/invocation.json"
+        },
+        {
+          "command_id": "d9fff10e-6cc8-4ebc-9e87-dbfa6c7a55bc",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-snapshot-8c0a0c1fc76f/invocation.json"
+        },
+        {
+          "command_id": "eaeca906-de63-4003-8a76-371d3656f65f",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-snapshot-read-out-7b58cde07e33/invocation.json"
+        },
+        {
+          "command_id": "bf70758c-9ec2-44ef-9268-06a2df029271",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/native-clean-snapshot-read-err-13ce51684f72/invocation.json"
+        },
+        {
+          "command_id": "3babd152-4061-4ab6-9e55-fc7e81ca261a",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/policy-after-4216d42ec61e/invocation.json"
+        },
+        {
+          "command_id": "936c74b7-ad0f-43f2-abd2-34b8d4aa9517",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/policy-after-read-1105759123bc/invocation.json"
+        },
+        {
+          "command_id": "a14151b9-5306-4442-9a48-9c627d458aa8",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/policy-after-read-81be40510363/invocation.json"
+        },
+        {
+          "command_id": "bf7ebcd5-7228-4fb5-b397-74196397143e",
+          "status": "Success",
+          "response_code": 0,
+          "path": "cases/aws-mantle-1-fips-x86_64/commands/policy-after-read-0634afe9b503/invocation.json"
+        }
+      ]
+    },
+    {
+      "case": "aws-mantle-1-nvidia-x86_64",
+      "region": "us-west-2",
+      "image": {
+        "status": "passed",
+        "ami": "ami-04d2282bb9e8665e7",
+        "snapshot_ids": [
+          "snap-03fc9f386a5a013e9",
+          "snap-0121e514f380b01fb"
+        ],
+        "job": "ab22cee4-84e2-802a-a72f-98618416d7e8",
+        "arch": "x86_64",
+        "variant": "aws-mantle-1-nvidia",
+        "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+        "input_sha256": "39226d161ecd854bf114899b7ea92801aa9bd749b4e18480d0b853c080afe19b",
+        "region": "us-west-2",
+        "private": true,
+        "boot_mode": "uefi",
+        "tpm": "v2.0",
+        "runtime": "pending"
+      },
+      "artifacts": [
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/ab22cee4-84e2-802a-a72f-98618416d7e8/images/x86_64-aws-mantle-1-nvidia/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty-data.img.lz4",
+          "archive_sha256": "cfb2b7f5f67f46483af73240bf1a31388f7c53cb39090385b1c8e9bf6a16ae8a",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty-data.img",
+          "sha256": "4022a6d212aa4a1eed7a6cb728c171ed1573f0cfced21d30ea4ecc7a0f19d0fd",
+          "size": 1073741824
+        },
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/ab22cee4-84e2-802a-a72f-98618416d7e8/images/x86_64-aws-mantle-1-nvidia/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img.lz4",
+          "archive_sha256": "171733e33deab51987f7ff533bee12b6ab072ed26a6fdb41200250ba2a60fd4d",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img",
+          "sha256": "fa7917093c97ecc1ce6c0ff85afdb02422aa8170de6da0e35a92be7b06cd00a3",
+          "size": 4294967296
+        }
+      ],
+      "uefi_sha256": "7dc69ef5cb5d0584b14ea5c671cf46e4e3c86a763097072129c41191d3549fe8",
+      "runtime": {
+        "status": "not_run_missing_gpu",
+        "case": {
+          "instance": "i-09f6f9c55f0187a17",
+          "instance_type": "m6i.large",
+          "status": "passed",
+          "ami": "ami-04d2282bb9e8665e7",
+          "snapshot_ids": [
+            "snap-03fc9f386a5a013e9",
+            "snap-0121e514f380b01fb"
+          ],
+          "job": "ab22cee4-84e2-802a-a72f-98618416d7e8",
+          "arch": "x86_64",
+          "variant": "aws-mantle-1-nvidia",
+          "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+          "input_sha256": "39226d161ecd854bf114899b7ea92801aa9bd749b4e18480d0b853c080afe19b",
+          "region": "us-west-2",
+          "private": true,
+          "boot_mode": "uefi",
+          "tpm": "v2.0",
+          "runtime": "pending"
+        },
+        "instance": "i-09f6f9c55f0187a17",
+        "reason": "Ordinary-instance fallback reached NVIDIA initialization, which failed without hardware and prevented configured.target/SSM. No GPU or native smoke test ran. Operator authorized proceeding without GPU coverage.",
+        "local_observer_stopped": true,
+        "at": "2026-10-07T01:16:02.032249+00:00"
+      },
+      "ssm_commands": [],
+      "static_inspection": {
+        "at": "2026-10-07T01:19:25.066713+00:00",
+        "variant": "aws-mantle-1-nvidia",
+        "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+        "image_sha256": "fa7917093c97ecc1ce6c0ff85afdb02422aa8170de6da0e35a92be7b06cd00a3",
+        "commands": [
+          {
+            "argv": [
+              "sfdisk",
+              "--json",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img"
+            ],
+            "returncode": 0,
+            "stdout": "{\n   \"partitiontable\": {\n      \"label\": \"gpt\",\n      \"id\": \"DD9BA66E-4DE3-48F5-B7FC-2859E5FD91FD\",\n      \"device\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img\",\n      \"unit\": \"sectors\",\n      \"firstlba\": 34,\n      \"lastlba\": 8388574,\n      \"sectorsize\": 512,\n      \"partitions\": [\n         {\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img1\",\n            \"start\": 2048,\n            \"size\": 8192,\n            \"type\": \"21686148-6449-6E6F-744E-656564454649\",\n            \"uuid\": \"A01AA42D-A8F5-4356-94B5-C6DFDEB65761\",\n            \"name\": \"BIOS-BOOT\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img2\",\n            \"start\": 10240,\n            \"size\": 348160,\n            \"type\": \"C12A7328-F81F-11D2-BA4B-00A0C93EC93B\",\n            \"uuid\": \"331488E9-898E-46BF-9BBE-4AFAFBD5277C\",\n            \"name\": \"EFI-SYSTEM\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img3\",\n            \"start\": 358400,\n            \"size\": 7536640,\n            \"type\": \"5526016A-1A97-4EA4-B39A-B7C8C6CA4502\",\n            \"uuid\": \"0258F4AC-0140-4B30-AF5B-60520E9ECD12\",\n            \"name\": \"BOTTLEROCKET-ROOT-A\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img4\",\n            \"start\": 7895040,\n            \"size\": 81920,\n            \"type\": \"598F10AF-C955-4456-6A99-7720068A6CEA\",\n            \"uuid\": \"651EE0F7-CC87-4501-B31E-61119989EE6E\",\n            \"name\": \"BOTTLEROCKET-HASH-A\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img5\",\n            \"start\": 7976960,\n            \"size\": 225280,\n            \"type\": \"0C5D99A5-D331-4147-BAEF-08E2B855BDC9\",\n            \"uuid\": \"9AFF02D9-D727-400E-AD00-F45642262FE8\",\n            \"name\": \"BOTTLEROCKET-RESERVED-A\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img6\",\n            \"start\": 8202240,\n            \"size\": 182272,\n            \"type\": \"440408BB-EB0B-4328-A6E5-A29038FAD706\",\n            \"uuid\": \"EC291F87-3A21-4598-964F-349ED7FDBA52\",\n            \"name\": \"BOTTLEROCKET-PRIVATE\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img7\",\n            \"start\": 8384512,\n            \"size\": 2048,\n            \"type\": \"626F7474-6C65-6474-6861-726D61726B73\",\n            \"uuid\": \"69040874-417D-4E26-A764-7885F22007EA\"\n         }\n      ]\n   }\n}\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --offset=\"$2\" -s \"$1\"",
+              "inspect",
+              "/input/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img",
+              "183500800"
+            ],
+            "returncode": 0,
+            "stdout": "Filesystem magic number:                      0xE0F5E1E2\nFilesystem blocksize:                         4096\nFilesystem blocks:                            204358\nFilesystem inode metadata start block:        0\nFilesystem shared xattr metadata start block: 0\nFilesystem root nid:                          43\nFilesystem compr_algs:                        lz4\nFilesystem sb_size:                           128\nFilesystem inode count:                       7193\nFilesystem created:                           Wed Oct  7 00:52:54 2026\nFilesystem compatible features:               sb_csum mtime xattr_filter \nFilesystem incompatible features:             lz4_0padding compr_cfgs big_pcluster \nFilesystem UUID:                              531b7f73-21e5-46a9-bdf2-81600812c5bc\nRequired upstream Linux kernel version:       5.13\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --ls --path=\"$2\" \"$1\"",
+              "inspect",
+              "/input/root-partition.img",
+              "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system"
+            ],
+            "returncode": 0,
+            "stdout": "Path : /x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system\nSize: 9152  On-disk size: 9152  directory\nNID: 9188541   Links: 29   Layout: 2   Compression ratio: 100.00%\nInode size: 32   Xattr size: 16\nUid: 0   Gid: 0  Access: 0755/rwxr-xr-x\nTimestamp: 2026-10-07 00:52:54.000000000\n\n       NID TYPE  FILENAME\n   9188541    2  .\n   4898972    2  ..\n   9394905    1  \\x2ebottlerocket.mount\n   9394926    2  \\x2ebottlerocket.mount.d\n   9394930    1  activate-configured.service\n   9394943    1  activate-multi-user.service\n   9394955    2  activate-multi-user.service.d\n   9394959    1  activate-preconfigured.service\n   9394974    1  apiserver.service\n   9394986    1  audit-rules.service\n   9394998    1  basic.target\n   9395029    1  blockdev@.target\n   9395047    1  boot-complete.target\n   9395072    1  bootstrap-commands.service\n   9395094    1  bootstrap-containers@.service\n   9395131    1  capture-kernel-dump.service\n   9395150    1  cfsignal.service\n   9395166    1  check-fips-modules.service\n   9395063    2  check-fips-modules.service.d\n   9395712    1  check-kernel-integrity.service\n   9395185    1  chronyd.service\n   9395732    1  configure-hugepages.service\n   9395748    1  configure-snapshotter.service\n   9395791    1  configured.target\n   9395798    1  containerd.service\n   9395066    2  containerd.service.d\n   9395817    1  create-fips-marker.service\n   9395968    1  cryptsetup-pre.target\n   9395985    1  cryptsetup.target\n   8779390    7  ctrl-alt-del.target\n   9395197    7  dbus-org.freedesktop.login1.service\n   9396000    1  dbus.socket\n   9395833    7  default.target\n   9396013    1  deprecation-warning@.service\n   9396024    1  deprecation-warning@.timer\n   9396035    1  dev-hugepages.mount\n   9396060    1  dev-mqueue.mount\n   9395200    1  disable-kexec-load.service\n   9395214    1  disable-udp-offload.service\n   9396083    1  drivers.target\n   9395836    2  drivers.target.d\n   9395236    1  early-boot-config.service\n   9395264    1  encrypt-unlock-datastore.service\n   9395840    1  encrypt-unlock-local-fs.service\n   9395902    1  encrypt-unlock-private-fs.service\n   9395940    1  etc-cni.mount\n   9395951    1  etc-containerd.mount\n   9395294    1  etc-host\\x2dcontainers.mount\n   9396352    1  exit.target\n   9395309    1  factory-reset.target\n   9396373    1  final.target\n   9396391    1  fips-modprobe@.service\n   9396421    1  fipscheck.target\n   9396429    1  first-boot-complete.target\n   9396736    1  generate-cdi-specs.service\n   9396445    1  generate-fips-env.service\n   9396456    1  generate-fips-hmac-path-uki.service\n   9396812    1  generate-fips-hmac-path-vmlinuz.service\n   9396830    1  generate-network-config.service\n   9396846    1  getty-pre.target\n   9396864    1  getty.target\n   9396882    1  grid-license-check.service\n   9396907    1  grid-license-check.timer\n   9396915    1  halt.target\n   9396935    1  host-containerd.service\n   9396953    1  host-containers@.service\n   9396974    1  infiniband-guid.service\n   9397504    1  integritysetup-pre.target\n   9397521    1  integritysetup.target\n   9397536    1  kexec.target\n   9397557    1  kmod-static-nodes.service\n   9397585    1  ldconfig.service\n   9395324    2  ldconfig.service.d\n   9397617    1  load-crash-kernel.service\n   9395328    1  load-efa-modules.service\n   9395343    1  local-fs-pre.target\n   9395359    1  local-fs.target\n   9396477    2  local-fs.target.wants\n   9395378    1  local.mount\n   9396091    2  local.mount.d\n   9395394    1  mask-local-mnt.service\n   9395420    1  mask-local-opt.service\n   9396480    1  mask-local-var.service\n   9396506    1  mdadm-grow-continue@.service\n   9395446    1  mdadm-last-resort@.service\n   9396984    1  mdadm-last-resort@.timer\n   9396523    1  mdmon@.service\n   9396562    1  mdmonitor.service\n   9396992    1  measure-cmdline.service\n   9397012    1  measure-settings.service\n   9397027    1  measure-user-data.service\n   9397040    1  media-cdrom.mount\n   9397056    1  mnt.mount\n   9397068    1  modprobe@.service\n   9396603    2  modprobe@.service.d\n   9397088    1  multi-user.target\n   9397097    2  multi-user.target.wants\n   9397102    1  network-online.target\n   9395455    1  network-pre.target\n   9395472    2  network-pre.target.d\n   9395476    1  network.target\n   9395494    1  nss-lookup.target\n   9395514    1  nss-user-lookup.target\n   9395532    1  nvidia-fabricmanager.service\n   9395559    1  nvidia-gridd.service\n   9397119    1  nvidia-imex.service\n   9397138    2  nvidia-k8s-device-plugin.service.d\n   9397142    1  nvidia-lts-copy-gdrcopy-open-gpu-kernel-module.service\n   9397174    1  nvidia-lts-copy-grid-kernel-modules.service\n   9397207    1  nvidia-lts-copy-open-gpu-kernel-modules.service\n   9396607    1  nvidia-lts-link-tesla-kernel-modules.service\n   9396638    1  nvidia-lts-load-gdrcopy-open-gpu-kernel-module.service\n   9396668    1  nvidia-lts-load-grid-kernel-modules.service\n   9396691    1  nvidia-lts-load-open-gpu-kernel-modules.service\n   9397631    1  nvidia-lts-load-tesla-kernel-modules.service\n   9397654    1  nvidia-lts-overlay-config.service\n   9396095    1  nvidia-lts-overlay-driver.service\n   9396714    1  nvidia-migmanager.service\n   9396183    1  nvidia-persistenced.service\n   9396201    1  nvlsm-online.service\n   9397699    1  nvlsm.service\n   9397716    1  open-gpu-license-fallback.service\n   9397732    1  opt-civ.mount\n   9395583    1  opt-cni.mount\n   9395604    1  opt-csi.mount\n   9396211    1  opt.mount\n   9395625    1  paths.target\n   9395640    1  poweroff.target\n   9395661    1  preconfigured.target\n   9395669    1  prepare-boot.service\n   9395686    1  prepare-local-fs.service\n   9397753    2  prepare-local-fs.service.d\n   9396224    1  prepare-opt.service\n   9396247    1  prepare-private-fs.service\n   9396280    1  prepare-var-lib-containerd.service\n   9396299    1  prepare-var.service\n   9397760    1  reboot-if-required.service\n   9396346    2  reboot-if-required.service.d\n   9397772    1  reboot.target\n   9397793    1  repart-data-fallback.service\n   9397833    1  repart-data-preferred.service\n   9398144    1  repart-local.service\n   9396729    2  repart-local.service.d\n   9397863    1  root-.aws.mount\n   9398177    1  root-.docker.mount\n   9398191    1  root-.ecr.mount\n   9398205    1  rpcbind.target\n   9398224    1  run-netdog.mount\n   9398238    1  run-rottweiler.mount\n   9397241    1  runtime.slice\n   9397247    1  selinux-policy-files.service\n   9397877    2  service.d\n   9398256    1  set-hostname.service\n   9397270    1  settings-applier.service\n   9397292    1  shutdown.target\n   9397308    1  sigpwr.target\n   9397323    1  sleep.target\n   9397340    1  slices.target\n   9397356    1  sockets.target\n   9398528    2  sockets.target.wants\n   9398537    1  storewolf.service\n   9398554    1  sundog.service\n   9398579    1  suspend.target\n   9398597    1  swap.target\n   9398612    1  sys-fs-fuse-connections.mount\n   9398656    1  sys-kernel-config.mount\n   9398692    1  sys-kernel-debug.mount\n   9398716    1  sys-kernel-tracing.mount\n   9398741    1  sysinit.target\n   9398784    2  sysinit.target.wants\n   9398816    1  syslog.socket\n   9398761    1  system-systemd\\x2dcryptsetup.slice\n   9398860    1  system-systemd\\x2dveritysetup.slice\n   9398876    1  systemd-boot-check-no-failures.service\n   9398912    1  systemd-creds.socket\n   9398933    1  systemd-creds@.service\n   9398953    1  systemd-exit.service\n   9398973    1  systemd-fsck-root.service\n   9398999    1  systemd-fsck@.service\n   9399168    1  systemd-halt.service\n   9399188    1  systemd-journal-catalog-update.service\n   9399213    1  systemd-journal-flush.service\n   9399244    1  systemd-journald-audit.socket\n   9399296    1  systemd-journald-dev-log.socket\n   9399335    1  systemd-journald-sync@.service\n   9399269    1  systemd-journald-varlink@.socket\n   9399424    1  systemd-journald.service\n   9398268    2  systemd-journald.service.d\n   9399516    1  systemd-journald.socket\n   9399364    1  systemd-journald@.service\n   9398272    1  systemd-journald@.socket\n   9398298    1  systemd-kexec.service\n   9398318    1  systemd-logind.service\n   9399680    1  systemd-machine-id-commit.service\n   9399705    1  systemd-modules-load.service\n   9399743    1  systemd-network-generator.service\n   9399774    1  systemd-networkd-wait-online.service\n   9399808    1  systemd-networkd-wait-online@.service\n   9399836    1  systemd-networkd.service\n   9399547    2  systemd-networkd.service.d\n   9399551    1  systemd-networkd.socket\n   9399574    1  systemd-nspawn@.service\n   9398386    1  systemd-pcrphase-configured.service\n   9399026    1  systemd-pcrphase-multi-user.service\n   9399919    1  systemd-pcrphase-preconfigured.service\n   9399627    1  systemd-pcrphase-sysinit.service\n   9399642    1  systemd-poweroff.service\n   9398399    1  systemd-pstore.service\n   9398428    1  systemd-random-seed.service\n   9398470    1  systemd-reboot.service\n   9398490    1  systemd-remount-fs.service\n   9399039    1  systemd-resolved.service\n   9397371    2  systemd-resolved.service.d\n   9399100    1  systemd-suspend.service\n   9399121    1  systemd-sysctl.service\n   9397376    1  systemd-sysusers.service\n   9397883    2  systemd-sysusers.service.d\n   9397419    1  systemd-tmpfiles-clean.service\n   9399147    1  systemd-tmpfiles-clean.timer\n   9397444    1  systemd-tmpfiles-setup-dev-early.service\n   9397473    1  systemd-tmpfiles-setup-dev.service\n   9397887    1  systemd-tmpfiles-setup.service\n   9399290    2  systemd-tmpfiles-setup.service.d\n   9397920    1  systemd-udev-load-credentials.service\n   9397948    1  systemd-udev-settle.service\n   9397977    1  systemd-udev-trigger.service\n   9399802    2  systemd-udev-trigger.service.d\n   9399936    1  systemd-udevd-control.socket\n   9399958    1  systemd-udevd-kernel.socket\n   9399979    1  systemd-udevd.service\n   9399662    1  tesla-license-fallback.service\n   9400025    1  time-set.target\n   9400041    1  time-sync.target\n   9400064    1  timers.target\n   9400058    2  timers.target.wants\n   9400080    1  tmp.mount\n   9398778    2  tmp.mount.d\n   9400106    1  tpm2.target\n   9400125    1  umount.target\n   9398900    1  var-lib-bottlerocket.mount\n   9400142    1  var-lib-kernel\\x2ddevel-.overlay-lower.mount\n   9398649    2  var-lib-kernel\\x2ddevel-.overlay-lower.mount.d\n   9398003    1  var.mount\n   9400160    1  veritysetup-pre.target\n   9400177    1  veritysetup.target\n   9400192    1  whippet.service\n   9400216    1  write-network-status.service\n   9400242    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-bin.mount\n   9400256    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-lib-modules.mount\n   9400274    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-libexec.mount\n   9400290    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-share-licenses.mount\n   9398016    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-src-kernels.mount\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --ls --path=\"$2\" \"$1\"",
+              "inspect",
+              "/input/root-partition.img",
+              "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system/sysinit.target.wants"
+            ],
+            "returncode": 0,
+            "stdout": "Path : /x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system/sysinit.target.wants\nSize: 957  On-disk size: 957  directory\nNID: 9398784   Links: 2   Layout: 2   Compression ratio: 100.00%\nInode size: 32   Xattr size: 16\nUid: 0   Gid: 0  Access: 0755/rwxr-xr-x\nTimestamp: 2026-10-07 00:52:54.000000000\n\n       NID TYPE  FILENAME\n   9398784    2  .\n   9188541    2  ..\n   9398118    7  cryptsetup.target\n   9398121    7  dev-hugepages.mount\n   9398124    7  dev-mqueue.mount\n   9398127    7  integritysetup.target\n   9398130    7  kmod-static-nodes.service\n   9398133    7  ldconfig.service\n   9398136    7  sys-fs-fuse-connections.mount\n   9398139    7  sys-kernel-config.mount\n   9400576    7  sys-kernel-debug.mount\n   9400579    7  sys-kernel-tracing.mount\n   9400582    7  systemd-journal-catalog-update.service\n   9400585    7  systemd-journal-flush.service\n   9400588    7  systemd-journald.service\n   9400591    7  systemd-machine-id-commit.service\n   9400594    7  systemd-modules-load.service\n   9400597    7  systemd-random-seed.service\n   9400600    7  systemd-repart.service\n   9400603    7  systemd-sysctl.service\n   9400606    7  systemd-sysusers.service\n   9400609    7  systemd-tmpfiles-setup-dev-early.service\n   9400612    7  systemd-tmpfiles-setup-dev.service\n   9400615    7  systemd-tmpfiles-setup.service\n   9400618    7  systemd-udev-trigger.service\n   9400621    7  systemd-udevd.service\n   9400624    7  veritysetup.target\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --ls --path=\"$2\" \"$1\"",
+              "inspect",
+              "/input/root-partition.img",
+              "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/modules"
+            ],
+            "returncode": 0,
+            "stdout": "Path : /x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/modules\nSize: 62  On-disk size: 62  directory\nNID: 4898800   Links: 3   Layout: 2   Compression ratio: 100.00%\nInode size: 32   Xattr size: 16\nUid: 0   Gid: 0  Access: 0755/rwxr-xr-x\nTimestamp: 2026-10-07 00:52:54.000000000\n\n       NID TYPE  FILENAME\n   4898800    2  .\n       157    2  ..\n   4898942    7  6.18\n   7451136    2  6.18.48\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "set -eu; mcopy -i \"$1@@$2\" ::/EFI/BOOT/BOOTX64.EFI /tmp/boot.efi; objcopy --dump-section .cmdline=/tmp/cmdline /tmp/boot.efi; cat /tmp/cmdline",
+              "inspect",
+              "/input/bottlerocket-aws-mantle-1-nvidia-x86_64-1.66.1-b26951c7-dirty.img",
+              "5242880"
+            ],
+            "returncode": 0,
+            "stdout": "console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 1634864 verity 1 PARTUUID=331488E9-898E-46BF-9BBE-4AFAFBD5277C/PARTNROFF=1 PARTUUID=331488E9-898E-46BF-9BBE-4AFAFBD5277C/PARTNROFF=2 4096 4096 204358 1 sha256 66ea875c70013accbe9cdc638c48ae9cbae589f527848cacafc1d5f4ff23603e eaf463db80cf90042284fcacbb9e4c320d3c0194c9abd7420a6d71e947334943 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --ls --path=\"$1\" /input/root-partition.img",
+              "inspect",
+              "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/modules/6.18.48/kernel/fs"
+            ],
+            "returncode": 0,
+            "stdout": "Path : /x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/modules/6.18.48/kernel/fs\nSize: 476  On-disk size: 476  directory\nNID: 7462312   Links: 25   Layout: 2   Compression ratio: 100.00%\nInode size: 32   Xattr size: 16\nUid: 0   Gid: 0  Access: 0755/rwxr-xr-x\nTimestamp: 2026-10-07 00:52:54.000000000\n\n       NID TYPE  FILENAME\n   7462312    2  .\n   7447671    2  ..\n   8095488    1  binfmt_misc.ko\n   8095492    2  cachefiles\n   8095496    2  ceph\n   8095499    2  configfs\n   8095503    2  efivarfs\n   8095507    2  exfat\n   8095510    2  ext4\n   8095513    2  fat\n   8095518    2  fuse\n   8095523    2  isofs\n   8095526    2  jbd2\n   8095529    2  lockd\n   8095532    2  lustre\n   8095540    1  mbcache.ko\n   8095543    2  netfs\n   8095546    2  nfs\n   8095553    2  nfs_common\n   8095557    2  nfsd\n   8095560    2  nls\n   8095604    2  overlayfs\n   8095608    2  pstore\n   8095612    2  quota\n   8095616    2  smb\n   8095620    2  squashfs\n   8095624    2  udf\n",
+            "stderr": ""
+          }
+        ],
+        "status": "passed",
+        "uki_cmdline": "console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 1634864 verity 1 PARTUUID=331488E9-898E-46BF-9BBE-4AFAFBD5277C/PARTNROFF=1 PARTUUID=331488E9-898E-46BF-9BBE-4AFAFBD5277C/PARTNROFF=2 4096 4096 204358 1 sha256 66ea875c70013accbe9cdc638c48ae9cbae589f527848cacafc1d5f4ff23603e eaf463db80cf90042284fcacbb9e4c320d3c0194c9abd7420a6d71e947334943 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true",
+        "checks": {
+          "mount_unit_absent": true,
+          "wants_link_absent": true,
+          "variant_blacklist_preserved": true,
+          "binfmt_module_shipped": true
+        },
+        "partition": {
+          "offset": 183500800,
+          "length": 837050368,
+          "sha256": "ad8d547576cdad4726ae9bc229f99526e182eba8c6156a581aa39974868bbcb0"
+        }
+      }
+    },
+    {
+      "case": "aws-mantle-1-nvidia-fips-x86_64",
+      "region": "us-west-2",
+      "image": {
+        "status": "passed",
+        "ami": "ami-0a4eb2f70f4726144",
+        "snapshot_ids": [
+          "snap-05dabb432eb53e4d8",
+          "snap-039a5b259c36d1781"
+        ],
+        "job": "13bc80f4-41c1-847f-a217-c52eb49d66bb",
+        "arch": "x86_64",
+        "variant": "aws-mantle-1-nvidia-fips",
+        "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+        "input_sha256": "432cbc56474bb1b5d3ea04814199fc5d93eedca1aa48d9149e7383980ce414df",
+        "region": "us-west-2",
+        "private": true,
+        "boot_mode": "uefi",
+        "tpm": "v2.0",
+        "runtime": "pending"
+      },
+      "artifacts": [
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/13bc80f4-41c1-847f-a217-c52eb49d66bb/images/x86_64-aws-mantle-1-nvidia-fips/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty-data.img.lz4",
+          "archive_sha256": "076ba20789e201e34c4aea5233d709576001f22b9c0e49eea61cc549753c0a93",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty-data.img",
+          "sha256": "c2480911a9f36b834a12794053ae3c33993b5bb33738105ccfd0cb13d6f24ce8",
+          "size": 1073741824
+        },
+        {
+          "archive": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/13bc80f4-41c1-847f-a217-c52eb49d66bb/images/x86_64-aws-mantle-1-nvidia-fips/1.66.1-b26951c7-dirty/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img.lz4",
+          "archive_sha256": "6c2528a41dea6638bbf3261960efe7eae3f614efff51fe398fb14c3288638e7a",
+          "image": "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img",
+          "sha256": "d7b7c9bc6fc9ee102b95c77546b56c85346bff47834efcf45fd508c18278fd90",
+          "size": 4294967296
+        }
+      ],
+      "uefi_sha256": "7dc69ef5cb5d0584b14ea5c671cf46e4e3c86a763097072129c41191d3549fe8",
+      "runtime": {
+        "status": "not_run_missing_gpu",
+        "case": {
+          "instance": "i-0d283097985d51b34",
+          "instance_type": "m6i.large",
+          "status": "passed",
+          "ami": "ami-0a4eb2f70f4726144",
+          "snapshot_ids": [
+            "snap-05dabb432eb53e4d8",
+            "snap-039a5b259c36d1781"
+          ],
+          "job": "13bc80f4-41c1-847f-a217-c52eb49d66bb",
+          "arch": "x86_64",
+          "variant": "aws-mantle-1-nvidia-fips",
+          "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+          "input_sha256": "432cbc56474bb1b5d3ea04814199fc5d93eedca1aa48d9149e7383980ce414df",
+          "region": "us-west-2",
+          "private": true,
+          "boot_mode": "uefi",
+          "tpm": "v2.0",
+          "runtime": "pending"
+        },
+        "instance": "i-0d283097985d51b34",
+        "reason": "Ordinary-instance fallback reached NVIDIA initialization, which failed without hardware and prevented configured.target/SSM. No GPU or native smoke test ran. Operator authorized proceeding without GPU coverage.",
+        "local_observer_stopped": true,
+        "at": "2026-10-07T01:16:02.032477+00:00"
+      },
+      "ssm_commands": [],
+      "static_inspection": {
+        "at": "2026-10-07T01:19:24.898024+00:00",
+        "variant": "aws-mantle-1-nvidia-fips",
+        "source": "b26951c7cf95cd3cddf8ecefbbbc42162d89bdc2",
+        "image_sha256": "d7b7c9bc6fc9ee102b95c77546b56c85346bff47834efcf45fd508c18278fd90",
+        "commands": [
+          {
+            "argv": [
+              "sfdisk",
+              "--json",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img"
+            ],
+            "returncode": 0,
+            "stdout": "{\n   \"partitiontable\": {\n      \"label\": \"gpt\",\n      \"id\": \"4846C1A1-ED33-49B9-950A-3A9878D0F750\",\n      \"device\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img\",\n      \"unit\": \"sectors\",\n      \"firstlba\": 34,\n      \"lastlba\": 8388574,\n      \"sectorsize\": 512,\n      \"partitions\": [\n         {\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img1\",\n            \"start\": 2048,\n            \"size\": 8192,\n            \"type\": \"21686148-6449-6E6F-744E-656564454649\",\n            \"uuid\": \"AF1AC9A0-4B06-4CAB-96E4-81152D9DBAFC\",\n            \"name\": \"BIOS-BOOT\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img2\",\n            \"start\": 10240,\n            \"size\": 348160,\n            \"type\": \"C12A7328-F81F-11D2-BA4B-00A0C93EC93B\",\n            \"uuid\": \"FB963321-5449-4522-A2E1-B056C258B724\",\n            \"name\": \"EFI-SYSTEM\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img3\",\n            \"start\": 358400,\n            \"size\": 7536640,\n            \"type\": \"5526016A-1A97-4EA4-B39A-B7C8C6CA4502\",\n            \"uuid\": \"DCF54B2A-1848-403D-9B4B-8F2DD8EC23EB\",\n            \"name\": \"BOTTLEROCKET-ROOT-A\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img4\",\n            \"start\": 7895040,\n            \"size\": 81920,\n            \"type\": \"598F10AF-C955-4456-6A99-7720068A6CEA\",\n            \"uuid\": \"BFEBB937-813C-44B5-8C1B-8C11FFF85169\",\n            \"name\": \"BOTTLEROCKET-HASH-A\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img5\",\n            \"start\": 7976960,\n            \"size\": 225280,\n            \"type\": \"0C5D99A5-D331-4147-BAEF-08E2B855BDC9\",\n            \"uuid\": \"0B1A01A6-A77E-4752-9AB3-7E4FB8120960\",\n            \"name\": \"BOTTLEROCKET-RESERVED-A\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img6\",\n            \"start\": 8202240,\n            \"size\": 182272,\n            \"type\": \"440408BB-EB0B-4328-A6E5-A29038FAD706\",\n            \"uuid\": \"256C6FEA-F10E-49ED-8A52-C3CED14A52B2\",\n            \"name\": \"BOTTLEROCKET-PRIVATE\"\n         },{\n            \"node\": \"/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img7\",\n            \"start\": 8384512,\n            \"size\": 2048,\n            \"type\": \"626F7474-6C65-6474-6861-726D61726B73\",\n            \"uuid\": \"69040874-417D-4E26-A764-7885F22007EA\"\n         }\n      ]\n   }\n}\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --offset=\"$2\" -s \"$1\"",
+              "inspect",
+              "/input/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img",
+              "183500800"
+            ],
+            "returncode": 0,
+            "stdout": "Filesystem magic number:                      0xE0F5E1E2\nFilesystem blocksize:                         4096\nFilesystem blocks:                            204257\nFilesystem inode metadata start block:        0\nFilesystem shared xattr metadata start block: 0\nFilesystem root nid:                          43\nFilesystem compr_algs:                        lz4\nFilesystem sb_size:                           128\nFilesystem inode count:                       7234\nFilesystem created:                           Wed Oct  7 00:52:37 2026\nFilesystem compatible features:               sb_csum mtime xattr_filter \nFilesystem incompatible features:             lz4_0padding compr_cfgs big_pcluster \nFilesystem UUID:                              b0ab18dd-e59e-4524-80d7-cfa30e564381\nRequired upstream Linux kernel version:       5.13\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --ls --path=\"$2\" \"$1\"",
+              "inspect",
+              "/input/root-partition.img",
+              "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system"
+            ],
+            "returncode": 0,
+            "stdout": "Path : /x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system\nSize: 9152  On-disk size: 9152  directory\nNID: 9175229   Links: 29   Layout: 2   Compression ratio: 100.00%\nInode size: 32   Xattr size: 16\nUid: 0   Gid: 0  Access: 0755/rwxr-xr-x\nTimestamp: 2026-10-07 00:52:37.000000000\n\n       NID TYPE  FILENAME\n   9175229    2  .\n   4885656    2  ..\n   9381587    1  \\x2ebottlerocket.mount\n   9379452    2  \\x2ebottlerocket.mount.d\n   9381608    1  activate-configured.service\n   9381888    1  activate-multi-user.service\n   9381621    2  activate-multi-user.service.d\n   9381900    1  activate-preconfigured.service\n   9381915    1  apiserver.service\n   9381927    1  audit-rules.service\n   9381939    1  basic.target\n   9381970    1  blockdev@.target\n   9381988    1  boot-complete.target\n   9382144    1  bootstrap-commands.service\n   9382166    1  bootstrap-containers@.service\n   9382203    1  capture-kernel-dump.service\n   9382222    1  cfsignal.service\n   9382238    1  check-fips-modules.service\n   9382912    2  check-fips-modules.service.d\n   9382942    1  check-kernel-integrity.service\n   9382004    1  chronyd.service\n   9382962    1  configure-hugepages.service\n   9382978    1  configure-snapshotter.service\n   9381625    1  configured.target\n   9383021    1  containerd.service\n   9382257    2  containerd.service.d\n   9381632    1  create-fips-marker.service\n   9381648    1  cryptsetup-pre.target\n   9381665    1  cryptsetup.target\n   8856958    7  ctrl-alt-del.target\n   9382261    7  dbus-org.freedesktop.login1.service\n   9381680    1  dbus.socket\n   9382264    7  default.target\n   9381693    1  deprecation-warning@.service\n   9381704    1  deprecation-warning@.timer\n   9381715    1  dev-hugepages.mount\n   9382016    1  dev-mqueue.mount\n   9381740    1  disable-kexec-load.service\n   9382039    1  disable-udp-offload.service\n   9382061    1  drivers.target\n   9382267    2  drivers.target.d\n   9382069    1  early-boot-config.service\n   9382097    1  encrypt-unlock-datastore.service\n   9383040    1  encrypt-unlock-local-fs.service\n   9383102    1  encrypt-unlock-private-fs.service\n   9382127    1  etc-cni.mount\n   9383140    1  etc-containerd.mount\n   9382271    1  etc-host\\x2dcontainers.mount\n   9382286    1  exit.target\n   9382307    1  factory-reset.target\n   9382322    1  final.target\n   9382340    1  fips-modprobe@.service\n   9383155    1  fipscheck.target\n   9382370    1  first-boot-complete.target\n   9383552    1  generate-cdi-specs.service\n   9382386    1  generate-fips-env.service\n   9383628    1  generate-fips-hmac-path-uki.service\n   9383649    1  generate-fips-hmac-path-vmlinuz.service\n   9384064    1  generate-network-config.service\n   9384080    1  getty-pre.target\n   9384098    1  getty.target\n   9384116    1  grid-license-check.service\n   9383667    1  grid-license-check.timer\n   9384141    1  halt.target\n   9384161    1  host-containerd.service\n   9384192    1  host-containers@.service\n   9384179    1  infiniband-guid.service\n   9384213    1  integritysetup-pre.target\n   9384230    1  integritysetup.target\n   9384245    1  kexec.target\n   9384266    1  kmod-static-nodes.service\n   9384320    1  ldconfig.service\n   9383675    2  ldconfig.service.d\n   9384294    1  load-crash-kernel.service\n   9384352    1  load-efa-modules.service\n   9384367    1  local-fs-pre.target\n   9384383    1  local-fs.target\n   9382397    2  local-fs.target.wants\n   9384402    1  local.mount\n   9383163    2  local.mount.d\n   9384418    1  mask-local-mnt.service\n   9382400    1  mask-local-opt.service\n   9382426    1  mask-local-var.service\n   9382452    1  mdadm-grow-continue@.service\n   9384308    1  mdadm-last-resort@.service\n   9382469    1  mdadm-last-resort@.timer\n   9382477    1  mdmon@.service\n   9383167    1  mdmonitor.service\n   9383208    1  measure-cmdline.service\n   9383228    1  measure-settings.service\n   9383243    1  measure-user-data.service\n   9383256    1  media-cdrom.mount\n   9382516    1  mnt.mount\n   9383272    1  modprobe@.service\n   9384444    2  modprobe@.service.d\n   9384448    1  multi-user.target\n   9381754    2  multi-user.target.wants\n   9384457    1  network-online.target\n   9384474    1  network-pre.target\n   9383292    2  network-pre.target.d\n   9384491    1  network.target\n   9384509    1  nss-lookup.target\n   9384529    1  nss-user-lookup.target\n   9384547    1  nvidia-fabricmanager.service\n   9383296    1  nvidia-gridd.service\n   9383320    1  nvidia-imex.service\n   9382138    2  nvidia-k8s-device-plugin.service.d\n   9383339    1  nvidia-lts-copy-gdrcopy-open-gpu-kernel-module.service\n   9383371    1  nvidia-lts-copy-grid-kernel-modules.service\n   9382528    1  nvidia-lts-copy-open-gpu-kernel-modules.service\n   9382562    1  nvidia-lts-link-tesla-kernel-modules.service\n   9382593    1  nvidia-lts-load-gdrcopy-open-gpu-kernel-module.service\n   9382623    1  nvidia-lts-load-grid-kernel-modules.service\n   9381759    1  nvidia-lts-load-open-gpu-kernel-modules.service\n   9381782    1  nvidia-lts-load-tesla-kernel-modules.service\n   9381805    1  nvidia-lts-overlay-config.service\n   9383679    1  nvidia-lts-overlay-driver.service\n   9383404    1  nvidia-migmanager.service\n   9381850    1  nvidia-persistenced.service\n   9382646    1  nvlsm-online.service\n   9381868    1  nvlsm.service\n   9383767    1  open-gpu-license-fallback.service\n   9383783    1  opt-civ.mount\n   9382656    1  opt-cni.mount\n   9382677    1  opt-csi.mount\n   9382698    1  opt.mount\n   9382711    1  paths.target\n   9382726    1  poweroff.target\n   9382747    1  preconfigured.target\n   9382755    1  prepare-boot.service\n   9384576    1  prepare-local-fs.service\n   9383419    2  prepare-local-fs.service.d\n   9384599    1  prepare-opt.service\n   9384622    1  prepare-private-fs.service\n   9384655    1  prepare-var-lib-containerd.service\n   9383424    1  prepare-var.service\n   9382772    1  reboot-if-required.service\n   9383804    2  reboot-if-required.service.d\n   9384674    1  reboot.target\n   9383471    1  repart-data-fallback.service\n   9383511    1  repart-data-preferred.service\n   9382784    1  repart-local.service\n   9384695    2  repart-local.service.d\n   9382817    1  root-.aws.mount\n   9382831    1  root-.docker.mount\n   9382845    1  root-.ecr.mount\n   9382859    1  rpcbind.target\n   9382878    1  run-netdog.mount\n   9382892    1  run-rottweiler.mount\n   9383541    1  runtime.slice\n   9383808    1  selinux-policy-files.service\n   9383831    2  service.d\n   9383837    1  set-hostname.service\n   9383849    1  settings-applier.service\n   9383871    1  shutdown.target\n   9383887    1  sigpwr.target\n   9383902    1  sleep.target\n   9383919    1  slices.target\n   9383935    1  sockets.target\n   9383950    2  sockets.target.wants\n   9383959    1  storewolf.service\n   9383976    1  sundog.service\n   9384001    1  suspend.target\n   9384019    1  swap.target\n   9384832    1  sys-fs-fuse-connections.mount\n   9384869    1  sys-kernel-config.mount\n   9384034    1  sys-kernel-debug.mount\n   9384905    1  sys-kernel-tracing.mount\n   9384930    1  sysinit.target\n   9384960    2  sysinit.target.wants\n   9384992    1  syslog.socket\n   9385036    1  system-systemd\\x2dcryptsetup.slice\n   9385053    1  system-systemd\\x2dveritysetup.slice\n   9385216    1  systemd-boot-check-no-failures.service\n   9385240    1  systemd-creds.socket\n   9385261    1  systemd-creds@.service\n   9385281    1  systemd-exit.service\n   9385301    1  systemd-fsck-root.service\n   9385472    1  systemd-fsck@.service\n   9385499    1  systemd-halt.service\n   9385519    1  systemd-journal-catalog-update.service\n   9385544    1  systemd-journal-flush.service\n   9385575    1  systemd-journald-audit.socket\n   9385600    1  systemd-journald-dev-log.socket\n   9385639    1  systemd-journald-sync@.service\n   9385668    1  systemd-journald-varlink@.socket\n   9385856    1  systemd-journald.service\n   9384699    2  systemd-journald.service.d\n   9385948    1  systemd-journald.socket\n   9384703    1  systemd-journald@.service\n   9385689    1  systemd-journald@.socket\n   9384752    1  systemd-kexec.service\n   9386112    1  systemd-logind.service\n   9386180    1  systemd-machine-id-commit.service\n   9384772    1  systemd-modules-load.service\n   9386205    1  systemd-network-generator.service\n   9386496    1  systemd-networkd-wait-online.service\n   9386524    1  systemd-networkd-wait-online@.service\n   9386880    1  systemd-networkd.service\n   9386236    2  systemd-networkd.service.d\n   9386963    1  systemd-networkd.socket\n   9386552    1  systemd-nspawn@.service\n   9385715    1  systemd-pcrphase-configured.service\n   9385327    1  systemd-pcrphase-multi-user.service\n   9385069    1  systemd-pcrphase-preconfigured.service\n   9386605    1  systemd-pcrphase-sysinit.service\n   9386986    1  systemd-poweroff.service\n   9385728    1  systemd-pstore.service\n   9385757    1  systemd-random-seed.service\n   9384810    1  systemd-reboot.service\n   9385799    1  systemd-remount-fs.service\n   9386240    1  systemd-resolved.service\n   9385979    2  systemd-resolved.service.d\n   9385826    1  systemd-suspend.service\n   9386301    1  systemd-sysctl.service\n   9385984    1  systemd-sysusers.service\n   9386620    2  systemd-sysusers.service.d\n   9386327    1  systemd-tmpfiles-clean.service\n   9386027    1  systemd-tmpfiles-clean.timer\n   9386046    1  systemd-tmpfiles-setup-dev-early.service\n   9386075    1  systemd-tmpfiles-setup-dev.service\n   9386624    1  systemd-tmpfiles-setup.service\n   9385340    2  systemd-tmpfiles-setup.service.d\n   9386657    1  systemd-udev-load-credentials.service\n   9386685    1  systemd-udev-settle.service\n   9386714    1  systemd-udev-trigger.service\n   9385084    2  systemd-udev-trigger.service.d\n   9385088    1  systemd-udevd-control.socket\n   9385110    1  systemd-udevd-kernel.socket\n   9385131    1  systemd-udevd.service\n   9386352    1  tesla-license-fallback.service\n   9385177    1  time-set.target\n   9385193    1  time-sync.target\n   9386368    1  timers.target\n   9383547    2  timers.target.wants\n   9386384    1  tmp.mount\n   9385210    2  tmp.mount.d\n   9386410    1  tpm2.target\n   9386429    1  umount.target\n   9386740    1  var-lib-bottlerocket.mount\n   9386446    1  var-lib-kernel\\x2ddevel-.overlay-lower.mount\n   9384058    2  var-lib-kernel\\x2ddevel-.overlay-lower.mount.d\n   9386464    1  var.mount\n   9386477    1  veritysetup-pre.target\n   9386752    1  veritysetup.target\n   9386767    1  whippet.service\n   9386791    1  write-network-status.service\n   9386817    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-bin.mount\n   9386831    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-lib-modules.mount\n   9386849    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-libexec.mount\n   9385344    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-share-licenses.mount\n   9385362    1  x86_64\\x2dbottlerocket\\x2dlinux\\x2dgnu-sys\\x2droot-usr-src-kernels.mount\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --ls --path=\"$2\" \"$1\"",
+              "inspect",
+              "/input/root-partition.img",
+              "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system/sysinit.target.wants"
+            ],
+            "returncode": 0,
+            "stdout": "Path : /x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/systemd/system/sysinit.target.wants\nSize: 957  On-disk size: 957  directory\nNID: 9384960   Links: 2   Layout: 2   Compression ratio: 100.00%\nInode size: 32   Xattr size: 16\nUid: 0   Gid: 0  Access: 0755/rwxr-xr-x\nTimestamp: 2026-10-07 00:52:37.000000000\n\n       NID TYPE  FILENAME\n   9384960    2  .\n   9175229    2  ..\n   9387397    7  cryptsetup.target\n   9387400    7  dev-hugepages.mount\n   9387403    7  dev-mqueue.mount\n   9387406    7  integritysetup.target\n   9387409    7  kmod-static-nodes.service\n   9387412    7  ldconfig.service\n   9387415    7  sys-fs-fuse-connections.mount\n   9387418    7  sys-kernel-config.mount\n   9387421    7  sys-kernel-debug.mount\n   9387424    7  sys-kernel-tracing.mount\n   9387427    7  systemd-journal-catalog-update.service\n   9387430    7  systemd-journal-flush.service\n   9387433    7  systemd-journald.service\n   9387436    7  systemd-machine-id-commit.service\n   9387439    7  systemd-modules-load.service\n   9387442    7  systemd-random-seed.service\n   9387445    7  systemd-repart.service\n   9387448    7  systemd-sysctl.service\n   9387451    7  systemd-sysusers.service\n   9387454    7  systemd-tmpfiles-setup-dev-early.service\n   9387457    7  systemd-tmpfiles-setup-dev.service\n   9387460    7  systemd-tmpfiles-setup.service\n   9387463    7  systemd-udev-trigger.service\n   9387466    7  systemd-udevd.service\n   9387469    7  veritysetup.target\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --ls --path=\"$2\" \"$1\"",
+              "inspect",
+              "/input/root-partition.img",
+              "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/modules"
+            ],
+            "returncode": 0,
+            "stdout": "Path : /x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/modules\nSize: 62  On-disk size: 62  directory\nNID: 4885222   Links: 3   Layout: 2   Compression ratio: 100.00%\nInode size: 32   Xattr size: 16\nUid: 0   Gid: 0  Access: 0755/rwxr-xr-x\nTimestamp: 2026-10-07 00:52:37.000000000\n\n       NID TYPE  FILENAME\n   4885222    2  .\n       154    2  ..\n   7434366    7  6.18\n   4886765    2  6.18.48\n",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "set -eu; mcopy -i \"$1@@$2\" ::/EFI/BOOT/BOOTX64.EFI /tmp/boot.efi; objcopy --dump-section .cmdline=/tmp/cmdline /tmp/boot.efi; cat /tmp/cmdline",
+              "inspect",
+              "/input/bottlerocket-aws-mantle-1-nvidia-fips-x86_64-1.66.1-b26951c7-dirty.img",
+              "5242880"
+            ],
+            "returncode": 0,
+            "stdout": "console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet fips=1 module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 fips=1 init.systemd.unit=fipscheck.target root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 1634056 verity 1 PARTUUID=FB963321-5449-4522-A2E1-B056C258B724/PARTNROFF=1 PARTUUID=FB963321-5449-4522-A2E1-B056C258B724/PARTNROFF=2 4096 4096 204257 1 sha256 00b70dda83e043929da3a2d1368f3a4ebfb1ca9dd6fcb26e96a6ddf72bd96fe7 b7acceee72c1392e8b3bc324a2ac47821babcc26986c620798f44dcaec447e2c 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true",
+            "stderr": ""
+          },
+          {
+            "argv": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--read-only",
+              "--tmpfs",
+              "/tmp",
+              "-v",
+              "/home/fedora/Repositories/symphony/stages/14-binfmt-misc-encrypted-storage/bottlerocket/build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb:/input:ro",
+              "--entrypoint",
+              "/bin/bash",
+              "public.ecr.aws/bottlerocket/bottlerocket-sdk:v0.79.0",
+              "-c",
+              "dump.erofs --ls --path=\"$1\" /input/root-partition.img",
+              "inspect",
+              "/x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/modules/6.18.48/kernel/fs"
+            ],
+            "returncode": 0,
+            "stdout": "Path : /x86_64-bottlerocket-linux-gnu/sys-root/usr/lib/modules/6.18.48/kernel/fs\nSize: 476  On-disk size: 476  directory\nNID: 7448984   Links: 25   Layout: 2   Compression ratio: 100.00%\nInode size: 32   Xattr size: 16\nUid: 0   Gid: 0  Access: 0755/rwxr-xr-x\nTimestamp: 2026-10-07 00:52:37.000000000\n\n       NID TYPE  FILENAME\n   7448984    2  .\n   7437809    2  ..\n   8064113    1  binfmt_misc.ko\n   8064117    2  cachefiles\n   8064121    2  ceph\n   8064124    2  configfs\n   8082176    2  efivarfs\n   8082180    2  exfat\n   8082183    2  ext4\n   8082186    2  fat\n   8082191    2  fuse\n   8082196    2  isofs\n   8082199    2  jbd2\n   8082202    2  lockd\n   8082205    2  lustre\n   8082213    1  mbcache.ko\n   8082216    2  netfs\n   8082219    2  nfs\n   8082226    2  nfs_common\n   8082230    2  nfsd\n   8082233    2  nls\n   8082277    2  overlayfs\n   8082281    2  pstore\n   8082285    2  quota\n   8082289    2  smb\n   8082293    2  squashfs\n   8082297    2  udf\n",
+            "stderr": ""
+          }
+        ],
+        "status": "passed",
+        "uki_cmdline": "console=tty0 console=ttyS0,115200n8 net.ifnames=0 netdog.default-interface=eth0:dhcp4,dhcp6? quiet fips=1 module_blacklist=i8042,binfmt_misc SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 SYSTEMD_DEFAULT_MOUNT_RATE_LIMIT_BURST=25 fips=1 init.systemd.unit=fipscheck.target root=/dev/dm-0 rootwait ro raid=noautodetect random.trust_cpu=on selinux=1 enforcing=1 dm-mod.create=\"root,,,ro,0 1634056 verity 1 PARTUUID=FB963321-5449-4522-A2E1-B056C258B724/PARTNROFF=1 PARTUUID=FB963321-5449-4522-A2E1-B056C258B724/PARTNROFF=2 4096 4096 204257 1 sha256 00b70dda83e043929da3a2d1368f3a4ebfb1ca9dd6fcb26e96a6ddf72bd96fe7 b7acceee72c1392e8b3bc324a2ac47821babcc26986c620798f44dcaec447e2c 2 restart_on_corruption ignore_zero_blocks\" -- systemd.log_target=journal-or-kmsg systemd.log_color=0 systemd.show_status=true",
+        "checks": {
+          "mount_unit_absent": true,
+          "wants_link_absent": true,
+          "variant_blacklist_preserved": true,
+          "binfmt_module_shipped": true
+        },
+        "partition": {
+          "offset": 183500800,
+          "length": 836636672,
+          "sha256": "5b756a4ed0b00b7869130a3b307878a229579da14f695a93ea6341f80ef5fa4b"
+        }
+      }
+    }
+  ],
+  "cleanup": {
+    "us-east-2": {
+      "status": "passed",
+      "at": "2026-10-07T01:11:40.239067+00:00",
+      "terminated_instances": [
+        "i-03149ce5fa6c9952b",
+        "i-04b3d0fd515aa69fa",
+        "i-0d60151a84fd6d4e3"
+      ],
+      "deregistered_images": [
+        "ami-0a02773f67275735e",
+        "ami-01945aec9e04a7d37",
+        "ami-0ad5b2fd39f6ad7ad",
+        "ami-0815f12c43391c4c3",
+        "ami-0a05dc5449a1f139e"
+      ],
+      "deleted_snapshots": [
+        "snap-0f639e627cb6cbad5",
+        "snap-0ee3bfaa615315652",
+        "snap-008e8d7b5b0a1c159",
+        "snap-0d1fb6eac6e5fdb13",
+        "snap-09b7806e2f22934b8",
+        "snap-047ad07ab3ff21e1d",
+        "snap-09f6a62f06cd5f14c",
+        "snap-0238d909166b1e682",
+        "snap-048dd7075ff5e88f5",
+        "snap-0cd2a93efc2ce9728"
+      ],
+      "deleted_stack": "arn:aws:cloudformation:us-east-2:533267423195:stack/symphony-14-systemd-guard/6243fe80-c1e9-11f1-a369-02a6a177b76f",
+      "existing_default_vpc_and_subnet": "retained"
+    },
+    "us-west-2": {
+      "status": "passed",
+      "at": "2026-10-07T01:18:34.518009+00:00",
+      "terminated_instances": [
+        "i-09f6f9c55f0187a17",
+        "i-0d283097985d51b34"
+      ],
+      "deregistered_images": [
+        "ami-04d2282bb9e8665e7",
+        "ami-0a4eb2f70f4726144"
+      ],
+      "deleted_snapshots": [
+        "snap-03fc9f386a5a013e9",
+        "snap-0121e514f380b01fb",
+        "snap-05dabb432eb53e4d8",
+        "snap-039a5b259c36d1781"
+      ],
+      "deleted_stack": "arn:aws:cloudformation:us-west-2:533267423195:stack/symphony-14-systemd-guard-west/c0304420-c1eb-11f1-b3b1-062b536bb711",
+      "existing_default_vpc_and_subnet": "retained"
+    }
+  },
+  "gpu_smoke": "Not run: capacity unavailable in both regions. NVIDIA flavors reached driver initialization on ordinary instances, then failed without GPU hardware, preventing configured.target and SSM. Their runtime policy/native/GPU smoke checks did not run. Both built images passed static blacklist and unit-absence checks. The operator authorized proceeding without GPU capacity.",
+  "registry_cleanup": "pending conductor"
+}

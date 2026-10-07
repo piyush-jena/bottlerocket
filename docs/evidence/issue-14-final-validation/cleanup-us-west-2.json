@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "at": "2026-10-07T01:18:34.518009+00:00",
+  "terminated_instances": [
+    "i-09f6f9c55f0187a17",
+    "i-0d283097985d51b34"
+  ],
+  "deregistered_images": [
+    "ami-04d2282bb9e8665e7",
+    "ami-0a4eb2f70f4726144"
+  ],
+  "deleted_snapshots": [
+    "snap-03fc9f386a5a013e9",
+    "snap-0121e514f380b01fb",
+    "snap-05dabb432eb53e4d8",
+    "snap-039a5b259c36d1781"
+  ],
+  "deleted_stack": "arn:aws:cloudformation:us-west-2:533267423195:stack/symphony-14-systemd-guard-west/c0304420-c1eb-11f1-b3b1-062b536bb711",
+  "existing_default_vpc_and_subnet": "retained"
+}

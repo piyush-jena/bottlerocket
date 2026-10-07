@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "archive_sha256": "a3fce7083ed27503f7dbd92597f472eb7fd2ea64738437c9112e32d976efcd1a",
+  "verified_bundle_files": 1652,
+  "live_passed_cases": 3,
+  "gpu_runtime_not_run": 2,
+  "static_nvidia_passed_cases": 2,
+  "unique_successful_ssm_commands": 161,
+  "cloud_cleanup": "both regions passed",
+  "registry_cleanup": "pending conductor"
+}

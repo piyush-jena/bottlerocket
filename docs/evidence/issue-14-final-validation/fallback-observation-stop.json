@@ -1,0 +1,21 @@
+{
+  "stopped_local_observers": [
+    {
+      "pid": 1291058,
+      "argv": [
+        "python3",
+        "build/symphony/issue-14-systemd-guard-west-runtime/run_case.py",
+        "build/symphony/issue-14-systemd-guard-west-runtime/images/ab22cee4-84e2-802a-a72f-98618416d7e8/verification.json"
+      ]
+    },
+    {
+      "pid": 1291061,
+      "argv": [
+        "python3",
+        "build/symphony/issue-14-systemd-guard-west-runtime/run_case.py",
+        "build/symphony/issue-14-systemd-guard-west-runtime/images/13bc80f4-41c1-847f-a217-c52eb49d66bb/verification.json"
+      ]
+    }
+  ],
+  "reason": "Known missing-GPU boot dependency; all SSM operations were read-only readiness probes, no SSM command was sent."
+}
